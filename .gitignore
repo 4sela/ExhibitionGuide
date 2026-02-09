@@ -1,0 +1,25 @@
+# === Unity generated ===
+[Ll]ibrary/
+[Tt]emp/
+[Ll]ogs/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Uu]ser[Ss]ettings/
+
+# === IDE / Editor ===
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Android / Gradle (AR projects) ===
+.gradle/
