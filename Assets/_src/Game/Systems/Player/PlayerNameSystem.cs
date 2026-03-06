@@ -14,6 +14,9 @@ namespace Game.Systems.Player
             Instance = this;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
         public void SetName(string newName)
         {
             PlayerName = newName;

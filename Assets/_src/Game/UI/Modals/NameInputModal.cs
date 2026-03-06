@@ -8,6 +8,9 @@ namespace Game.UI.Modals
     {
         public TMP_InputField inputField;
 
+        /// <summary>
+        ///
+        /// </summary>
         public void OnConfirm()
         {
             PlayerNameSystem.Instance.SetName(inputField.text);
