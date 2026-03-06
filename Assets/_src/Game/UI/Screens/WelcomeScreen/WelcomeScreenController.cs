@@ -6,11 +6,11 @@ namespace Game.UI.Screens.WelcomeScreen
 {
     public sealed class WelcomeScreenController : MonoBehaviour
     {
-        public TMP_Text welcomeText;
+        public TMP_Text welcomeNameText;
 
         void OnEnable()
         {
-            welcomeText.text = $"Hej {PlayerNameSystem.Instance.PlayerName}";
+            welcomeNameText.text = $"Hej {PlayerNameSystem.Instance.PlayerName}";
         }
     }
 
