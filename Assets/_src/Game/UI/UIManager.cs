@@ -8,6 +8,7 @@ namespace Game.UI
         public GameObject StartScreen;
         public GameObject WelcomeScreen;
         public GameObject ExhibitionScreen;
+        public GameObject NameModal;
 
         void Start()
         {
@@ -53,6 +54,11 @@ namespace Game.UI
         public void OnExhibitionSelected()
         {
             ShowScreen(ExhibitionScreen);
+        }
+
+        public void OnNameButtonPressed()
+        {
+            NameModal.SetActive(true);
         }
     }
 }
