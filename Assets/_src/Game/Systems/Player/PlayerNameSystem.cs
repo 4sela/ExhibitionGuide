@@ -8,7 +8,6 @@ namespace Game.Systems.Player
         public static PlayerNameSystem Instance;
 
         public string PlayerName { get; private set; }
-        public event Action<string> OnNameChanged;
 
         void Awake()
         {
@@ -18,7 +17,7 @@ namespace Game.Systems.Player
         public void SetName(string newName)
         {
             PlayerName = newName;
-            OnNameChanged?.Invoke(newName);
+            PlayerEvents.OnNameChanged?.Invoke(newName);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Game.UI.Screens.StartScreen
         {
             startButton.interactable = false;
 
-            PlayerNameSystem.Instance.OnNameChanged += (name) =>
+            PlayerEvents.OnNameChanged += (name) =>
             {
                 startButton.interactable = !string.IsNullOrEmpty(name);
             };
