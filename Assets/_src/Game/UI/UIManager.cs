@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace UI
+namespace Game.UI
 {
-    public class UIManager : MonoBehaviour
+    public sealed class UIManager : MonoBehaviour
     {
         [Header("Screen Panels")]
         public GameObject StartScreen;
