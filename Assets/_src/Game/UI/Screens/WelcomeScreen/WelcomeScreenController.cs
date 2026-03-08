@@ -13,5 +13,4 @@ namespace Game.UI.Screens.WelcomeScreen
             welcomeNameText.text = $"Hej {PlayerNameSystem.Instance.PlayerName}";
         }
     }
-
 }
