@@ -1,10 +1,19 @@
 # ninja log v5
+3140	3404	7941276193931682	C:/Users/pixel/OneDrive/Dokumenter/GitHub/ExhibitionGuide/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/w2v1v5e1/obj/arm64-v8a/libgame.so	ecef61544b8aa444
 59	2033	7941276179836745	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	cef63fdf85a86ed0
 45	2044	7941276180073707	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	ca402a1e615906b3
-16	2092	7941276180523525	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	8df785551a9bf16b
-91	2132	7941276180801728	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	7a11f9bb4326c8cd
 105	2319	7941276182862628	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	444487e7afc32adc
+16	2092	7941276180523525	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	8df785551a9bf16b
 1	2566	7941276185230273	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	6edb608696afaf7a
+91	2132	7941276180801728	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	7a11f9bb4326c8cd
 74	2866	7941276188424726	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8fcb186b93c5183f
 31	3139	7941276191134334	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5a10d19db141aad8
-3140	3404	7941276193931682	C:/Users/pixel/OneDrive/Dokumenter/GitHub/ExhibitionGuide/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/w2v1v5e1/obj/arm64-v8a/libgame.so	ecef61544b8aa444
+69	1517	7946366181581917	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	ca402a1e615906b3
+27	1552	7946366181974598	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	8df785551a9bf16b
+80	1565	7946366182118936	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	7a11f9bb4326c8cd
+58	1680	7946366183268499	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	444487e7afc32adc
+38	1682	7946366183243164	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	cef63fdf85a86ed0
+17	1788	7946366184466793	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	6edb608696afaf7a
+47	1929	7946366185871492	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8fcb186b93c5183f
+8	2057	7946366187154671	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5a10d19db141aad8
+2057	2408	7946366190711416	C:/Users/pixel/OneDrive/Dokumenter/GitHub/ExhibitionGuide/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/w2v1v5e1/obj/arm64-v8a/libgame.so	ecef61544b8aa444

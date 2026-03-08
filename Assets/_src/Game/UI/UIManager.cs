@@ -1,4 +1,5 @@
 using UnityEngine;
+using Game.UI.Tweening;
 
 namespace Game.UI
 {
@@ -12,8 +13,13 @@ namespace Game.UI
 
         void Start()
         {
-            // Start Screen must be initialised in the beginning!
-            ShowScreen(StartScreen);
+            // We disable all screens first to ensure the StartScreen is showed first
+            StartScreen.SetActive(false);
+            WelcomeScreen.SetActive(false);
+            ExhibitionScreen.SetActive(false);
+
+            // Now we show StartScreen with animation
+            StartScreen.GetComponent<UITweener>().Show();
         }
 
         /// <summary>
@@ -21,18 +27,33 @@ namespace Game.UI
         /// </summary>
         private void ShowScreen(GameObject screenToShow)
         {
-            HideAllPanels();
-            RequestToShow(screenToShow);
+            // Hide everything EXCEPT the one we want to show
+            if (StartScreen != screenToShow) Hide(StartScreen);
+            if (WelcomeScreen != screenToShow) Hide(WelcomeScreen);
+            if (ExhibitionScreen != screenToShow) Hide(ExhibitionScreen);
+
+            // Now show the target
+            UITweener tweener = screenToShow.GetComponent<UITweener>();
+            if (tweener != null)
+                tweener.Show();
+            else
+                screenToShow.SetActive(true);
         }
 
-        private void HideAllPanels()
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
+        private void Hide(GameObject panel)
         {
-            StartScreen.SetActive(false);
-            WelcomeScreen.SetActive(false);
-            ExhibitionScreen.SetActive(false);
+            UITweener tweener = panel.GetComponent<UITweener>();
+            if (tweener != null)
+                tweener.Hide();
+            else
+                panel.SetActive(false);
         }
-
-        private void RequestToShow(GameObject screenToShow) => screenToShow.SetActive(true);
 
         /// <summary>
         /// Transition to the Welcome Screen.
@@ -48,7 +69,7 @@ namespace Game.UI
         /// <summary>
         /// Transition to the Exhibition Screen.
         /// </summary>
-        /// /// <remarks>
+        /// <remarks>
         /// Button hookup.
         /// </remarks>
         public void OnExhibitionSelected()
@@ -56,9 +77,15 @@ namespace Game.UI
             ShowScreen(ExhibitionScreen);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        ///
+        /// </remarks>
         public void OnNameButtonPressed()
         {
-            NameModal.SetActive(true);
+            NameModal.GetComponent<UITweener>().Show();
         }
     }
 }

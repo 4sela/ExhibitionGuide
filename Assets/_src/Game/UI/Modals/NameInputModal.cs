@@ -1,20 +1,18 @@
 using UnityEngine;
 using TMPro;
 using Game.Systems.Player;
+using Game.UI.Tweening;
 
 namespace Game.UI.Modals
 {
-    public sealed class NameModal : MonoBehaviour
+    public sealed class NameInputModal : MonoBehaviour
     {
         public TMP_InputField inputField;
 
-        /// <summary>
-        ///
-        /// </summary>
         public void OnConfirm()
         {
             PlayerNameSystem.Instance.SetName(inputField.text);
-            gameObject.SetActive(false);
+            GetComponent<UITweener>().Hide();
         }
     }
 }

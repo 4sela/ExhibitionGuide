@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 namespace Game.UI.Tweening
 {
@@ -12,7 +13,8 @@ namespace Game.UI.Tweening
 
         void Awake()
         {
-            if (canvasGroup == null) canvasGroup = GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+                canvasGroup = GetComponent<CanvasGroup>();
         }
 
         /// <summary>
@@ -25,20 +27,19 @@ namespace Game.UI.Tweening
             canvasGroup.alpha = 0f;
             transform.localScale = hiddenScale;
 
-            // LeanTween.alphaCanvas(canvasGroup, 1f, duration);
-            //LeanTween.scale(gameObject, shownScale, duration).setEaseOutBack();
+            canvasGroup.DOFade(1f, duration);
+            transform.DOScale(shownScale, duration).SetEase(Ease.OutBack);
         }
 
         /// <summary>
         ///
         /// </summary>
         public void Hide()
-        {/*
-            LeanTween.alphaCanvas(canvasGroup, 0f, duration);
-            LeanTween.scale(gameObject, hiddenScale, duration)
-                .setEaseInBack()
-                .setOnComplete(() => gameObject.SetActive(false));
-                */
+        {
+            canvasGroup.DOFade(0f, duration);
+            transform.DOScale(hiddenScale, duration)
+                .SetEase(Ease.InBack)
+                .OnComplete(() => gameObject.SetActive(false));
         }
     }
 }
