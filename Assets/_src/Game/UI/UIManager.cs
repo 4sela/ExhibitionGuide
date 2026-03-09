@@ -3,13 +3,21 @@ using Game.UI.Tweening;
 
 namespace Game.UI
 {
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
     public sealed class UIManager : MonoBehaviour
     {
         [Header("Screen Panels")]
         public GameObject StartScreen;
         public GameObject WelcomeScreen;
         public GameObject ExhibitionScreen;
-        public GameObject NameModal;
+
+        [Header("Modals")]
+        public GameObject NameInputModal;
 
         void Start()
         {
@@ -61,10 +69,7 @@ namespace Game.UI
         /// <remarks>
         /// Button hookup.
         /// </remarks>
-        public void OnStartButtonPressed()
-        {
-            ShowScreen(WelcomeScreen);
-        }
+        public void OnStartButtonPressed() => ShowScreen(WelcomeScreen);
 
         /// <summary>
         /// Transition to the Exhibition Screen.
@@ -72,10 +77,7 @@ namespace Game.UI
         /// <remarks>
         /// Button hookup.
         /// </remarks>
-        public void OnExhibitionSelected()
-        {
-            ShowScreen(ExhibitionScreen);
-        }
+        public void OnExhibitionSelected() => ShowScreen(ExhibitionScreen);
 
         /// <summary>
         ///
@@ -83,9 +85,7 @@ namespace Game.UI
         /// <remarks>
         ///
         /// </remarks>
-        public void OnNameButtonPressed()
-        {
-            NameModal.GetComponent<UITweener>().Show();
-        }
+        public void OnNameButtonPressed() => NameInputModal.GetComponent<UITweener>().Show();
+
     }
 }

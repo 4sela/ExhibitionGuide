@@ -3,24 +3,34 @@ using System;
 
 namespace Game.Systems.Player
 {
+    /// <summary>
+    ///
+    /// </summary>
     public sealed class PlayerNameSystem : MonoBehaviour
     {
-        public static PlayerNameSystem Instance;
+        private string _playerName;
 
-        public string PlayerName { get; private set; }
-
-        void Awake()
+        void OnEnable()
         {
-            Instance = this;
+            PlayerEvents.SetName += SetName;
+            PlayerEvents.GetName += GetName;
+        }
+
+        void OnDisable()
+        {
+            PlayerEvents.SetName -= SetName;
+            PlayerEvents.GetName -= GetName;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public void SetName(string newName)
+        private void SetName(string newName)
         {
-            PlayerName = newName;
+            _playerName = newName;
             PlayerEvents.OnNameChanged?.Invoke(newName);
         }
+
+        private string GetName() => _playerName;
     }
 }

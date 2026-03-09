@@ -3,6 +3,12 @@ using DG.Tweening;
 
 namespace Game.UI.Tweening
 {
+    /// <summary>
+    ///
+    /// </summary>
+    /// <remarks>
+    /// Add as a component to every UI element that needs tweening.
+    /// </remarks>
     public sealed class UITweener : MonoBehaviour
     {
         [Header("Animation Settings")]
@@ -18,7 +24,7 @@ namespace Game.UI.Tweening
         }
 
         /// <summary>
-        ///
+        /// Plays a 'Show' animation when called
         /// </summary>
         public void Show()
         {
@@ -32,7 +38,7 @@ namespace Game.UI.Tweening
         }
 
         /// <summary>
-        ///
+        /// Plays a 'Hide' animation when called
         /// </summary>
         public void Hide()
         {

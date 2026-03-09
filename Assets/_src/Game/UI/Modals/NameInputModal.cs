@@ -9,9 +9,15 @@ namespace Game.UI.Modals
     {
         public TMP_InputField inputField;
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Hook to 'Bekræft' button in the NameInputModal game object.
+        /// </remarks>
         public void OnConfirm()
         {
-            PlayerNameSystem.Instance.SetName(inputField.text);
+            PlayerEvents.SetName?.Invoke(inputField.text);
             GetComponent<UITweener>().Hide();
         }
     }

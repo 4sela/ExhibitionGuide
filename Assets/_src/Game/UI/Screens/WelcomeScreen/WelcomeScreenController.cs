@@ -10,7 +10,7 @@ namespace Game.UI.Screens.WelcomeScreen
 
         void OnEnable()
         {
-            welcomeNameText.text = $"Hej {PlayerNameSystem.Instance.PlayerName}";
+            welcomeNameText.text = $"Hej {PlayerEvents.GetName?.Invoke()}";
         }
     }
 }
