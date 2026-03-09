@@ -6,7 +6,7 @@ namespace Game.UI.Screens.WelcomeScreen
 {
     public sealed class WelcomeScreenController : MonoBehaviour
     {
-        public TMP_Text welcomeNameText;
+        [SerializeField] private TMP_Text welcomeNameText;
 
         void OnEnable()
         {

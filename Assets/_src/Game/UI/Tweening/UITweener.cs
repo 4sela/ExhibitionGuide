@@ -12,10 +12,10 @@ namespace Game.UI.Tweening
     public sealed class UITweener : MonoBehaviour
     {
         [Header("Animation Settings")]
-        public float duration = 0.25f;
-        public Vector3 hiddenScale = new Vector3(0.9f, 0.9f, 1f);
-        public Vector3 shownScale = Vector3.one;
-        public CanvasGroup canvasGroup;
+        [SerializeField] private float duration = 0.25f;
+        [SerializeField] private Vector3 hiddenScale = new Vector3(0.9f, 0.9f, 1f);
+        [SerializeField] private Vector3 shownScale = Vector3.one;
+        [SerializeField] private CanvasGroup canvasGroup;
 
         void Awake()
         {

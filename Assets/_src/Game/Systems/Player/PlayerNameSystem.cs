@@ -22,15 +22,7 @@ namespace Game.Systems.Player
             PlayerEvents.GetName -= GetName;
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        private void SetName(string newName)
-        {
-            _playerName = newName;
-            PlayerEvents.OnNameChanged?.Invoke(newName);
-        }
-
+        private void SetName(string newName) => _playerName = newName;
         private string GetName() => _playerName;
     }
 }

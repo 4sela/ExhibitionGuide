@@ -7,10 +7,10 @@ namespace Game.UI.Modals
 {
     public sealed class NameInputModal : MonoBehaviour
     {
-        public TMP_InputField inputField;
+        [SerializeField] private TMP_InputField inputField;
 
         /// <summary>
-        ///
+        /// Sets the name to the content of the input field. Then enables Start button if name exists.
         /// </summary>
         /// <remarks>
         /// Hook to 'Bekræft' button in the NameInputModal game object.
@@ -18,6 +18,9 @@ namespace Game.UI.Modals
         public void OnConfirm()
         {
             PlayerEvents.SetName?.Invoke(inputField.text);
+
+            string playerName = PlayerEvents.GetName?.Invoke();
+            PlayerEvents.EnableStartButtonIfNameExists?.Invoke(playerName);
             GetComponent<UITweener>().Hide();
         }
     }
