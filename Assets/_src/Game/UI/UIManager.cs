@@ -12,22 +12,22 @@ namespace Game.UI
     public sealed class UIManager : MonoBehaviour
     {
         [Header("Screen Panels")]
-        public GameObject StartScreen;
-        public GameObject WelcomeScreen;
-        public GameObject ExhibitionScreen;
+        [SerializeField] private GameObject startScreen;
+        [SerializeField] private GameObject welcomeScreen;
+        [SerializeField] private GameObject exhibitionScreen;
 
         [Header("Modals")]
-        public GameObject NameInputModal;
+        [SerializeField] private GameObject nameInputModal;
 
         void Start()
         {
             // We disable all screens first to ensure the StartScreen is showed first
-            StartScreen.SetActive(false);
-            WelcomeScreen.SetActive(false);
-            ExhibitionScreen.SetActive(false);
+            startScreen.SetActive(false);
+            welcomeScreen.SetActive(false);
+            exhibitionScreen.SetActive(false);
 
             // Now we show StartScreen with animation
-            StartScreen.GetComponent<UITweener>().Show();
+            startScreen.GetComponent<UITweener>().Show();
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace Game.UI
         private void ShowScreen(GameObject screenToShow)
         {
             // Hide everything EXCEPT the one we want to show
-            if (StartScreen != screenToShow) Hide(StartScreen);
-            if (WelcomeScreen != screenToShow) Hide(WelcomeScreen);
-            if (ExhibitionScreen != screenToShow) Hide(ExhibitionScreen);
+            if (startScreen != screenToShow) Hide(startScreen);
+            if (welcomeScreen != screenToShow) Hide(welcomeScreen);
+            if (exhibitionScreen != screenToShow) Hide(exhibitionScreen);
 
             // Now show the target
             UITweener tweener = screenToShow.GetComponent<UITweener>();
@@ -69,7 +69,7 @@ namespace Game.UI
         /// <remarks>
         /// Button hookup.
         /// </remarks>
-        public void OnStartButtonPressed() => ShowScreen(WelcomeScreen);
+        public void OnStartButtonPressed() => ShowScreen(welcomeScreen);
 
         /// <summary>
         /// Transition to the Exhibition Screen.
@@ -77,7 +77,7 @@ namespace Game.UI
         /// <remarks>
         /// Button hookup.
         /// </remarks>
-        public void OnExhibitionSelected() => ShowScreen(ExhibitionScreen);
+        public void OnExhibitionSelected() => ShowScreen(exhibitionScreen);
 
         /// <summary>
         ///
@@ -85,7 +85,7 @@ namespace Game.UI
         /// <remarks>
         ///
         /// </remarks>
-        public void OnNameButtonPressed() => NameInputModal.GetComponent<UITweener>().Show();
+        public void OnNameButtonPressed() => nameInputModal.GetComponent<UITweener>().Show();
 
     }
 }
