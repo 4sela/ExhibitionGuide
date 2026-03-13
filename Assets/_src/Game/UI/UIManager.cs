@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using Game.UI;
 using Game.UI.Tweening;
 
 namespace Game.UI
@@ -11,41 +13,73 @@ namespace Game.UI
     /// </remarks>
     public sealed class UIManager : MonoBehaviour
     {
-        [Header("Screen Panels")]
-        [SerializeField] private GameObject startScreen;
-        [SerializeField] private GameObject welcomeScreen;
-        [SerializeField] private GameObject exhibitionScreen;
+        /// <summary>
+        /// Unity doesn't serialise dictionaries so this is the best way I can come up with to associate screen panels with a label.
+        /// This liberates us from remembering indices.
+        /// </summary>
+        [System.Serializable]
+        private struct ScreenEntry
+        {
+            public ScreenType type;
+            public GameObject screenObject;
+        }
+
+        [Header("Screens")]
+        [SerializeField] private ScreenEntry[] allScreens;
 
         [Header("Modals")]
         [SerializeField] private GameObject nameInputModal;
+        [SerializeField] private GameObject quitConfirmationModal;
+
+        private Dictionary<ScreenType, GameObject> screenMap;
+
+
+        void Awake()
+        {
+            screenMap = new Dictionary<ScreenType, GameObject>();
+
+            for (int i = 0; i < allScreens.Length; i++)
+            {
+                ScreenEntry entry = allScreens[i];
+                screenMap[entry.type] = entry.screenObject;
+            }
+        }
 
         void Start()
         {
             // We disable all screens first to ensure the StartScreen is showed first
-            startScreen.SetActive(false);
-            welcomeScreen.SetActive(false);
-            exhibitionScreen.SetActive(false);
+            foreach (var screen in screenMap.Values)
+                screen.SetActive(false);
 
             // Now we show StartScreen with animation
-            startScreen.GetComponent<UITweener>().Show();
+            ShowScreen(ScreenType.Start);
         }
 
         /// <summary>
         /// Master function to manage panels.
         /// </summary>
-        private void ShowScreen(GameObject screenToShow)
+        public void ShowScreen(ScreenType type)
         {
             // Hide everything EXCEPT the one we want to show
-            if (startScreen != screenToShow) Hide(startScreen);
-            if (welcomeScreen != screenToShow) Hide(welcomeScreen);
-            if (exhibitionScreen != screenToShow) Hide(exhibitionScreen);
+            for (int i = 0; i < allScreens.Length; i++)
+            {
+                var entry = allScreens[i];
+                GameObject screen = entry.screenObject;
 
-            // Now show the target
-            UITweener tweener = screenToShow.GetComponent<UITweener>();
-            if (tweener != null)
-                tweener.Show();
-            else
-                screenToShow.SetActive(true);
+                // Show the target screen
+                if (entry.type == type)
+                {
+                    UITweener tweener = screen.GetComponent<UITweener>();
+                    if (tweener != null)
+                        tweener.Show();
+
+                    else
+                        screen.SetActive(true);
+                }
+
+                else
+                    Hide(screen);
+            }
         }
 
         /// <summary>
@@ -64,28 +98,21 @@ namespace Game.UI
         }
 
         /// <summary>
+        ///
+        /// </summary>
+        /// <remarks> Button hookup.</remarks>
+        public void OnNameButtonPressed() => nameInputModal.GetComponent<UITweener>().Show();
+
+        /// <summary>
         /// Transition to the Welcome Screen.
         /// </summary>
         /// <remarks>
         /// Button hookup.
         /// </remarks>
-        public void OnStartButtonPressed() => ShowScreen(welcomeScreen);
-
-        /// <summary>
-        /// Transition to the Exhibition Screen.
-        /// </summary>
-        /// <remarks>
-        /// Button hookup.
-        /// </remarks>
-        public void OnExhibitionSelected() => ShowScreen(exhibitionScreen);
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <remarks>
-        ///
-        /// </remarks>
-        public void OnNameButtonPressed() => nameInputModal.GetComponent<UITweener>().Show();
+        public void ToWelcomeScreen() => ShowScreen(ScreenType.Welcome);
+        public void ToGuideScreen() => ShowScreen(ScreenType.Guide);
+        public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);
+        public void ToFreedomFighterScreen() => ShowScreen(ScreenType.FreedomFighter);
 
     }
 }
