@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234500c0ac766e04999bbcf9fc22fb4d, type: 3}
+  m_Name: Nar_Freedom (0)
+  m_EditorClassIdentifier: 
+  nodes:
+  - nodeId: 0
+    text: "Det starte med at Bob, og  s\xE5dan og s\xE5dan. Han havde en  gun og
+      han skyd osv.\n\nAlle hans venner d\xF8de i  krigen men Bob stod st\xE6rkt. 
+      Der var intet der frygtede ham.\n\nMen s\xE5 skete der noget. Bob blev sulten
+      og han skulle v\xE6lge mellem en cheeseburger og en pizza...   \n\nHvad b\xF8r
+      Bob v\xE6lge?  "
+    choices:
+    - id: 1
+      label: Cheeseburger
+      targetNodeId: 
+      conditionKey: 
+      setVariableKey: 
+      setVariableValue: 
+    - id: 2
+      label: Pizza
+      targetNodeId: 
+      conditionKey: 
+      setVariableKey: 
+      setVariableValue: 
+    defaultTargetNodeId: 
+    autoAdvanceDelay: 0
+    onEnterEvent: 

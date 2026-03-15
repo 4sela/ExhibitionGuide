@@ -48,8 +48,8 @@ namespace Game.UI
         void Start()
         {
             // We disable all screens first to ensure the StartScreen is showed first
-            foreach (var screen in screenMap.Values)
-                screen.SetActive(false);
+            for (int i = 0; i < allScreens.Length; i++)
+                allScreens[i].screenObject.SetActive(false);
 
             // Now we show StartScreen with animation
             ShowScreen(ScreenType.Start);
@@ -63,13 +63,14 @@ namespace Game.UI
             // Hide everything EXCEPT the one we want to show
             for (int i = 0; i < allScreens.Length; i++)
             {
-                var entry = allScreens[i];
+                ScreenEntry entry = allScreens[i];
                 GameObject screen = entry.screenObject;
 
                 // Show the target screen
                 if (entry.type == type)
                 {
                     UITweener tweener = screen.GetComponent<UITweener>();
+
                     if (tweener != null)
                         tweener.Show();
 
