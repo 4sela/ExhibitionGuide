@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Systems.Player;
+using Game.Systems.User;
 
 namespace Game.UI.Screens.StartScreen
 {
@@ -16,8 +16,8 @@ namespace Game.UI.Screens.StartScreen
             startButton.interactable = false;
         }
 
-        void OnEnable() => PlayerEvents.EnableStartButtonIfNameExists += EnableStartButtonIfNameExists;
-        void OnDisable() => PlayerEvents.EnableStartButtonIfNameExists -= EnableStartButtonIfNameExists;
+        void OnEnable() => UserEvents.EnableStartButtonIfNameExists += EnableStartButtonIfNameExists;
+        void OnDisable() => UserEvents.EnableStartButtonIfNameExists -= EnableStartButtonIfNameExists;
 
         private void EnableStartButtonIfNameExists(string name)
         {

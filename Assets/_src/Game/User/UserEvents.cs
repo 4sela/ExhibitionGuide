@@ -1,8 +1,8 @@
 using System;
 
-namespace Game.Systems.Player
+namespace Game.Systems.User
 {
-    public static class PlayerEvents
+    public static class UserEvents
     {
         public static Action<string> SetName;
         public static Action<string> EnableStartButtonIfNameExists;

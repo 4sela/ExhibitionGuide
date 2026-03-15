@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using Game.Systems.Player;
+using Game.Systems.User;
 
 namespace Game.UI.Screens.WelcomeScreen
 {
@@ -13,7 +13,7 @@ namespace Game.UI.Screens.WelcomeScreen
 
         void OnEnable()
         {
-            welcomeNameText.text = $"Hej {PlayerEvents.GetName?.Invoke()}";
+            welcomeNameText.text = $"Hej {UserEvents.GetName?.Invoke()}";
         }
     }
 }

@@ -1,10 +1,11 @@
 using UnityEngine;
 using TMPro;
-using Game.Systems.Player;
+using Game.Systems.User;
 using Game.UI.Tweening;
 
 namespace Game.UI.Modals
 {
+    // TODO: Class name refactor
     public sealed class NameInputModal : MonoBehaviour
     {
         [SerializeField] private TMP_InputField inputField;
@@ -17,10 +18,10 @@ namespace Game.UI.Modals
         /// </remarks>
         public void OnConfirm()
         {
-            PlayerEvents.SetName?.Invoke(inputField.text);
+            UserEvents.SetName?.Invoke(inputField.text);
 
-            string playerName = PlayerEvents.GetName?.Invoke();
-            PlayerEvents.EnableStartButtonIfNameExists?.Invoke(playerName);
+            string playerName = UserEvents.GetName?.Invoke();
+            UserEvents.EnableStartButtonIfNameExists?.Invoke(playerName);
             GetComponent<UITweener>().Hide();
         }
     }
