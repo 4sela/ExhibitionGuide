@@ -13,7 +13,7 @@ namespace Game.UI.Screens.WelcomeScreen
 
         void OnEnable()
         {
-            welcomeNameText.text = $"Hej {UserEvents.GetName?.Invoke()}";
+            welcomeNameText.text = $"Hej {UserEvents.GetUserData.Invoke().name}";
         }
     }
 }

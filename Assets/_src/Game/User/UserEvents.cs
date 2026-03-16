@@ -1,12 +1,13 @@
 using System;
+using Game.User.Data;
 
 namespace Game.User
 {
-    public static class UserEvents
+    public unsafe static class UserEvents
     {
-        public static Action<string> SetName;
+        public static Action<UserData> SetUserData;
         public static Action<string> EnableStartButtonIfNameExists;
 
-        public static Func<string> GetName;
+        public static Func<UserData> GetUserData;
     }
 }
