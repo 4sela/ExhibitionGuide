@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Game.Systems.User
+namespace Game.User
 {
     /// <summary>
     ///
     /// </summary>
     [System.Obsolete]
-    public sealed class PlayerNameSystem : MonoBehaviour
+    public sealed class UserNameSystem : MonoBehaviour
     {
         private string _userName;
 

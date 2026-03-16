@@ -1,6 +1,6 @@
 using System;
 
-namespace Game.Systems.User
+namespace Game.User
 {
     public static class UserEvents
     {

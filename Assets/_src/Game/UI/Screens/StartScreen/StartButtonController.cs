@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Systems.User;
+using Game.User;
 
 namespace Game.UI.Screens.StartScreen
 {

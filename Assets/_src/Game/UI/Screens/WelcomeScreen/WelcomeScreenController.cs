@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using Game.Systems.User;
+using Game.User;
 
 namespace Game.UI.Screens.WelcomeScreen
 {

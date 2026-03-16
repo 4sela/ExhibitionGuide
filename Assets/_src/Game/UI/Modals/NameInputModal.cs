@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using Game.Systems.User;
+using Game.User;
 using Game.UI.Tweening;
 
 namespace Game.UI.Modals

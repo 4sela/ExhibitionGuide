@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace Game.Systems.User
+namespace Game.User
 {
     public sealed class UserProfile : MonoBehaviour
     {

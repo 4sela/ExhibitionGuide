@@ -1,4 +1,4 @@
-namespace Game.Systems.User.Data.Enums
+namespace Game.User.Data.Enums
 {
     public enum UserGender : byte
     {

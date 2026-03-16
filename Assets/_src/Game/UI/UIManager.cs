@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Game.UI;
 using Game.UI.Tweening;
 
 namespace Game.UI
