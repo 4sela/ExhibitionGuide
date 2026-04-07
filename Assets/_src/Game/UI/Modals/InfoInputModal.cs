@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 using Game.User;
 using Game.User.Data;
 using Game.User.Data.Enums;
@@ -8,7 +9,7 @@ using Game.UI.Tweening;
 
 namespace Game.UI.Modals
 {
-    // TODO: Class name refactor to something like InfoInputModal
+    [Obsolete]
     public sealed class InfoInputModal : MonoBehaviour
     {
         [Header("Name")]

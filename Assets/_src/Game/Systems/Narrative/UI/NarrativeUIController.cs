@@ -6,26 +6,32 @@ using Game.Systems.Narrative.Data;
 using Game.Systems.Narrative.Runtime;
 using DG.Tweening;
 
-namespace Game.UI.Narrative.UI
+namespace Game.UI.Screens.Narrative
 {
-    /// <summary>
-    ///
-    /// </summary>
     public sealed class NarrativeUIController : MonoBehaviour
     {
-        [Header("UI")]
-        public TMP_Text bodyText;
-        public Transform choicesContainer;
-        public GameObject choiceButtonPrefab; // prefab with ChoiceButtonController
-        public Button defaultContinueButton;
-        public float textFadeDuration = 0.2f;
+        [Header("Text Elements")]
+        [SerializeField] private TMP_Text bodyText;
+        [SerializeField] private float textFadeDuration = 0.2f;
 
+        [Header("Choices Setup")]
+        [SerializeField] private Transform choicesContainer;
+        [SerializeField] private GameObject choiceButtonPrefab;
+        [SerializeField] private Button defaultContinueButton;
+
+        // Keep track of what we spawn so we can destroy it later
         private List<GameObject> spawnedChoices = new List<GameObject>();
 
         void OnEnable()
         {
-            NarrativeManager.Instance.OnNodeEntered += RenderNode;
-            NarrativeManager.Instance.OnNarrativeEnded += OnNarrativeEnded;
+            // Direct Singleton subscription (No NarrativeEvents needed)
+            if (NarrativeManager.Instance != null)
+            {
+                NarrativeManager.Instance.OnNodeEntered += RenderNode;
+                NarrativeManager.Instance.OnNarrativeEnded += HideScreen;
+
+                NarrativeManager.Instance.StartNarrative();
+            }
         }
 
         void OnDisable()
@@ -33,63 +39,78 @@ namespace Game.UI.Narrative.UI
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered -= RenderNode;
-                NarrativeManager.Instance.OnNarrativeEnded -= OnNarrativeEnded;
+                NarrativeManager.Instance.OnNarrativeEnded -= HideScreen;
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
         private void RenderNode(NarrativeNode node)
         {
             ClearChoices();
 
+            // 1. Text Animation
             bodyText.DOFade(0f, textFadeDuration).OnComplete(() =>
             {
                 bodyText.text = node.text;
                 bodyText.DOFade(1f, textFadeDuration);
             });
 
+            // 2. Spawn Choices
+            int activeChoices = 0;
+
             foreach (var choice in node.choices)
             {
-                bool allowed = true;
-                if (!string.IsNullOrEmpty(choice.conditionKey))
-                    allowed = NarrativeManager.Instance.CheckCondition(choice.conditionKey);
+                // Optional: Skip choices if their condition isn't met
+                if (!string.IsNullOrEmpty(choice.conditionKey) && !NarrativeManager.Instance.CheckCondition(choice.conditionKey))
+                    continue;
 
-                if (!allowed) continue;
+                NarrativeChoice currentChoice = choice;
 
-                var go = Instantiate(choiceButtonPrefab, choicesContainer);
-                var ctrl = go.GetComponent<ChoiceButtonController>();
-                ctrl.Setup(choice, () => NarrativeManager.Instance.Choose(choice));
-                spawnedChoices.Add(go);
+                GameObject newChoiceObj = Instantiate(choiceButtonPrefab, choicesContainer);
+                newChoiceObj.SetActive(true);
+                spawnedChoices.Add(newChoiceObj);
+
+                // Setup the button logic
+                // NOTE: Make sure your prefab has the ChoiceButtonController script attached!
+                var btnCtrl = newChoiceObj.GetComponent<Game.UI.Narrative.UI.ChoiceButtonController>();
+                btnCtrl.Setup(choice, () => NarrativeManager.Instance.Choose(choice));
+
+                activeChoices++;
             }
 
-            defaultContinueButton.gameObject.SetActive(spawnedChoices.Count == 0);
-            defaultContinueButton.onClick.RemoveAllListeners();
-            defaultContinueButton.onClick.AddListener(() => NarrativeManager.Instance.ContinueDefault());
+            // 3. Handle Default Continue Button
+            // If there are no choices, show the default button to proceed
+            if (activeChoices == 0)
+            {
+                defaultContinueButton.gameObject.SetActive(true);
+                defaultContinueButton.onClick.RemoveAllListeners();
+                defaultContinueButton.onClick.AddListener(() => NarrativeManager.Instance.ContinueDefault());
+            }
 
+            // 4. Auto-Advance (if you set a timer in the node)
             if (node.autoAdvanceDelay > 0f)
+            {
                 DOVirtual.DelayedCall(node.autoAdvanceDelay, () => NarrativeManager.Instance.ContinueDefault());
+            }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
         private void ClearChoices()
         {
-            for (int i = 0; i < spawnedChoices.Count; i++)
-                Destroy(spawnedChoices[i]);
+            // Destroy all currently spawned buttons
+            foreach (var choiceObj in spawnedChoices)
+            {
+                Destroy(choiceObj);
+            }
             spawnedChoices.Clear();
+
+            // Hide the default button just in case
+            defaultContinueButton.gameObject.SetActive(false);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        private void OnNarrativeEnded()
+        private void HideScreen()
         {
             ClearChoices();
-            defaultContinueButton.gameObject.SetActive(false);
             bodyText.text = string.Empty;
+            gameObject.SetActive(false); // Hide this entire screen
         }
     }
 }

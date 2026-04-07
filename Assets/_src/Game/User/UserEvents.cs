@@ -7,6 +7,7 @@ namespace Game.User
     {
         public static Action<UserData> SetUserData;
         public static Action<string> EnableStartButtonIfNameExists;
+        public static Action<UserData> OnUserDataUpdated;
 
         public static Func<UserData> GetUserData;
     }

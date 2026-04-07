@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Game.User;
+using Game.User.Data;
+using Game.User.Data.Enums;
 
 namespace Game.UI.Screens.StartScreen
 {
@@ -11,17 +13,17 @@ namespace Game.UI.Screens.StartScreen
     {
         [SerializeField] private Button startButton;
 
-        void Start()
-        {
-            startButton.interactable = false;
-        }
+        void Awake() => startButton.interactable = false;
 
-        void OnEnable() => UserEvents.EnableStartButtonIfNameExists += EnableStartButtonIfNameExists;
-        void OnDisable() => UserEvents.EnableStartButtonIfNameExists -= EnableStartButtonIfNameExists;
+        void OnEnable() => UserEvents.OnUserDataUpdated += ValidateUserData;
+        void OnDisable() => UserEvents.OnUserDataUpdated -= ValidateUserData;
 
-        private void EnableStartButtonIfNameExists(string name)
+        private void ValidateUserData(UserData data)
         {
-            startButton.interactable = !string.IsNullOrEmpty(name);
+            bool hasName = !string.IsNullOrWhiteSpace(data.name);
+            bool hasGender = data.gender != UserGender.Undefined;
+
+            startButton.interactable = hasName && hasGender;
         }
     }
 }

@@ -4,7 +4,7 @@ using Game.User.Data;
 namespace Game.User
 {
     /// <summary>
-    ///
+    /// Wrapper class for UserData.
     /// </summary>
     public sealed class UserProfile : MonoBehaviour
     {
@@ -24,6 +24,5 @@ namespace Game.User
 
         private void SetUserData(UserData userData) => _userData = userData;
         private UserData GetUserData() => _userData;
-
     }
 }

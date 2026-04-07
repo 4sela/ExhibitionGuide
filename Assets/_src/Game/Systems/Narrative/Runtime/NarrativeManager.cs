@@ -68,10 +68,16 @@ namespace Game.Systems.Narrative.Runtime
             if (!string.IsNullOrEmpty(choice.setVariableKey))
                 variables[choice.setVariableKey] = choice.setVariableValue;
 
-            if (!string.IsNullOrEmpty(choice.targetNodeId))
-                GoToNode(choice.targetNodeId);
+            if (!string.IsNullOrWhiteSpace(choice.targetNodeId))
+            {
+                // Safe check: Trim removes accidental spaces you typed in the Inspector
+                GoToNode(choice.targetNodeId.Trim());
+            }
             else
+            {
+                Debug.Log("NarrativeManager: Choice clicked, but Target Node ID is empty. Ending story.");
                 EndNarrative();
+            }
         }
 
         /// <summary>
@@ -80,10 +86,16 @@ namespace Game.Systems.Narrative.Runtime
         public void ContinueDefault()
         {
             if (currentNode == null) return;
-            if (!string.IsNullOrEmpty(currentNode.defaultTargetNodeId))
-                GoToNode(currentNode.defaultTargetNodeId);
+
+            if (!string.IsNullOrWhiteSpace(currentNode.defaultTargetNodeId))
+            {
+                GoToNode(currentNode.defaultTargetNodeId.Trim());
+            }
             else
+            {
+                Debug.Log("NarrativeManager: Default button clicked, but Default Target Node ID is empty. Ending story.");
                 EndNarrative();
+            }
         }
 
         /// <summary>

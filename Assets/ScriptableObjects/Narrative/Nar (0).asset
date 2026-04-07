@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234500c0ac766e04999bbcf9fc22fb4d, type: 3}
+  m_Name: Nar (0)
+  m_EditorClassIdentifier: 
+  nodes:
+  - nodeId: 0
+    text: "Odense, sommeren 1943.\n\r\nBes\xE6ttelsen har \xE6ndret sig.\r\nDet er
+      ikke l\xE6ngere stille.\n\r\nStrejker. Sabotage. Rygter.\n\nOg England kaster
+      forsyninger ned fra himlen. \n\r\nDu er ikke l\xE6ngere bare en tilskuer.\nDu
+      er en del af modstandsbev\xE6gelsen.\n\r\nOg i aften\u2026 venter en besked
+      fra BBC.\r"
+    choices:
+    - id: 1
+      label: "Forts\xE6r"
+      targetNodeId: 1
+      conditionKey: 
+      setVariableKey: 
+      setVariableValue: 
+    defaultTargetNodeId: 1
+    autoAdvanceDelay: 0
+    onEnterEvent: 
+  - nodeId: 1
+    text: "Klokken er 18:15.\r\nDig og din ven Erik sidder og lytter ved radioen.\r\nRadioen
+      knitrer.\r\n\u201CEn hilsen til Niels.\r\n Bageren arbejder i nat.\u201D\r\nErik
+      vender sig mod dig.\r\n\u201CDet er vores besked, f\xE5 afkodet den\u201D\r"
+    choices: []
+    defaultTargetNodeId: 1
+    autoAdvanceDelay: 0
+    onEnterEvent: 
