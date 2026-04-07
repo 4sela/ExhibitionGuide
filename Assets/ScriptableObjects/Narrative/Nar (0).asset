@@ -19,21 +19,55 @@ MonoBehaviour:
       forsyninger ned fra himlen. \n\r\nDu er ikke l\xE6ngere bare en tilskuer.\nDu
       er en del af modstandsbev\xE6gelsen.\n\r\nOg i aften\u2026 venter en besked
       fra BBC.\r"
+    choices: []
+    defaultTargetNodeId: 1
+    autoAdvanceDelay: 0
+    onEnterEvent: 
+  - nodeId: 1
+    text: "Klokken er 18:15.\n\r\nDig og din ven Erik sidder og lytter ved radioen.\n\r\nRadioen
+      knitrer.\n\r\n\u201CEn hilsen til Niels.\r\n Bageren arbejder i nat.\u201D\n\r\nErik
+      vender sig mod dig.\n\r\n\u201CDet er vores besked, f\xE5 afkodet den\u201D\r"
     choices:
     - id: 1
-      label: "Forts\xE6r"
+      label: "Tyskerne er t\xE6t"
       targetNodeId: 1
+      conditionKey: 
+      setVariableKey: 
+      setVariableValue: 
+    - id: 1
+      label: Nedkastning i na
+      targetNodeId: 1
+      conditionKey: 
+      setVariableKey: 
+      setVariableValue: 
+    - id: 1
+      label: Forbered jer
+      targetNodeId: 1
+      conditionKey: 
+      setVariableKey: 
+      setVariableValue: 
+    - id: 1
+      label: Nedkastning i nat
+      targetNodeId: 2
       conditionKey: 
       setVariableKey: 
       setVariableValue: 
     defaultTargetNodeId: 1
     autoAdvanceDelay: 0
     onEnterEvent: 
-  - nodeId: 1
-    text: "Klokken er 18:15.\r\nDig og din ven Erik sidder og lytter ved radioen.\r\nRadioen
-      knitrer.\r\n\u201CEn hilsen til Niels.\r\n Bageren arbejder i nat.\u201D\r\nErik
-      vender sig mod dig.\r\n\u201CDet er vores besked, f\xE5 afkodet den\u201D\r"
+  - nodeId: 2
+    text: "I ankommer til kysten ved Eneb\xE6rodde.\n\nAlt er m\xF8rkt.\n\nFolk st\xE5r
+      allerede klar.\n\nErik kigger p\xE5 dig.\n\n\u201CV\xE6r klar med lygten, n\xE5r
+      vi h\xF8rer flyet\u201D\r"
     choices: []
-    defaultTargetNodeId: 1
+    defaultTargetNodeId: 3
+    autoAdvanceDelay: 0
+    onEnterEvent: 
+  - nodeId: 3
+    text: "En times tid senere er folk begyndt at blive ansp\xE6ndte.\_\n\nS\xE5
+      h\xF8res det.\n\nEt fly.\n\nEn britisk Stirling flyver lavt hen over jer.\n\n\u201CSkynd
+      dig at morse til flyet\u201D r\xE5ber Erik.\"\r"
+    choices: []
+    defaultTargetNodeId: 3
     autoAdvanceDelay: 0
     onEnterEvent: 
