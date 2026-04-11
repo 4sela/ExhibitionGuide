@@ -110,9 +110,8 @@ namespace Game.UI
         /// Button hookup.
         /// </remarks>
         public void ToWelcomeScreen() => ShowScreen(ScreenType.Welcome);
-        public void ToGuideScreen() => ShowScreen(ScreenType.Guide);
+        public void ToContextSetupScreen() => ShowScreen(ScreenType.ContextSetup);
+        public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup);
         public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);
-        public void ToFreedomFighterScreen() => ShowScreen(ScreenType.FreedomFighter);
-
     }
 }

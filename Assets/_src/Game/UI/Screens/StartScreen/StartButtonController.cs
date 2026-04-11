@@ -13,7 +13,11 @@ namespace Game.UI.Screens.StartScreen
     {
         [SerializeField] private Button startButton;
 
-        void Awake() => startButton.interactable = false;
+        void Awake()
+        {
+            if (startButton == null) return;
+            startButton.interactable = false;
+        }
 
         void OnEnable() => UserEvents.OnUserDataUpdated += ValidateUserData;
         void OnDisable() => UserEvents.OnUserDataUpdated -= ValidateUserData;

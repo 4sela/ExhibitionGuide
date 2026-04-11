@@ -4,8 +4,8 @@ namespace Game.UI
     {
         Start,
         Welcome,
-        Guide,
-        Narrative,
-        FreedomFighter
+        ContextSetup,
+        NarrativeSetup,
+        Narrative
     }
 }
