@@ -51,7 +51,7 @@ namespace Game.UI
                 allScreens[i].screenObject.SetActive(false);
 
             // Now we show StartScreen with animation
-            ShowScreen(ScreenType.Start);
+            ShowScreen(ScreenType.Welcome);
         }
 
         /// <summary>

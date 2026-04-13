@@ -11,9 +11,6 @@ namespace Game.Systems.Narrative.Data
     {
         public List<NarrativeNode> nodes = new List<NarrativeNode>();
 
-        /// <summary>
-        ///
-        /// </summary>
         public NarrativeNode GetNodeById(string id)
         {
             return nodes.Find(n => n.nodeId != null && n.nodeId.Trim() == id.Trim());

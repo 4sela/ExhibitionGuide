@@ -55,9 +55,6 @@ namespace Game.Systems.Narrative.Runtime
 
             currentNode = node;
             OnNodeEntered?.Invoke(node);
-
-            if (!string.IsNullOrEmpty(node.onEnterEvent))
-                SendMessage(node.onEnterEvent, SendMessageOptions.DontRequireReceiver);
         }
 
         /// <summary>
@@ -65,8 +62,6 @@ namespace Game.Systems.Narrative.Runtime
         /// </summary>
         public void Choose(NarrativeChoice choice)
         {
-            if (!string.IsNullOrEmpty(choice.setVariableKey))
-                variables[choice.setVariableKey] = choice.setVariableValue;
 
             if (!string.IsNullOrWhiteSpace(choice.targetNodeId))
             {

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Game.Systems.Narrative.Data;
 using Game.Systems.Narrative.Runtime;
 using DG.Tweening;
+using Game.UI.Narrative.UI;
+using System.Collections;
 
 namespace Game.UI.Screens.Narrative
 {
@@ -13,18 +15,23 @@ namespace Game.UI.Screens.Narrative
         [Header("Text Elements")]
         [SerializeField] private TMP_Text bodyText;
         [SerializeField] private float textFadeDuration = 0.2f;
+        [SerializeField] private float timePerChar = 0.03f;
 
         [Header("Choices Setup")]
         [SerializeField] private Transform choicesContainer;
         [SerializeField] private GameObject choiceButtonPrefab;
         [SerializeField] private Button defaultContinueButton;
 
-        // Keep track of what we spawn so we can destroy it later
+        [Header("Minigame Setup")]
+        [SerializeField] private Transform minigameContainer;
+        [SerializeField] private Button startMinigameButton;
+        [SerializeField] private Button minigameContinueButton;
+
         private List<GameObject> spawnedChoices = new List<GameObject>();
+        private Coroutine typingCoroutine;
 
         void OnEnable()
         {
-            // Direct Singleton subscription (No NarrativeEvents needed)
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered += RenderNode;
@@ -47,21 +54,77 @@ namespace Game.UI.Screens.Narrative
         {
             ClearChoices();
 
-            // 1. Text Animation
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+
             bodyText.DOFade(0f, textFadeDuration).OnComplete(() =>
             {
-                bodyText.text = node.text;
-                bodyText.DOFade(1f, textFadeDuration);
+                Color c = bodyText.color;
+                c.a = 1f;
+                bodyText.color = c;
+
+                typingCoroutine = StartCoroutine(TypeTextRoutine(node.text));
             });
 
-            // 2. Spawn Choices
+            if (node.minigamePrefab != null)
+            {
+                SetupMinigamePrompt(node);
+            }
+            else
+            {
+                ShowChoices(node);
+            }
+        }
+
+        private void SetupMinigamePrompt(NarrativeNode node)
+        {
+            startMinigameButton.gameObject.SetActive(true);
+            minigameContinueButton.gameObject.SetActive(true);
+
+            minigameContinueButton.interactable = false;
+
+            startMinigameButton.onClick.RemoveAllListeners();
+            startMinigameButton.onClick.AddListener(() =>
+            {
+                Instantiate(node.minigamePrefab, minigameContainer);
+
+                startMinigameButton.gameObject.SetActive(false);
+            });
+
+
+            minigameContinueButton.onClick.RemoveAllListeners();
+            minigameContinueButton.onClick.AddListener(() =>
+            {
+                startMinigameButton.gameObject.SetActive(false);
+                minigameContinueButton.gameObject.SetActive(false);
+
+                NarrativeManager.Instance.ContinueDefault();
+            });
+        }
+
+        private void ClearChoices()
+        {
+            for (int i = 0; i < spawnedChoices.Count; i++)
+            {
+                GameObject choiceObj = spawnedChoices[i];
+
+                Destroy(choiceObj);
+            }
+
+            spawnedChoices.Clear();
+
+            defaultContinueButton.gameObject.SetActive(false);
+        }
+
+        private void ShowChoices(NarrativeNode node)
+        {
             int activeChoices = 0;
 
-            foreach (var choice in node.choices)
+            for (int i = 0; i < node.choices.Count; i++)
             {
-                // Optional: Skip choices if their condition isn't met
-                if (!string.IsNullOrEmpty(choice.conditionKey) && !NarrativeManager.Instance.CheckCondition(choice.conditionKey))
-                    continue;
+                NarrativeChoice choice = node.choices[i];
 
                 NarrativeChoice currentChoice = choice;
 
@@ -69,15 +132,13 @@ namespace Game.UI.Screens.Narrative
                 newChoiceObj.SetActive(true);
                 spawnedChoices.Add(newChoiceObj);
 
-                // Setup the button logic
                 // NOTE: Make sure your prefab has the ChoiceButtonController script attached!
-                var btnCtrl = newChoiceObj.GetComponent<Game.UI.Narrative.UI.ChoiceButtonController>();
+                ChoiceButtonController btnCtrl = newChoiceObj.GetComponent<Game.UI.Narrative.UI.ChoiceButtonController>();
                 btnCtrl.Setup(choice, () => NarrativeManager.Instance.Choose(choice));
 
                 activeChoices++;
             }
 
-            // 3. Handle Default Continue Button
             // If there are no choices, show the default button to proceed
             if (activeChoices == 0)
             {
@@ -85,25 +146,6 @@ namespace Game.UI.Screens.Narrative
                 defaultContinueButton.onClick.RemoveAllListeners();
                 defaultContinueButton.onClick.AddListener(() => NarrativeManager.Instance.ContinueDefault());
             }
-
-            // 4. Auto-Advance (if you set a timer in the node)
-            if (node.autoAdvanceDelay > 0f)
-            {
-                DOVirtual.DelayedCall(node.autoAdvanceDelay, () => NarrativeManager.Instance.ContinueDefault());
-            }
-        }
-
-        private void ClearChoices()
-        {
-            // Destroy all currently spawned buttons
-            foreach (var choiceObj in spawnedChoices)
-            {
-                Destroy(choiceObj);
-            }
-            spawnedChoices.Clear();
-
-            // Hide the default button just in case
-            defaultContinueButton.gameObject.SetActive(false);
         }
 
         private void HideScreen()
@@ -111,6 +153,27 @@ namespace Game.UI.Screens.Narrative
             ClearChoices();
             bodyText.text = string.Empty;
             gameObject.SetActive(false); // Hide this entire screen
+        }
+
+        /// <summary>
+        /// Placeholder method! Call when we close minigame
+        /// </summary>
+        public void OnMinigameClosed()
+        {
+            minigameContinueButton.interactable = true;
+        }
+
+        private IEnumerator TypeTextRoutine(string textToType)
+        {
+            bodyText.text = textToType;
+            bodyText.maxVisibleCharacters = 0; // Hide it all initially
+
+            // Loop through and reveal characters one by one
+            for (int i = 0; i <= textToType.Length; i++)
+            {
+                bodyText.maxVisibleCharacters = i;
+                yield return new WaitForSeconds(timePerChar);
+            }
         }
     }
 }
