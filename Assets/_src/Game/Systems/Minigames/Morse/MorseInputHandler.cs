@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
@@ -20,25 +20,51 @@ public class MorseInputHandler : MonoBehaviour
         ProcessHolding(Time.time);
     }
 
+    //INPUT SYSTEM (keyboard/controller)
     public void OnPress(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            isPressing = true;
-            pressStartTime = Time.time;
-            lastPreviewSymbol = '\0';
+            StartPress();
         }
         else if (context.canceled)
         {
-            if (!isPressing) return;
-
-            float duration = Time.time - pressStartTime;
-            isPressing = false;
-
-            char finalSymbol = duration < dotThreshold ? '.' : '-';
-
-            OnSymbolDetected?.Invoke(finalSymbol);
+            EndPress();
         }
+    }
+
+    //UI BUTTON (mobile)
+    public void OnButtonDown()
+    {
+        StartPress();
+    }
+
+    public void OnButtonUp()
+    {
+        EndPress();
+    }
+
+    //Shared logic (used by both systems)
+    private void StartPress()
+    {
+        isPressing = true;
+        pressStartTime = Time.time;
+        lastPreviewSymbol = '\0';
+    }
+
+    private void EndPress()
+    {
+        if (!isPressing) return;
+
+        float duration = Time.time - pressStartTime;
+        isPressing = false;
+
+        char finalSymbol = duration < dotThreshold ? '.' : '-';
+        //char previewSymbol = MorseSequenceBuilder.Instance.GetCurrentLetter();
+        //OnPreviewSymbol?.Invoke(previewSymbol);
+
+
+        OnSymbolDetected?.Invoke(finalSymbol);
     }
 
     private void ProcessHolding(float currentTime)
@@ -57,6 +83,4 @@ public class MorseInputHandler : MonoBehaviour
             OnPreviewSymbol?.Invoke(previewSymbol);
         }
     }
-
- 
 }

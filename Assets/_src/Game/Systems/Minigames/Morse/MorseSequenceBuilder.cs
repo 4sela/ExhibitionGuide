@@ -1,14 +1,18 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class MorseSequenceBuilder
 {
+    public static MorseSequenceBuilder Instance = new ();
+
+
     private string currentSymbolSequence = "";
     private List<char> decodedLetters = new();
 
     private float lastInputTime = float.MaxValue;
 
-    private readonly float letterPauseThreshold = 0.6f;
+    private readonly float letterPauseThreshold = 5f;
 
     public IReadOnlyList<char> DecodedLetters => decodedLetters;
 
@@ -44,6 +48,17 @@ public class MorseSequenceBuilder
 
         currentSymbolSequence = "";
         lastInputTime = float.MaxValue;
+    }
+
+    public char GetCurrentLetter()
+    {
+        char preview = ' ';
+
+        if (MorseTranslator.TryTranslate(currentSymbolSequence, out char letter))
+        {
+            preview = letter;
+        }
+        return preview;
     }
 
     public string GetCurrentSymbols()
