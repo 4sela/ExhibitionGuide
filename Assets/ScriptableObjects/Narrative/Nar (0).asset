@@ -30,27 +30,15 @@ MonoBehaviour:
     - id: 1
       label: "Tyskerne er t\xE6t"
       targetNodeId: 1
-      conditionKey: 
-      setVariableKey: 
-      setVariableValue: 
     - id: 1
       label: Nedkastning i na
       targetNodeId: 1
-      conditionKey: 
-      setVariableKey: 
-      setVariableValue: 
     - id: 1
       label: Forbered jer
       targetNodeId: 1
-      conditionKey: 
-      setVariableKey: 
-      setVariableValue: 
     - id: 1
       label: Nedkastning i nat
       targetNodeId: 2
-      conditionKey: 
-      setVariableKey: 
-      setVariableValue: 
     defaultTargetNodeId: 1
     minigamePrefab: {fileID: 0}
   - nodeId: 2
@@ -59,7 +47,7 @@ MonoBehaviour:
       vi h\xF8rer flyet\u201D\r"
     choices: []
     defaultTargetNodeId: 3
-    minigamePrefab: {fileID: 3573552282225760331, guid: 8a27352b7593e7d4bb93e140793b35f9, type: 3}
+    minigamePrefab: {fileID: 7416240185725632505, guid: 63581926aea032c46943b25ac5c3de79, type: 3}
   - nodeId: 3
     text: "En times tid senere er folk begyndt at blive ansp\xE6ndte.\_\n\nS\xE5
       h\xF8res det.\n\nEt fly.\n\nEn britisk Stirling flyver lavt hen over jer.\n\n\u201CSkynd
