@@ -12,11 +12,14 @@ public class MorseSequenceBuilder
 
     private float lastInputTime = float.MaxValue;
 
-    private readonly float letterPauseThreshold = 5f;
+    private readonly float letterPauseThreshold = 1.5f;
+    private bool isPressing = false;
+
 
     public IReadOnlyList<char> DecodedLetters => decodedLetters;
 
     public event Action<char> OnLetterFinalized;
+    public event Action<string> OnInvalidSequence;
 
     public void AddSymbol(char symbol, float currentTime)
     {
@@ -24,12 +27,17 @@ public class MorseSequenceBuilder
         lastInputTime = currentTime;
     }
 
+    public void SetPressing(bool pressing)
+    {
+        isPressing = pressing;
+    }
+
     public void Tick(float currentTime)
     {
         if (string.IsNullOrEmpty(currentSymbolSequence))
             return;
 
-        if (currentTime - lastInputTime > letterPauseThreshold)
+        if (!isPressing && currentTime - lastInputTime > letterPauseThreshold)
         {
             FinalizeLetter();
         }
@@ -44,6 +52,13 @@ public class MorseSequenceBuilder
         {
             decodedLetters.Add(letter);
             OnLetterFinalized?.Invoke(letter);
+        }
+
+        else
+        {
+            //INVALID INPUT
+            OnInvalidSequence?.Invoke(currentSymbolSequence);
+            currentSymbolSequence = "";
         }
 
         currentSymbolSequence = "";
@@ -72,4 +87,11 @@ public class MorseSequenceBuilder
         decodedLetters.Clear();
         lastInputTime = float.MaxValue;
     }
+
+    public void ResetCurrentSequenceOnly()
+    {
+        currentSymbolSequence = "";
+        lastInputTime = float.MaxValue;
+    }
+
 }

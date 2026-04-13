@@ -7,7 +7,7 @@ public class MorseInputHandler : MonoBehaviour
     private float pressStartTime;
     private bool isPressing;
 
-    [SerializeField] private float dotThreshold = 1f;
+    [SerializeField] private float dotThreshold = 0.35f;
 
     public event Action<char> OnSymbolDetected;   // Final result
     public event Action<float> OnHolding;         // Raw duration
@@ -50,6 +50,7 @@ public class MorseInputHandler : MonoBehaviour
         isPressing = true;
         pressStartTime = Time.time;
         lastPreviewSymbol = '\0';
+        MorseSequenceBuilder.Instance.SetPressing(true);
     }
 
     private void EndPress()
@@ -60,6 +61,8 @@ public class MorseInputHandler : MonoBehaviour
         isPressing = false;
 
         char finalSymbol = duration < dotThreshold ? '.' : '-';
+        MorseSequenceBuilder.Instance.SetPressing(false);
+        MorseSequenceBuilder.Instance.AddSymbol(finalSymbol, Time.time);
         //char previewSymbol = MorseSequenceBuilder.Instance.GetCurrentLetter();
         //OnPreviewSymbol?.Invoke(previewSymbol);
 
@@ -75,7 +78,7 @@ public class MorseInputHandler : MonoBehaviour
 
         OnHolding?.Invoke(duration);
 
-        char previewSymbol = duration < dotThreshold ? '.' : '-';
+        char previewSymbol = duration < dotThreshold * 0.95f ? '.' : '-';
 
         if (previewSymbol != lastPreviewSymbol)
         {
