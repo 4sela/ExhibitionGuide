@@ -68,7 +68,6 @@ public class MorseGameController : MonoBehaviour
        float progress = Mathf.Clamp01(duration / dotThreshold);
        progressBar.fillAmount = progress;
 
-       //Smoother animation
        //progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, progress, Time.deltaTime * 10f);
 
        //Change color when filling
