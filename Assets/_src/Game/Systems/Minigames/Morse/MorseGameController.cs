@@ -17,7 +17,6 @@ public class MorseGameController : MonoBehaviour
     private MorseWordValidator validator;
 
     private int currentTileIndex = 0;
-    [SerializeField] private float dotThreshold = 0.35f; //Has to match dotThreshold from inputhandler
 
     private void Awake()
     {
@@ -27,7 +26,7 @@ public class MorseGameController : MonoBehaviour
 
     private void Start()
     {
-        input.OnPreviewSymbol += OnPreviewSymbol;
+        //input.OnPreviewSymbol += OnPreviewSymbol;
         input.OnHolding += OnHolding;
         input.OnSymbolDetected += OnSymbolDetected;
         builder.OnLetterFinalized += OnLetterFinalized;
@@ -64,14 +63,30 @@ public class MorseGameController : MonoBehaviour
 
     private void OnHolding(float duration)
     {
+        //Logic for progressbar
+        float progress = Mathf.Clamp01(duration / input.dotThreshold);
+        progressBar.fillAmount = progress;
 
-       float progress = Mathf.Clamp01(duration / dotThreshold);
-       progressBar.fillAmount = progress;
+        //Change color when filling
+        //progressBar.color = duration < dotThreshold ? Color.white : Color.red;
 
-       //progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, progress, Time.deltaTime * 10f);
+        //Logic for symbolpreview
+        char symbol = duration < input.dotThreshold ? '.' : '-';
 
-       //Change color when filling
-       //progressBar.color = duration < dotThreshold ? Color.white : Color.red;
+        previewSymbol.text = symbol == '.' ? "•" : "—";
+
+        // simulate next state
+        string previewSequence = builder.GetCurrentSymbols() + symbol;
+
+        if (MorseTranslator.TryTranslate(previewSequence, out char letter))
+        {
+            previewLetter.text = letter.ToString();
+        }
+        else
+        {
+            previewLetter.text = "";
+        }
+
     }
 
     private void OnSymbolDetected(char symbol)
@@ -147,5 +162,23 @@ public class MorseGameController : MonoBehaviour
                .Replace("-", "—")
                .ToCharArray()
         );
+    }
+
+    public void ResetButton()
+    {        
+        builder.Reset(); //Clear data in builder
+
+        //CLEAR UI
+        currentMorseText.text = "";
+        previewSymbol.text = "";
+        previewLetter.text = "";
+        progressBar.fillAmount = 0f;
+
+        currentTileIndex = 0;
+
+        foreach (var tile in letterTiles)
+        {
+            tile.text = "";
+        }
     }
 }

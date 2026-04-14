@@ -7,13 +7,13 @@ public class MorseInputHandler : MonoBehaviour
     private float pressStartTime;
     private bool isPressing;
 
-    [SerializeField] private float dotThreshold = 0.35f;
+    public float dotThreshold = 0.35f;
 
     public event Action<char> OnSymbolDetected;   // Final result
     public event Action<float> OnHolding;         // Raw duration
-    public event Action<char> OnPreviewSymbol;    // Live prediction
-
+    //public event Action<char> OnPreviewSymbol;    // Live prediction - moved logic to Gamecontroller.
     private char lastPreviewSymbol;
+    private char currentPreviewSymbol = '.';
 
     private void Update()
     {
@@ -78,12 +78,13 @@ public class MorseInputHandler : MonoBehaviour
 
         OnHolding?.Invoke(duration);
 
-        char previewSymbol = duration < dotThreshold * 0.95f ? '.' : '-';
+        char previewSymbol = duration < dotThreshold ? '.' : '-';
+        currentPreviewSymbol = previewSymbol;
 
         if (previewSymbol != lastPreviewSymbol)
         {
             lastPreviewSymbol = previewSymbol;
-            OnPreviewSymbol?.Invoke(previewSymbol);
+            //OnPreviewSymbol?.Invoke(previewSymbol); //preview symbol changes.
         }
     }
 }
