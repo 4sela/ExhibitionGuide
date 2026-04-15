@@ -2,10 +2,12 @@
 using System.Linq;
 using TMPro;
 using UnityEngine.UI;
+using Game.Systems.Narrative.Events;
 
 public class MorseGameController : MonoBehaviour
 {
     [Header("UI")]
+    [SerializeField] private GameObject morseGameContainer;
     [SerializeField] private TextMeshProUGUI previewSymbol;
     [SerializeField] private TextMeshProUGUI previewLetter;
     [SerializeField] private TextMeshProUGUI currentMorseText;
@@ -36,6 +38,7 @@ public class MorseGameController : MonoBehaviour
     private void Update()
     {
         builder.Tick(Time.time);
+        CheckWord();
     }
 
     private void OnPreviewSymbol(char symbol)
@@ -56,7 +59,7 @@ public class MorseGameController : MonoBehaviour
         }
     }
 
-    private void OnPreviewLetter(char letter) 
+    private void OnPreviewLetter(char letter)
     {
         previewLetter.SetText(builder.GetCurrentLetter().ToString());
     }
@@ -121,21 +124,15 @@ public class MorseGameController : MonoBehaviour
 
     public void CheckWord()
     {
-        builder.FinalizeLetter();
-
         var letters = builder.DecodedLetters.ToList();
         bool correct = validator.Check(letters);
 
         Debug.Log(correct ? "Correct!" : "Wrong");
-
-        // Reset UI
-        previewSymbol.text = "";
-        currentTileIndex = 0;
-
-        foreach (var tile in letterTiles)
-            tile.text = "";
-
-        builder.Reset();
+        if (correct)
+        {
+            morseGameContainer.SetActive(false);
+            NarrativeEvents.MiniGameComplete?.Invoke();
+        }
     }
 
     private void OnInvalidSequence(string sequence)
@@ -165,7 +162,7 @@ public class MorseGameController : MonoBehaviour
     }
 
     public void ResetButton()
-    {        
+    {
         builder.Reset(); //Clear data in builder
 
         //CLEAR UI

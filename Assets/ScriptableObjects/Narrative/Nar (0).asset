@@ -35,11 +35,129 @@ MonoBehaviour:
       vi h\xF8rer flyet\u201D\r"
     choices: []
     defaultTargetNodeId: 3
-    minigamePrefab: {fileID: 7416240185725632505, guid: 63581926aea032c46943b25ac5c3de79, type: 3}
+    minigamePrefab: {fileID: 0}
   - nodeId: 3
     text: "En times tid senere er folk begyndt at blive ansp\xE6ndte.\_\n\nS\xE5
       h\xF8res det.\n\nEt fly.\n\nEn britisk Stirling flyver lavt hen over jer.\n\n\u201CSkynd
-      dig at morse til flyet\u201D r\xE5ber Erik.\"\r"
+      dig at morse <b>H-E-R</b> til flyet\u201D r\xE5ber Erik.\"\r"
     choices: []
-    defaultTargetNodeId: 3
+    defaultTargetNodeId: 4
+    minigamePrefab: {fileID: 7416240185725632505, guid: 63581926aea032c46943b25ac5c3de79, type: 3}
+  - nodeId: 4
+    text: "Senere samme nat.\n\r\nDu bliver f\xF8rt til en g\xE5rd.\r\n\nEn mand
+      st\xE5r i m\xF8rket.\r\n\n\u201CDu klarede det.\u201D\r\n\nHan tr\xE6der frem.\r\n\n\u201CPeter
+      Carlsen.\u201D\r\r"
+    choices: []
+    defaultTargetNodeId: 5
+    minigamePrefab: {fileID: 0}
+  - nodeId: 5
+    text: "Han l\xE6gger et kort frem.\n\r\n\u201CDenne magnetmine vi fik fra England,
+      den skal bruges\u201D\r\nHan peger.\n\r\n\u201COdense havn. Ved skibsv\xE6rftet\u201D\n\r\n\u201CTyskerne
+      er ved at bygge skibet Linz om til en minel\xE6gger\u201D\n\r\nPeter vender
+      sig mod dig."
+    choices: []
+    defaultTargetNodeId: 6
+    minigamePrefab: {fileID: 0}
+  - nodeId: 6
+    text: "\u201CJeg kan forst\xE5 at du arbejder som elektriker p\xE5 skibsv\xE6rftet?\u201D\n\r\nDu
+      nikker.\n\r\nDu fort\xE6ller at det nok er bedst at g\xF8re ved vagtskiftet
+      klokken 13:00.\n\r\n\u201CGodt, vi regner med dig\u201D\r\n"
+    choices: []
+    defaultTargetNodeId: 7
+    minigamePrefab: {fileID: 0}
+  - nodeId: 7
+    text: "Odense Havn.\n\r\nLuften er tung og kold.\r\n\nForan dig ligger skibet,
+      <b>Linz</b>.\n\r\nErik st\xE5r t\xE6t ved siden af dig.\n\r\n\u201CDen sejler
+      fra havnen om et par dage. Det er vigtig den ikke forlader havnen\u201D\r\nErik
+      r\xE6kker dig tasken.\n\r\n\u201CDet op til dig\u201D \r\n"
+    choices: []
+    defaultTargetNodeId: 8
+    minigamePrefab: {fileID: 0}
+  - nodeId: 8
+    text: "Du kom igennem vagt porten til v\xE6rftet.\n\r\nNerv\xF8st og langsomt
+      n\xE6rmer du dig landgangen til Linz.\r\n\nMen noget er anderledes. \n\nDer
+      er flere vagter end i g\xE5r. \n\nEn tysk officer gestikulerer ved landgangen.\n\r\nKlokken
+      er 12:50.\n\r\nDu stopper op.\r\n"
+    choices:
+    - id: 
+      label: "L\xE6g tasken under en b\xE6nk i omkl\xE6dningsrummet"
+      targetNodeId: 9.A
+    - id: 
+      label: "Fors\xF8g alligevel \u2014 vagtskiftet er om lidt "
+      targetNodeId: 9.B
+    defaultTargetNodeId: 9
+    minigamePrefab: {fileID: 0}
+  - nodeId: 9.A
+    text: "Du s\xE6tter tasken fra dig under en b\xE6nk i omkl\xE6dningsrummet. \n\r\nSamme
+      aften ringer du til Erik. \n\n\"Det kunne ikke lade sig g\xF8re i dag.\"\r\n\nEn
+      pause i r\xF8ret.\n\r\n\"Jamen s\xE5 skal det sgu ogs\xE5 v\xE6re i morgen.
+      \n\nLinz afsejler den i overmorgen.\"\n\r\nN\xE6ste morgen. Tasken st\xE5r
+      pr\xE6cis som du efterlod den.\r\n"
+    choices: []
+    defaultTargetNodeId: 10
+    minigamePrefab: {fileID: 0}
+  - nodeId: 9.B
+    text: "Halvvejs op ad landgangen.\n\r\nEn vagt vender sig.\n\r\n\"Halt. Was haben
+      Sie da?\"\n\r\nDit hjerte stopper.\n\r\nDu s\xE6tter tasken roligt ned. \n\n\xC5bner
+      den. Viser ham ledningerne.\n\r\nHan kigger l\xE6nge.\n\r\nS\xE5 vinker han
+      dig videre."
+    choices: []
+    defaultTargetNodeId: 9.B.A
+    minigamePrefab: {fileID: 0}
+  - nodeId: 9.B.A
+    text: "Du finder et rel\xE6 skab og gemmer tasken. \n\nVagtskiftet kl. 13 \u2014
+      en ekstra tysker poster sig pr\xE6cis der.\n\r\nDet kan ikke lade sig g\xF8re.
+      Ikke i dag.\n\r\nDen aften ringer du til Erik Frandsen. \n\n\"Det kunne ikke
+      lade sig g\xF8re.\"\n\r\nEn lang pause i r\xF8ret.\n\r\n\"Jamen s\xE5 skal
+      det sgu ogs\xE5 v\xE6re i morgen.\"\r\n"
+    choices: []
+    defaultTargetNodeId: 10
+    minigamePrefab: {fileID: 0}
+  - nodeId: 10
+    text: "Tidlig morgen. \n\r\nDu ikl\xE6der dig din kedeldragt.\n\r\nTil din lettelse
+      er tasken hvor du efterlod den.\n\r\nDu g\xE5r om bord p\xE5 Linz og placerer
+      tasken i et rel\xE6 skab, indtil vagtskiftet.\n\r\nKl. 10:00, sker noget uventet.\n\r\nEn
+      stor stab af tyske marinere str\xF8mmer om bord."
+    choices: []
+    defaultTargetNodeId: 11
+    minigamePrefab: {fileID: 0}
+  - nodeId: 11
+    text: "De \xE5bner skabe.\n\nL\xF8fter presenninger.\n\nTjekker rum.  \n\nDu
+      ser nerv\xF8st til, imens de vender hver en sten.  \n\nMirakul\xF8st er der
+      ingen, der t\xE6nker over rel\xE6 skabet.   "
+    choices: []
+    defaultTargetNodeId: 12
+    minigamePrefab: {fileID: 0}
+  - nodeId: 12
+    text: "Du \xE5bner skabet.\n\r\nFinder spr\xE6ngladningen frem.\n\r\nDine h\xE6nder
+      ryster.\n\r\nDu f\xE5r firet spr\xE6ngstoffet med magneter ned p\xE5 siden
+      af skibet.\n\r\nNu g\xE6lder det om at koncentrere sig.\r\n\r\n<i>En timer.\nIndstillet
+      til klokken 21:00.<i>\r"
+    choices: []
+    defaultTargetNodeId: 13
+    minigamePrefab: {fileID: 0}
+  - nodeId: 13
+    text: "Klokken sl\xE5r 21:00.\n\r\nEt dybt d\xE6mpet brag ryster vandet. \n\nEn
+      s\xF8jle af vand og st\xE5l spr\xF8jter op langs skroget. \n\nLys flammer op
+      p\xE5 d\xE6kket af Linz. R\xE5b. Panik.\n\r\nErik \xE5nder tungt ud ved din
+      side. \n\n\u201CHun sejler ingen steder nu.\u201D\n\r\nI ser kort p\xE5 hinanden.
+      Ingen smil. Ingen ord. Bare et nik.\r\n"
+    choices: []
+    defaultTargetNodeId: 14
+    minigamePrefab: {fileID: 0}
+  - nodeId: 14
+    text: "Skibet synker ikke \u2014 men skaden er alvorlig. \n\nOg det er nok. Endnu
+      et slag i m\xF8rket. \n\nEndnu en forsinkelse for tyskerne.\n\r\nDen nat forsvinder
+      I ind i byen igen, stille og ubem\xE6rket. \n\nIngen vil kende jeres navne.
+      \n\nIngen vil vide, hvad der skete her.\r\n"
+    choices: []
+    defaultTargetNodeId: 15
+    minigamePrefab: {fileID: 0}
+  - nodeId: 15
+    text: "Men jeres handling bliver en lille del af noget st\xF8rre. \n\nSabotagen
+      mod skibene, strejkerne, og uroen i Odense og andre byer er med til at t\xE6nde
+      gnisten, der senere p\xE5 sommeren bryder ud i det, der bliver kendt som Augustopr\xF8ret
+      \u2014 en b\xF8lge af \xE5ben modstand, der for alvor ryster bes\xE6ttelsesmagten."
+    choices: []
+    defaultTargetNodeId: 15
     minigamePrefab: {fileID: 0}

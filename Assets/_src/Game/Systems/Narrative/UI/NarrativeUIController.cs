@@ -98,7 +98,6 @@ namespace Game.UI.Screens.Narrative
                 startMinigameButton.gameObject.SetActive(false);
             });
 
-
             minigameContinueButton.onClick.RemoveAllListeners();
             minigameContinueButton.onClick.AddListener(() =>
             {
@@ -106,7 +105,6 @@ namespace Game.UI.Screens.Narrative
                 startMinigameButton.gameObject.SetActive(false);
                 NarrativeManager.Instance.ContinueDefault();
                 minigameContinueButton.gameObject.SetActive(false);
-
             });
         }
 

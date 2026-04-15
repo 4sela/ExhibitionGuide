@@ -2294,7 +2294,6 @@ GameObject:
   - component: {fileID: 8129182718316367081}
   - component: {fileID: 1859800261844183228}
   - component: {fileID: 9045327449975219385}
-  - component: {fileID: 6864376337249688052}
   m_Layer: 0
   m_Name: MorseMinigame
   m_TagString: Untagged
@@ -2396,24 +2395,6 @@ MonoBehaviour:
   hiddenScale: {x: 0.9, y: 0.9, z: 1}
   shownScale: {x: 1, y: 1, z: 1}
   canvasGroup: {fileID: 1859800261844183228}
---- !u!114 &6864376337249688052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7416240185725632505}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74a75f85691616d45bb90f89159ef1bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameInputField: {fileID: 0}
-  maleButton: {fileID: 0}
-  femaleButton: {fileID: 0}
-  maleCanvas: {fileID: 0}
-  femaleCanvas: {fileID: 0}
-  buttonAlpha: 0.4
 --- !u!1 &8096500657547714887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,6 +2515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e4984760aba824bb6c9c953f85c754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  morseGameContainer: {fileID: 7416240185725632505}
   previewSymbol: {fileID: 1292819879607112102}
   previewLetter: {fileID: 2175485472777348998}
   currentMorseText: {fileID: 7292424045931753387}
@@ -2543,7 +2525,6 @@ MonoBehaviour:
   - {fileID: 3180414105351793387}
   progressBar: {fileID: 8286643431762315113}
   input: {fileID: 7822965879749654237}
-  dotThreshold: 0.35
 --- !u!1 &8222021472692438345
 GameObject:
   m_ObjectHideFlags: 0

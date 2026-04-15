@@ -1501,7 +1501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &139277046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11189,10 +11189,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Der var en kat der hed Bob og han var sej
-
-
-    Bla bla bla...'
+  m_text: "Men jeres handling bliver en lille del af noget st\xF8rre. \n\nSabotagen
+    mod skibene, strejkerne, og uroen i Odense og andre byer er med til at t\xE6nde
+    gnisten, der senere p\xE5 sommeren bryder ud i det, der bliver kendt som Augustopr\xF8ret
+    \u2014 en b\xF8lge af \xE5ben modstand, der for alvor ryster bes\xE6ttelsesmagten."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
   m_sharedMaterial: {fileID: 7727282430912938700, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
@@ -11231,7 +11231,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
