@@ -40,7 +40,7 @@ MonoBehaviour:
       label: Nedkastning i nat
       targetNodeId: 2
     defaultTargetNodeId: 1
-    minigamePrefab: {fileID: 0}
+    minigamePrefab: {fileID: 7416240185725632505, guid: 6a1ce9beeea46de438ece10a53cdffb5, type: 3}
   - nodeId: 2
     text: "I ankommer til kysten ved Eneb\xE6rodde.\n\nAlt er m\xF8rkt.\n\nFolk st\xE5r
       allerede klar.\n\nErik kigger p\xE5 dig.\n\n\u201CV\xE6r klar med lygten, n\xE5r

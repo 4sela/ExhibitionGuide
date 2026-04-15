@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using Game.Systems.Narrative.Data;
-using Game.Systems.Narrative.Runtime;
-using DG.Tweening;
-using Game.UI.Narrative.UI;
 using System.Collections;
+using DG.Tweening;
+using Game.Systems.Narrative.Data;
+using Game.Systems.Narrative.Events;
+using Game.Systems.Narrative.Runtime;
+using Game.UI.Narrative.UI;
 
 namespace Game.UI.Screens.Narrative
 {
@@ -32,6 +33,8 @@ namespace Game.UI.Screens.Narrative
 
         void OnEnable()
         {
+            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
+
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered += RenderNode;
@@ -43,6 +46,8 @@ namespace Game.UI.Screens.Narrative
 
         void OnDisable()
         {
+            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
+
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered -= RenderNode;
