@@ -102,10 +102,11 @@ namespace Game.UI.Screens.Narrative
             minigameContinueButton.onClick.RemoveAllListeners();
             minigameContinueButton.onClick.AddListener(() =>
             {
+                Debug.Log("Den virker denne her knap!");
                 startMinigameButton.gameObject.SetActive(false);
+                NarrativeManager.Instance.ContinueDefault();
                 minigameContinueButton.gameObject.SetActive(false);
 
-                NarrativeManager.Instance.ContinueDefault();
             });
         }
 

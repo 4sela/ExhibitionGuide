@@ -26,20 +26,8 @@ MonoBehaviour:
     text: "Klokken er 18:15.\n\r\nDig og din ven Erik sidder og lytter ved radioen.\n\r\nRadioen
       knitrer.\n\r\n\u201CEn hilsen til Niels.\r\n Bageren arbejder i nat.\u201D\n\r\nErik
       vender sig mod dig.\n\r\n\u201CDet er vores besked, f\xE5 afkodet den\u201D\r"
-    choices:
-    - id: 1
-      label: "Tyskerne er t\xE6t"
-      targetNodeId: 1
-    - id: 1
-      label: Nedkastning i na
-      targetNodeId: 1
-    - id: 1
-      label: Forbered jer
-      targetNodeId: 1
-    - id: 1
-      label: Nedkastning i nat
-      targetNodeId: 2
-    defaultTargetNodeId: 1
+    choices: []
+    defaultTargetNodeId: 2
     minigamePrefab: {fileID: 7416240185725632505, guid: 6a1ce9beeea46de438ece10a53cdffb5, type: 3}
   - nodeId: 2
     text: "I ankommer til kysten ved Eneb\xE6rodde.\n\nAlt er m\xF8rkt.\n\nFolk st\xE5r
