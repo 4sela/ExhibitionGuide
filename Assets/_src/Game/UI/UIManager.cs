@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Game.UI.Tweening;
+using Game.Systems.Contexts;
 
 namespace Game.UI
 {
@@ -50,8 +51,10 @@ namespace Game.UI
             for (int i = 0; i < allScreens.Length; i++)
                 allScreens[i].screenObject.SetActive(false);
 
+
             // Now we show StartScreen with animation
             ShowScreen(ScreenType.Welcome);
+            ContextManager.Instance.CloseAllPanels();
         }
 
         /// <summary>
@@ -111,6 +114,7 @@ namespace Game.UI
         /// </remarks>
         public void ToWelcomeScreen() => ShowScreen(ScreenType.Welcome);
         public void ToContextSetupScreen() => ShowScreen(ScreenType.ContextSetup);
+        public void ToContextScreen() => ShowScreen(ScreenType.Context);
         public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup);
         public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);
     }
