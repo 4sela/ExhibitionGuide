@@ -6,6 +6,7 @@ namespace Game.UI
         Welcome,
         ContextSetup,
         NarrativeSetup,
-        Narrative
+        Narrative,
+        Context,
     }
 }
