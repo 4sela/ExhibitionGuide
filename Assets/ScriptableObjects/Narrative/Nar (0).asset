@@ -131,7 +131,7 @@ MonoBehaviour:
     text: "Da der igen er ro p\xE5, \xE5bner du skabet.\n\r\nFinder spr\xE6ngladningen
       frem.\n\r\nDine h\xE6nder ryster.\n\r\nDu f\xE5r firet spr\xE6ngstoffet med
       magneter ned p\xE5 siden af skibet.\n\r\nNu g\xE6lder det om at koncentrere
-      sig.\r\n\r\n<i>En timer.\nIndstillet til klokken 21:00.<i>\r"
+      sig.\n\r"
     choices: []
     defaultTargetNodeId: 13
     minigamePrefab: {fileID: 0}
