@@ -23,3 +23,5 @@ Thumbs.db
 
 # === Android / Gradle (AR projects) ===
 .gradle/
+Assets/TextMesh Pro/Fonts/Custom/OPENSANS-MEDIUM SDF.asset
+Assets/TextMesh Pro/Fonts/Custom/OPENSANS-SEMIBOLD SDF.asset

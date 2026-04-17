@@ -91,8 +91,7 @@ MonoBehaviour:
     text: "Du s\xE6tter tasken fra dig under en b\xE6nk i omkl\xE6dningsrummet. \n\r\nSamme
       aften ringer du til Erik. \n\n\"Det kunne ikke lade sig g\xF8re i dag.\"\r\n\nEn
       pause i r\xF8ret.\n\r\n\"Jamen s\xE5 skal det sgu ogs\xE5 v\xE6re i morgen.
-      \n\nLinz afsejler den i overmorgen.\"\n\r\nN\xE6ste morgen. Tasken st\xE5r
-      pr\xE6cis som du efterlod den.\r\n"
+      \n\nLinz afsejler i overmorgen.\"\r\n"
     choices: []
     defaultTargetNodeId: 10
     minigamePrefab: {fileID: 0}
@@ -129,10 +128,10 @@ MonoBehaviour:
     defaultTargetNodeId: 12
     minigamePrefab: {fileID: 0}
   - nodeId: 12
-    text: "Du \xE5bner skabet.\n\r\nFinder spr\xE6ngladningen frem.\n\r\nDine h\xE6nder
-      ryster.\n\r\nDu f\xE5r firet spr\xE6ngstoffet med magneter ned p\xE5 siden
-      af skibet.\n\r\nNu g\xE6lder det om at koncentrere sig.\r\n\r\n<i>En timer.\nIndstillet
-      til klokken 21:00.<i>\r"
+    text: "Da der igen er ro p\xE5, \xE5bner du skabet.\n\r\nFinder spr\xE6ngladningen
+      frem.\n\r\nDine h\xE6nder ryster.\n\r\nDu f\xE5r firet spr\xE6ngstoffet med
+      magneter ned p\xE5 siden af skibet.\n\r\nNu g\xE6lder det om at koncentrere
+      sig.\r\n\r\n<i>En timer.\nIndstillet til klokken 21:00.<i>\r"
     choices: []
     defaultTargetNodeId: 13
     minigamePrefab: {fileID: 0}

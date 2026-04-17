@@ -4,10 +4,12 @@ public class Modal_MorseBook : MonoBehaviour
 {
 
     [SerializeField] private GameObject modalPanel;
+    [SerializeField] private GameObject options;
 
     private void Awake()
     {
         modalPanel.SetActive(false);
+        options.SetActive(false);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +27,7 @@ public class Modal_MorseBook : MonoBehaviour
     public void OpenModal()
     {
         modalPanel.SetActive(true);
+        options.SetActive(true);
     }
 
     public void CloseModal() 
