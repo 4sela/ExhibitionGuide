@@ -9,6 +9,7 @@ namespace Game.Systems.Contexts
         [Header("Context Panels")]
         [SerializeField] private GameObject odinsTårnet;
         [SerializeField] private GameObject augustOprøret;
+        [SerializeField] private GameObject linzSkibet;
 
         void Awake()
         {
@@ -23,11 +24,19 @@ namespace Game.Systems.Contexts
                 case 0:
                     odinsTårnet.SetActive(true);
                     augustOprøret.SetActive(false);
+                    linzSkibet.SetActive(false);
                     break;
 
                 case 1:
                     odinsTårnet.SetActive(false);
                     augustOprøret.SetActive(true);
+                    linzSkibet.SetActive(false);
+                    break;
+
+                case 2:
+                    odinsTårnet.SetActive(false);
+                    augustOprøret.SetActive(false);
+                    linzSkibet.SetActive(true);
                     break;
             }
         }
@@ -36,6 +45,7 @@ namespace Game.Systems.Contexts
         {
             odinsTårnet.SetActive(false);
             augustOprøret.SetActive(false);
+            linzSkibet.SetActive(false);
         }
     }
 }
