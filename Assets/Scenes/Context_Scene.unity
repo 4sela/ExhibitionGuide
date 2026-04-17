@@ -1607,7 +1607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &139277046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2852,7 +2852,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1440, y: 3168}
+  m_SizeDelta: {x: 1440, y: 3120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &305199137
 CanvasRenderer:
@@ -7857,7 +7857,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 266046813}
         m_TargetAssemblyTypeName: Game.UI.UIManager, Assembly-CSharp
-        m_MethodName: ToWelcomeScreen
+        m_MethodName: ToContextSetupScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
