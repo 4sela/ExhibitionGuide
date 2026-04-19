@@ -27,7 +27,7 @@ public class Modal_MorseBook : MonoBehaviour
     public void OpenModal()
     {
         modalPanel.SetActive(true);
-        // options.SetActive(true);
+        options.SetActive(true);
     }
 
     public void CloseModal()
