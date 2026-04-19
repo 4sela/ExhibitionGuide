@@ -9,7 +9,12 @@ public class Modal_MorseBook : MonoBehaviour
     private void Awake()
     {
         modalPanel.SetActive(false);
-        options.SetActive(false);
+
+        if(options != null)
+        {
+            options.SetActive(false);
+        }
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,7 +32,11 @@ public class Modal_MorseBook : MonoBehaviour
     public void OpenModal()
     {
         modalPanel.SetActive(true);
-        options.SetActive(true);
+
+        if (options != null) {
+            options.SetActive(true);
+        }
+        
     }
 
     public void CloseModal() 

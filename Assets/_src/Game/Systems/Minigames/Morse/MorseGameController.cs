@@ -24,6 +24,7 @@ public class MorseGameController : MonoBehaviour
     {
         builder = MorseSequenceBuilder.Instance;
         validator = new MorseWordValidator("HER");
+        ResetButton();
     }
 
     private void Start()

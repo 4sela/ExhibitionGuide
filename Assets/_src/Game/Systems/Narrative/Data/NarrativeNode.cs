@@ -12,6 +12,10 @@ namespace Game.Systems.Narrative.Data
         public List<NarrativeChoice> choices = new();
         public string defaultTargetNodeId; // if no choices, fallback
 
+        [Header("Audio")]
+        public AudioClip voiceClip;   //Text-to-speech
+        //public AudioClip blipSound; //If we want typer-writer audio
+
         [Header("Minigame Integration")]
         public GameObject minigamePrefab;
     }

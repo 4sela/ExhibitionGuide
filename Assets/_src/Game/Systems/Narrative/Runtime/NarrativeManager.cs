@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Game.Systems.Narrative.Data;
+using UnityEngine.InputSystem.XR;
 
 namespace Game.Systems.Narrative.Runtime
 {
@@ -110,6 +111,16 @@ namespace Game.Systems.Narrative.Runtime
         {
             currentNode = null;
             OnNarrativeEnded?.Invoke();
+        }
+
+
+        public void PlayNode(NarrativeNode node)
+        {        
+            //Text-to-speech voice clip
+            if (node.voiceClip != null)
+            {
+                AudioManager.Instance.Voice.PlayVoice(node.voiceClip);
+            }
         }
     }
 }
