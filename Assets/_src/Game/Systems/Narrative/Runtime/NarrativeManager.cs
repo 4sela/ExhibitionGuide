@@ -56,6 +56,7 @@ namespace Game.Systems.Narrative.Runtime
 
             currentNode = node;
             OnNodeEntered?.Invoke(node);
+            PlayNode(node);
         }
 
         /// <summary>
