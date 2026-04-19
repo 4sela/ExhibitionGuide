@@ -15,23 +15,23 @@ public class Modal_MorseBook : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OpenModal()
     {
         modalPanel.SetActive(true);
-        options.SetActive(true);
+        // options.SetActive(true);
     }
 
-    public void CloseModal() 
-    { 
+    public void CloseModal()
+    {
         modalPanel.SetActive(false);
     }
 }
