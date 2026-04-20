@@ -128,7 +128,6 @@ public class MorseGameController : MonoBehaviour
         var letters = builder.DecodedLetters.ToList();
         bool correct = validator.Check(letters);
 
-        Debug.Log(correct ? "Correct!" : "Wrong");
         if (correct)
         {
             morseGameContainer.SetActive(false);

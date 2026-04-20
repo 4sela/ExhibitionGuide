@@ -19,9 +19,11 @@ namespace Game.UI.Screens.Narrative
         [SerializeField] private float timePerChar = 0.03f;
 
         [Header("Choices Setup")]
-        [SerializeField] private Transform choicesContainer;
+        [SerializeField] private Transform choicesContainerTransform;
+        [SerializeField] private CanvasGroup choiceContainerCanvasGroup;
         [SerializeField] private GameObject choiceButtonPrefab;
         [SerializeField] private Button defaultContinueButton;
+        [SerializeField] private float fadeDuration = 1f;
 
         [Header("Minigame Setup")]
         [SerializeField] private Transform minigameContainer;
@@ -55,9 +57,12 @@ namespace Game.UI.Screens.Narrative
             }
         }
 
+        private void ResetChoiceContainerAlpha() => choiceContainerCanvasGroup.alpha = 0;
+
         private void RenderNode(NarrativeNode node)
         {
             ClearChoices();
+            ResetChoiceContainerAlpha();
 
             if (typingCoroutine != null)
             {
@@ -101,7 +106,6 @@ namespace Game.UI.Screens.Narrative
             minigameContinueButton.onClick.RemoveAllListeners();
             minigameContinueButton.onClick.AddListener(() =>
             {
-                Debug.Log("Den virker denne her knap!");
                 startMinigameButton.gameObject.SetActive(false);
                 NarrativeManager.Instance.ContinueDefault();
                 minigameContinueButton.gameObject.SetActive(false);
@@ -132,7 +136,7 @@ namespace Game.UI.Screens.Narrative
 
                 NarrativeChoice currentChoice = choice;
 
-                GameObject newChoiceObj = Instantiate(choiceButtonPrefab, choicesContainer);
+                GameObject newChoiceObj = Instantiate(choiceButtonPrefab, choicesContainerTransform);
                 newChoiceObj.SetActive(true);
                 spawnedChoices.Add(newChoiceObj);
 
@@ -156,7 +160,7 @@ namespace Game.UI.Screens.Narrative
         {
             ClearChoices();
             bodyText.text = string.Empty;
-            gameObject.SetActive(false); // Hide this entire screen
+            gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -170,14 +174,29 @@ namespace Game.UI.Screens.Narrative
         private IEnumerator TypeTextRoutine(string textToType)
         {
             bodyText.text = textToType;
-            bodyText.maxVisibleCharacters = 0; // Hide it all initially
+            bodyText.maxVisibleCharacters = 0;
 
-            // Loop through and reveal characters one by one
             for (int i = 0; i <= textToType.Length; i++)
             {
                 bodyText.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(timePerChar);
             }
+            StartCoroutine(FadeInCanvasGroup(choiceContainerCanvasGroup, fadeDuration));
+        }
+
+        private IEnumerator FadeInCanvasGroup(CanvasGroup canvasGroup, float duration)
+        {
+            float elapsedTime = 0f;
+            canvasGroup.alpha = 0f;
+
+            while (elapsedTime < duration)
+            {
+                canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            canvasGroup.alpha = 1f;
         }
     }
 }
