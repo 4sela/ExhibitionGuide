@@ -47,4 +47,11 @@ public class VoiceService
         source.Play();
     }
 
+    public void StopVoice()
+    {
+        if(source.clip == null) return;
+
+        source.Stop();
+    }
+
 }

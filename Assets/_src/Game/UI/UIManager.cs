@@ -113,10 +113,14 @@ namespace Game.UI
         /// <remarks>
         /// Button hookup.
         /// </remarks>
-        public void ToWelcomeScreen() => ShowScreen(ScreenType.Welcome);
+        public void ToWelcomeScreen()
+        {
+            AudioManager.Instance.Voice.StopVoice();
+            ShowScreen(ScreenType.Welcome); 
+        }
         public void ToContextSetupScreen() => ShowScreen(ScreenType.ContextSetup);
         public void ToContextScreen() => ShowScreen(ScreenType.Context);
-        public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup);
+        public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup); 
         public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);
 
     }
