@@ -2756,9 +2756,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Rasmus = Eneb\xE6rodde\nPeder = Hasmark\nKaj = Lumby\nJens = Odense Havn\n\n\u201Ckommer
-    ikke hjem\u201D = Aflyst\n\n\u201Cnormale tilstande\" = Nedkastning i nat n   
-    gv\n\n\u201CModtaget detaileret underretning\" = Udskudt til i morgen nat\n\n\u201CPasse
-    p\xE5\" = Fare / tyskerne t\xE6t p\xE5\r\n\r\n"
+    ikke hjem\u201D = Aflyst\n\n\u201Cnormale tilstande\" = Nedkastning i nat\n\n\u201CModtaget
+    detaileret underretning\" = Udskudt til i morgen nat\n\n\u201CPasse p\xE5\" =
+    Fare / tyskerne t\xE6t p\xE5\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}
   m_sharedMaterial: {fileID: 265454499000485240, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}

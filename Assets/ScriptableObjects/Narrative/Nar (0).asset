@@ -120,9 +120,15 @@ MonoBehaviour:
     text: "Heldigvis s\xE5 han ikke minen, der var under ledningerne.\n\r\nVagtskiftet
       kl. 13 \u2013 Men noget er galt, der er flere vagter end normalt.\n\r\nDet
       kan ikke lade sig g\xF8re. \n\nIkke i dag.\n\r\nDu g\xE5r tilbage til omkl\xE6dningsrummet
-      og gemmer tasken.\n\r\nSamme aften ringer du til Erik Frandsen. \n\n\"Det kunne
-      ikke lade sig g\xF8re.\"\n\r\nEn lang pause i r\xF8ret.\n\r\n\"Jamen s\xE5
-      skal det sgu ogs\xE5 v\xE6re i morgen.\"\r\n\r\n"
+      og gemmer tasken.\n\r\n\r\n\r\n"
+    choices: []
+    defaultTargetNodeId: 9.B.B
+    voiceClip: {fileID: 0}
+    minigamePrefab: {fileID: 0}
+  - nodeId: 9.B.B
+    text: "Samme aften ringer du til Erik Frandsen\n   \n\"Det kunne ikke lade sig
+      g\xF8re.\"  \n\nEn lang pause i r\xF8ret.  \n\n\"Jamen s\xE5 skal det sgu ogs\xE5
+      v\xE6re i morgen.\""
     choices: []
     defaultTargetNodeId: 10
     voiceClip: {fileID: 0}
