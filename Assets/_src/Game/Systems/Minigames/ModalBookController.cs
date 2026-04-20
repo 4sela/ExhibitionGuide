@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Modal_MorseBook : MonoBehaviour
+public class ModalBookController : MonoBehaviour
 {
 
     [SerializeField] private GameObject modalPanel;
