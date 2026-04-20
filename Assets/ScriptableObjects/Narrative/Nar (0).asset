@@ -29,10 +29,10 @@ MonoBehaviour:
       6\u201D\n\r\n\u201CSe i bogen for at afkode ordene\u201D\r\n\r"
     choices: []
     defaultTargetNodeId: 2
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c5501bcdb5aca8b4489cbd042923229f, type: 3}
     minigamePrefab: {fileID: 7416240185725632505, guid: 6a1ce9beeea46de438ece10a53cdffb5, type: 3}
   - nodeId: 2
-    text: "I ankommer til kysten ved Eneb\xE6rodde, om natten.\r\nAlt er m\xF8rkt.\n\r\nFolk
+    text: "I ankommer til kysten ved Eneb\xE6rodde, om natten.\n\r\nAlt er m\xF8rkt.\n\r\nFolk
       st\xE5r allerede klar.\n\r\nErik kigger p\xE5 dig.\n\r\n\u201CV\xE6r klar med
       lygten, n\xE5r vi h\xF8rer flyet\u201D\r\n\r"
     choices: []
@@ -50,15 +50,15 @@ MonoBehaviour:
   - nodeId: 4
     text: "Senere samme nat.\n\r\nDu bliver f\xF8rt til en g\xE5rd.\n\r\nEn mand
       st\xE5r i m\xF8rket.\n\r\n\u201CDu klarede det.\u201D\n\r\nHan tr\xE6der frem
-      og introducerer sig.\n\r\n\u201CPeter Carlsen, britisk SOE agent.\u201D\r\n\r\r"
+      og introducerer sig.\n\r\n\u201CPeter Carlsen, britisk S.O.E agent.\u201D\r\n\r\r"
     choices: []
     defaultTargetNodeId: 5
     voiceClip: {fileID: 0}
     minigamePrefab: {fileID: 0}
   - nodeId: 5
     text: "Han l\xE6gger et kort frem.\n\r\n\u201CDenne magnetmine vi fik fra England,
-      den skal bruges\u201D\r\nHan peger.\n\r\n\u201COdense havn. Ved skibsv\xE6rftet\u201D\n\r\n\u201CTyskerne
-      er ved at bygge skibet Linz om til en minel\xE6gger\u201D\n\r\nPeter vender
+      den skal bruges.\u201D\n\r\nHan peger.\n\r\n\u201COdense havn. Ved skibsv\xE6rftet.\u201D\n\r\n\u201CTyskerne
+      er ved at bygge skibet Linz om til en minel\xE6gger.\u201D\n\r\nPeter vender
       sig mod dig."
     choices: []
     defaultTargetNodeId: 6
@@ -66,7 +66,7 @@ MonoBehaviour:
     minigamePrefab: {fileID: 0}
   - nodeId: 6
     text: "\u201CJeg kan forst\xE5 at du arbejder som elektriker p\xE5 skibsv\xE6rftet?\u201D\n\r\n\u201CDu
-      skal ind og plante minen p\xE5 skibet\u201D\n\r\nDu nikker en anelse nerv\xF8st.\n\r\nDu
+      skal ind og plante minen p\xE5 skibet.\u201D\n\r\nDu nikker en anelse nerv\xF8st.\n\r\nDu
       fort\xE6ller at det nok er bedst at g\xF8re ved vagtskiftet klokken 13:00.\r\n"
     choices: []
     defaultTargetNodeId: 7
@@ -83,7 +83,7 @@ MonoBehaviour:
     voiceClip: {fileID: 0}
     minigamePrefab: {fileID: 0}
   - nodeId: 8
-    text: "Du kom igennem vagt porten til v\xE6rftet.\n\r\nNerv\xF8st og langsomt
+    text: "Du er kommet igennem vagt porten til v\xE6rftet.\n\r\nNerv\xF8st og langsomt
       n\xE6rmer du dig landgangen til Linz.\n\r\nMen noget er anderledes. \n\nDer
       er flere vagter end i g\xE5r. \n\nDu ser en tysk officer gestikulerer ved landgangen.\n\r\nKlokken
       er 12:50, vagtskiftet er om lidt.\n\r\nDu stopper nerv\xF8st op.\n\r\nHvad
@@ -134,10 +134,10 @@ MonoBehaviour:
     voiceClip: {fileID: 0}
     minigamePrefab: {fileID: 0}
   - nodeId: 10
-    text: "Tidlig morgen. \n\r\nDu ikl\xE6der dig din kedeldragt.\n\r\nTil din lettelse
-      er tasken hvor du efterlod den.\n\r\nDu g\xE5r om bord p\xE5 Linz og placerer
-      tasken i et rel\xE6 skab, indtil vagtskiftet.\n\r\nKl. 10:00, sker noget uventet.\n\r\nEn
-      stor stab af tyske marinere str\xF8mmer om bord."
+    text: "Tidlig n\xE6ste morgen. \n\r\nDu ikl\xE6der dig din kedeldragt.\n\r\nTil
+      din lettelse er tasken hvor du efterlod den.\n\r\nDu g\xE5r om bord p\xE5 Linz
+      og placerer tasken i et rel\xE6 skab, indtil vagtskiftet.\n\r\nKl. 10:00, sker
+      noget uventet.\n\r\nEn stor stab af tyske marinere str\xF8mmer om bord."
     choices: []
     defaultTargetNodeId: 11
     voiceClip: {fileID: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   - nodeId: 11
     text: "De \xE5bner skabe. L\xF8fter presenninger. Tjekker rum.\n\r\nDu ser nerv\xF8st
       til, imens de vender hver en sten.\n\r\nMirakul\xF8st er der ingen, der kigger
-      i rel\xE6 skabet.  \r\n\r\nN\xE5r der igen er ro p\xE5, \xE5bner du skabet.\n\r\nFinder
+      i rel\xE6 skabet.  \r\n\r\nDa der igen er ro p\xE5, \xE5bner du skabet.\n\r\nFinder
       spr\xE6ngladningen frem.\n\r\nDine h\xE6nder ryster.\r\n"
     choices: []
     defaultTargetNodeId: 12
@@ -165,28 +165,34 @@ MonoBehaviour:
     text: "Om aften cykler du og Erik ned p\xE5 havnen for at overv\xE6re eksplosionen.\r\n\r\nS\xE5
       sl\xE5r klokken 21:00.\r\n\r\nAftenens stilhed brydes.\n\r\nEt dybt brag ryster
       vandet. \n\nEn s\xF8jle af vand og st\xE5l spr\xF8jter op langs skroget.\n\nLys
-      flammer op p\xE5 d\xE6kket af Linz. \n\nDer h\xF8res r\xE5b og panik ved v\xE6rftet.\n\r\nErik
-      \xE5nder tungt ud ved din side. \n\n\u201CHun sejler ingen steder nu.\u201D\n\r\nI
-      ser kort p\xE5 hinanden. Ingen smil. Ingen ord. \n\nBare et nik.\r\n\r\n"
+      flammer op p\xE5 d\xE6kket af Linz. \n\nDer h\xF8res r\xE5b og panik ved v\xE6rftet.\n"
     choices: []
     defaultTargetNodeId: 14
     voiceClip: {fileID: 0}
     minigamePrefab: {fileID: 0}
   - nodeId: 14
-    text: "Skibet synker ikke \u2014 men skaden er alvorlig. \n\nOg det er nok. Endnu
-      et slag i m\xF8rket. \n\nEndnu en forsinkelse for tyskerne.\n\r\nDen nat forsvinder
-      I ind i byen igen, stille og ubem\xE6rket. \n\nIngen vil kende jeres navne.
-      \n\nIngen vil vide, hvad der skete her.\r\n"
+    text: "Erik \xE5nder tungt ud ved din side.   \n\n\u201CHun sejler ingen steder
+      nu.\u201D  \n\nI ser kort p\xE5 hinanden. Ingen smil. \n\nIngen ord.   \n\nBare
+      et nik.  "
     choices: []
     defaultTargetNodeId: 15
     voiceClip: {fileID: 0}
     minigamePrefab: {fileID: 0}
   - nodeId: 15
+    text: "Skibet synker ikke \u2014 men skaden er alvorlig. \n\nOg det er nok. Endnu
+      et slag i m\xF8rket. \n\nEndnu en forsinkelse for tyskerne.\n\r\nDen nat forsvinder
+      I ind i byen igen, stille og ubem\xE6rket. \n\nIngen vil kende jeres navne.
+      \n\nIngen vil vide, hvad der skete her.\r\n"
+    choices: []
+    defaultTargetNodeId: 16
+    voiceClip: {fileID: 0}
+    minigamePrefab: {fileID: 0}
+  - nodeId: 16
     text: "Men jeres handling bliver en lille del af noget st\xF8rre. \n\nSabotagen
       mod skibene, strejkerne, og uroen i Odense og andre byer er med til at t\xE6nde
       gnisten, der senere p\xE5 sommeren bryder ud i det, der bliver kendt som Augustopr\xF8ret
       \u2014 en b\xF8lge af \xE5ben modstand, der for alvor ryster bes\xE6ttelsesmagten."
     choices: []
-    defaultTargetNodeId: 15
+    defaultTargetNodeId: 16
     voiceClip: {fileID: 0}
     minigamePrefab: {fileID: 0}
