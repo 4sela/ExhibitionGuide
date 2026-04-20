@@ -20,7 +20,7 @@ MonoBehaviour:
       er en del af modstandsbev\xE6gelsen.\r\n\r"
     choices: []
     defaultTargetNodeId: 1
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c5501bcdb5aca8b4489cbd042923229f, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 1
     text: "Klokken er 18:15.\n\r\nDig og din ven Erik sidder og l\xE6ser igennem

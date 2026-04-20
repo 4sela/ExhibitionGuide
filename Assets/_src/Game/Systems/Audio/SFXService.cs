@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class SFXService : MonoBehaviour
+public class SFXService 
 {
     private AudioSource source;
 
