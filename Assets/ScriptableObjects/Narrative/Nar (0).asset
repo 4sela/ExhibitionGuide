@@ -172,8 +172,8 @@ MonoBehaviour:
     minigamePrefab: {fileID: 0}
   - nodeId: 14
     text: "Erik \xE5nder tungt ud ved din side.   \n\n\u201CHun sejler ingen steder
-      nu.\u201D  \n\nI ser kort p\xE5 hinanden. Ingen smil. \n\nIngen ord.   \n\nBare
-      et nik.  "
+      nu.\u201D  \n\nI ser kort p\xE5 hinanden. \n\nIngen smil. \n\nIngen ord.  
+      \n\nBare et nik.  "
     choices: []
     defaultTargetNodeId: 15
     voiceClip: {fileID: 8300000, guid: 6d2a5433eddda8946bfe330e846753d1, type: 3}
@@ -181,8 +181,7 @@ MonoBehaviour:
   - nodeId: 15
     text: "Skibet synker ikke \u2014 men skaden er alvorlig. \n\nOg det er nok. Endnu
       et slag i m\xF8rket. \n\nEndnu en forsinkelse for tyskerne.\n\r\nDen nat forsvinder
-      I ind i byen igen, stille og ubem\xE6rket. \n\nIngen vil kende jeres navne.
-      \n\nIngen vil vide, hvad der skete her.\r\n"
+      I ind i byen igen, stille og ubem\xE6rket. \n\r\n"
     choices: []
     defaultTargetNodeId: 16
     voiceClip: {fileID: 8300000, guid: 203f966433be27048b110ee0a77ea67c, type: 3}
