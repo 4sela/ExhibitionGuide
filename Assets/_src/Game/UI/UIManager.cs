@@ -118,7 +118,11 @@ namespace Game.UI
             AudioManager.Instance.Voice.StopVoice();
             ShowScreen(ScreenType.Welcome); 
         }
-        public void ToContextSetupScreen() => ShowScreen(ScreenType.ContextSetup);
+        public void ToContextSetupScreen()
+        {
+            AudioManager.Instance.Voice.StopVoice();
+            ShowScreen(ScreenType.ContextSetup);         
+        } 
         public void ToContextScreen() => ShowScreen(ScreenType.Context);
         public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup); 
         public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);

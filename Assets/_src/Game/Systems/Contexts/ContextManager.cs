@@ -11,6 +11,10 @@ namespace Game.Systems.Contexts
         [SerializeField] private GameObject augustOprøret;
         [SerializeField] private GameObject linzSkibet;
 
+        [SerializeField] private AudioClip audio_OdinsTårnet;
+        [SerializeField] private AudioClip audio_AugustOprøret;
+        [SerializeField] private AudioClip audio_LinzSkibet;
+
         void Awake()
         {
             if (Instance == null) Instance = this;
@@ -25,18 +29,33 @@ namespace Game.Systems.Contexts
                     odinsTårnet.SetActive(true);
                     augustOprøret.SetActive(false);
                     linzSkibet.SetActive(false);
+
+                    if(audio_OdinsTårnet != null)
+                    {
+                        AudioManager.Instance.Voice.PlayVoice(audio_OdinsTårnet);
+                    }                    
                     break;
 
                 case 1:
                     odinsTårnet.SetActive(false);
                     augustOprøret.SetActive(true);
                     linzSkibet.SetActive(false);
+
+                    if(audio_AugustOprøret != null)
+                    {
+                        AudioManager.Instance.Voice.PlayVoice(audio_AugustOprøret);
+                    }                    
                     break;
 
                 case 2:
                     odinsTårnet.SetActive(false);
                     augustOprøret.SetActive(false);
                     linzSkibet.SetActive(true);
+
+                    if(audio_LinzSkibet != null)
+                    {
+                        AudioManager.Instance.Voice.PlayVoice(audio_LinzSkibet);
+                    }                    
                     break;
             }
         }

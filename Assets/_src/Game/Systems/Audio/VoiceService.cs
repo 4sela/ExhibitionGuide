@@ -11,6 +11,9 @@ public class VoiceService
     private float lastPlayTime;
     private float minInterval = 0.03f;
 
+    private float defaultVolume = 1.0f;
+    private bool isMuted = false;
+
     public VoiceService(AudioSource source)
     {
         this.source = source;
@@ -52,6 +55,12 @@ public class VoiceService
         if(source.clip == null) return;
 
         source.Stop();
+    }
+
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+        source.volume = isMuted ? 0f : defaultVolume;
     }
 
 }
