@@ -19,15 +19,23 @@ namespace Game.UI.Screens.Narrative
         [SerializeField] private float timePerChar = 0.03f;
 
         [Header("Choices Setup")]
+        [SerializeField] private GameObject choiceButtonPrefab;
+
+        [Header("Containers")]
+        [SerializeField] private Transform minigameContainer;
         [SerializeField] private Transform choicesContainerTransform;
         [SerializeField] private CanvasGroup choiceContainerCanvasGroup;
-        [SerializeField] private GameObject choiceButtonPrefab;
-        [SerializeField] private Button defaultContinueButton;
-        [SerializeField] private float fadeDuration = 1f;
 
-        [Header("Minigame Setup")]
-        [SerializeField] private Transform minigameContainer;
+        [Header("Buttons")]
+        [SerializeField] private Button defaultContinueButton;
         [SerializeField] private Button startMinigameButton;
+        [SerializeField] private float buttonFadeDuration = 0.3f;
+
+        private Button[] _buttonArray => new[]
+        {
+            defaultContinueButton,
+            startMinigameButton
+        };
 
         private List<GameObject> spawnedChoices = new List<GameObject>();
         private Coroutine typingCoroutine;
@@ -149,6 +157,9 @@ namespace Game.UI.Screens.Narrative
 
         private IEnumerator TypeTextRoutine(string textToType)
         {
+            for (int i = 0; i < _buttonArray.Length; i++)
+                _buttonArray[i].interactable = false;
+
             bodyText.text = textToType;
             bodyText.maxVisibleCharacters = 0;
 
@@ -157,14 +168,17 @@ namespace Game.UI.Screens.Narrative
                 bodyText.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(timePerChar);
             }
-            StartCoroutine(FadeInCanvasGroup(choiceContainerCanvasGroup, fadeDuration));
+            StartCoroutine(FadeInCanvasGroup(choiceContainerCanvasGroup, buttonFadeDuration));
+
+            for (int i = 0; i < _buttonArray.Length; i++)
+                _buttonArray[i].interactable = true;
         }
 
         private IEnumerator FadeInCanvasGroup(CanvasGroup canvasGroup, float duration)
         {
-            float elapsedTime = 0f;
             canvasGroup.alpha = 0f;
 
+            float elapsedTime = 0f;
             while (elapsedTime < duration)
             {
                 canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / duration);
