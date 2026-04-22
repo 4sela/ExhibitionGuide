@@ -1,90 +1,73 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Game.Systems.Minigames.Morse;
 
-public class MorseInputHandler : MonoBehaviour
+namespace Game.Systems.Minigames.Morse
 {
-    private float pressStartTime;
-    private bool isPressing;
-
-    public float dotThreshold = 0.35f;
-
-    public event Action<char> OnSymbolDetected;   // Final result
-    public event Action<float> OnHolding;         // Raw duration
-    //public event Action<char> OnPreviewSymbol;    // Live prediction - moved logic to Gamecontroller.
-    private char lastPreviewSymbol;
-    private char currentPreviewSymbol = '.';
-
-    private void Update()
+    public class MorseInputHandler : MonoBehaviour
     {
-        ProcessHolding(Time.time);
-    }
+        [SerializeField] private float _dotThreshold = 0.35f;
 
-    //INPUT SYSTEM (keyboard/controller)
-    public void OnPress(InputAction.CallbackContext context)
-    {
-        if (context.started)
+        public event Action<bool> OnPressStateChanged;
+        public event Action<char, float> OnSymbolAdded;
+        public event Action<float, char> OnHolding;
+
+        private char _lastPreviewSymbol;
+        private float _pressStartTime;
+        private bool _isPressing;
+
+        public float DotThreshold => _dotThreshold;
+
+        void Update()
         {
-            StartPress();
+            ProcessHolding(Time.time);
         }
-        else if (context.canceled)
+
+        /// <remarks>
+        /// Called when holding the flashlight.
+        /// </remarks>
+        public void OnButtonDown()
         {
-            EndPress();
+            _isPressing = true;
+            _pressStartTime = Time.time;
+            _lastPreviewSymbol = '\0';
+
+            OnPressStateChanged?.Invoke(true);
         }
-    }
 
-    //UI BUTTON (mobile)
-    public void OnButtonDown()
-    {
-        StartPress();
-    }
-
-    public void OnButtonUp()
-    {
-        EndPress();
-    }
-
-    //Shared logic (used by both systems)
-    private void StartPress()
-    {
-        isPressing = true;
-        pressStartTime = Time.time;
-        lastPreviewSymbol = '\0';
-        MorseSequenceBuilder.Instance.SetPressing(true);
-    }
-
-    private void EndPress()
-    {
-        if (!isPressing) return;
-
-        float duration = Time.time - pressStartTime;
-        isPressing = false;
-
-        char finalSymbol = duration < dotThreshold ? '.' : '-';
-        MorseSequenceBuilder.Instance.SetPressing(false);
-        MorseSequenceBuilder.Instance.AddSymbol(finalSymbol, Time.time);
-        //char previewSymbol = MorseSequenceBuilder.Instance.GetCurrentLetter();
-        //OnPreviewSymbol?.Invoke(previewSymbol);
-
-
-        OnSymbolDetected?.Invoke(finalSymbol);
-    }
-
-    private void ProcessHolding(float currentTime)
-    {
-        if (!isPressing) return;
-
-        float duration = currentTime - pressStartTime;
-
-        OnHolding?.Invoke(duration);
-
-        char previewSymbol = duration < dotThreshold ? '.' : '-';
-        currentPreviewSymbol = previewSymbol;
-
-        if (previewSymbol != lastPreviewSymbol)
+        /// <remarks>
+        /// Called when releasing finger from the flashlight.
+        /// </remarks>
+        public void OnButtonUp()
         {
-            lastPreviewSymbol = previewSymbol;
-            //OnPreviewSymbol?.Invoke(previewSymbol); //preview symbol changes.
+            if (!_isPressing)
+                return;
+
+            float duration = Time.time - _pressStartTime;
+            _isPressing = false;
+
+            char finalSymbol = duration < _dotThreshold ? '.' : '-';
+
+            OnPressStateChanged?.Invoke(false);
+            OnSymbolAdded?.Invoke(finalSymbol, Time.time); // One single event for completion
+        }
+
+        private void ProcessHolding(float currentTime)
+        {
+            if (!_isPressing)
+                return;
+
+            float duration = currentTime - _pressStartTime;
+
+            // The input handler does the math now!
+            float progress = Mathf.Clamp01(duration / _dotThreshold);
+            char previewSymbol = duration < _dotThreshold ? '.' : '-';
+
+            OnHolding?.Invoke(progress, previewSymbol);
+
+            if (previewSymbol != _lastPreviewSymbol)
+                _lastPreviewSymbol = previewSymbol;
         }
     }
 }

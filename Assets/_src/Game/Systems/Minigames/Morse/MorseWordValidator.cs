@@ -1,25 +1,28 @@
 using System.Collections.Generic;
 
-public class MorseWordValidator
+namespace Game.Systems.Minigames.Morse
 {
-    private readonly string targetWord;
-
-    public MorseWordValidator(string targetWord)
+    public sealed class MorseWordValidator
     {
-        this.targetWord = targetWord.ToUpper();
-    }
+        private readonly string targetWord;
 
-    public bool Check(char[] input)
-    {
-        if (input.Length != targetWord.Length)
-            return false;
-
-        for (int i = 0; i < input.Length; i++)
+        public MorseWordValidator(string targetWord)
         {
-            if (input[i] != targetWord[i])
-                return false;
+            this.targetWord = targetWord.ToUpper();
         }
 
-        return true;
+        public bool Check(char[] input)
+        {
+            if (input.Length != targetWord.Length)
+                return false;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] != targetWord[i])
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

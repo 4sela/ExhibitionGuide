@@ -12,131 +12,113 @@ namespace Game.Systems.Minigames.Morse
 {
     public sealed class MorseGameController : MonoBehaviour, IMinigame
     {
-        [Header("Modals")]
-        [SerializeField] private GameObject tutorialModal;
+        [Header("Game Settings")]
+        [SerializeField] private string targetWord = "HER";
+
+        [Header("System Dependencies")]
+        [SerializeField] private MorseInputHandler morseInputHandler;
         [SerializeField] private GameResult gameResult;
 
-        [Header("UI")]
+        [Header("UI Screens & Containers")]
+        [SerializeField] private GameObject tutorialModal;
         [SerializeField] private GameObject morseGameContainer;
+
+        [Header("UI Live Input Feedback")]
+        [SerializeField] private Image progressBar;
         [SerializeField] private TextMeshProUGUI previewSymbol;
         [SerializeField] private TextMeshProUGUI previewLetter;
+
+        [Header("UI Decoded Progress")]
         [SerializeField] private TextMeshProUGUI currentMorseText;
         [SerializeField] private TextMeshProUGUI[] letterTiles;
-        [SerializeField] private Image progressBar;
-        [SerializeField] private MorseInputHandler input;
 
-        private MorseSequenceBuilder _builder;
-        private MorseWordValidator _validator;
+        private MorseSequenceBuilder _morseSeqbuilder;
+        private MorseWordValidator _morseWordValidator;
 
         private int _currentTileIndex = 0;
 
         void Awake()
         {
-            Initialise();
+            _morseSeqbuilder = new MorseSequenceBuilder();
+            _morseWordValidator = new MorseWordValidator(targetWord);
         }
 
         void Start()
         {
-            input.OnHolding += OnHolding;
-            input.OnSymbolDetected += OnSymbolDetected;
-            _builder.OnLetterFinalized += OnLetterFinalized;
-            _builder.OnInvalidSequence += OnInvalidSequence;
+            tutorialModal.SetActive(true);
+            ResetGameState();
+        }
+
+        void OnEnable()
+        {
+            // NOTE: Firstly, we link Input to Builder (We remove Singleton weirdness)
+            morseInputHandler.OnPressStateChanged += _morseSeqbuilder.SetPressing;
+            morseInputHandler.OnSymbolAdded += _morseSeqbuilder.AddSymbol;
+
+            // NOTE: Secondly, we link Input to UI.
+            morseInputHandler.OnHolding += OnHolding;
+            morseInputHandler.OnSymbolAdded += OnSymbolDetected;
+
+            // NOTE: Thirdly, we link Builder to Game Logic.
+            _morseSeqbuilder.OnLetterFinalized += OnLetterFinalized;
+            _morseSeqbuilder.OnInvalidSequence += OnInvalidSequence;
+        }
+
+        void OnDisable()
+        {
+            morseInputHandler.OnPressStateChanged -= _morseSeqbuilder.SetPressing;
+            morseInputHandler.OnSymbolAdded -= _morseSeqbuilder.AddSymbol;
+
+            morseInputHandler.OnHolding -= OnHolding;
+            morseInputHandler.OnSymbolAdded -= OnSymbolDetected;
+
+            _morseSeqbuilder.OnLetterFinalized -= OnLetterFinalized;
+            _morseSeqbuilder.OnInvalidSequence -= OnInvalidSequence;
         }
 
         void Update()
         {
-            _builder.Tick(Time.time);
-            CheckWord();
+            _morseSeqbuilder.Tick(Time.time);
         }
 
-        private void Initialise()
+        /// <remarks>
+        /// Call by retry button in Lose modal.
+        /// </remarks>
+        public void RetryGame()
         {
-            tutorialModal.SetActive(true);
-            _builder = MorseSequenceBuilder.Instance;
-            _validator = new MorseWordValidator("HER");
-            ResetGameState();
-        }
-
-        private void ReInitialise()
-        {
-            _builder = MorseSequenceBuilder.Instance;
-            _validator = new MorseWordValidator("HER");
             ResetGameState();
         }
 
         public void ResetGameState()
         {
-            _builder.ClearData();
-
+            _morseSeqbuilder.ClearData();
             ClearCurrentInput();
-
             _currentTileIndex = 0;
 
             foreach (TextMeshProUGUI tile in letterTiles)
-            {
                 tile.text = "";
-            }
         }
 
-        private void OnPreviewSymbol(char symbol)
+        private void OnHolding(float progress, char predictedSymbol)
         {
-            // Show symbol preview
-            previewSymbol.text = symbol == '.' ? "•" : "—";
-
-            // Simulate next state
-            string previewSequence = _builder.GetCurrentSymbols() + symbol;
-
-            if (MorseTranslator.TryTranslate(previewSequence, out char letter))
-            {
-                previewLetter.text = letter.ToString();
-            }
-            else
-            {
-                previewLetter.text = "";
-            }
-        }
-
-        private void OnPreviewLetter(char letter)
-        {
-            previewLetter.SetText(_builder.GetCurrentLetter().ToString());
-        }
-
-        private void OnHolding(float duration)
-        {
-            // Logic for progressbar
-            float progress = Mathf.Clamp01(duration / input.dotThreshold);
             progressBar.fillAmount = progress;
+            previewSymbol.text = predictedSymbol == '.' ? "•" : "—";
 
-            // Logic for symbolpreview
-            char symbol = duration < input.dotThreshold ? '.' : '-';
-
-            previewSymbol.text = symbol == '.' ? "•" : "—";
-
-            // Simulate next state
-            string previewSequence = _builder.GetCurrentSymbols() + symbol;
+            string previewSequence = _morseSeqbuilder.CurrentSymbolSequence + predictedSymbol;
 
             if (MorseTranslator.TryTranslate(previewSequence, out char letter))
-            {
                 previewLetter.text = letter.ToString();
-            }
-
             else
-            {
                 previewLetter.text = "";
-            }
         }
 
-        private void OnSymbolDetected(char symbol)
+        private void OnSymbolDetected(char symbol, float time)
         {
             progressBar.fillAmount = 0f;
-            string current = _builder.GetCurrentSymbols();
-            currentMorseText.text = FormatMorse(current);
+            currentMorseText.text = FormatMorse(_morseSeqbuilder.CurrentSymbolSequence);
 
-            char letter = _builder.GetCurrentLetter();
+            char letter = _morseSeqbuilder.GetCurrentLetter();
             previewLetter.text = letter == ' ' ? "" : letter.ToString();
-
-            // Debug.Log($"Input: {symbol}");
-            Debug.Log($"Current Sequence: {_builder.GetCurrentSymbols()}");
         }
 
         private void OnLetterFinalized(char letter)
@@ -148,13 +130,13 @@ namespace Game.Systems.Minigames.Morse
             }
 
             ClearCurrentInput();
-            Debug.Log($"Letter: {letter}");
+            CheckWord();
         }
 
         public void CheckWord()
         {
-            char[] letters = _builder.DecodedLetters.ToArray();
-            bool correct = _validator.Check(letters);
+            char[] letters = _morseSeqbuilder.DecodedLetters.ToArray();
+            bool correct = _morseWordValidator.Check(letters);
 
             if (correct)
             {
@@ -165,18 +147,10 @@ namespace Game.Systems.Minigames.Morse
 
         private void OnInvalidSequence(string sequence)
         {
-            Debug.Log("Invalid Morse: " + sequence);
-
             ClearCurrentInput();
-
-            // Optional: feedback
-            previewLetter.text = "✖"; // quick visual error
             currentMorseText.text = "Invalid letter";
-
-            // Reset builder state
-            _builder.ResetCurrentSequenceOnly();
+            _morseSeqbuilder.ResetCurrentSequenceOnly();
         }
-
 
         private string FormatMorse(string raw)
         {
