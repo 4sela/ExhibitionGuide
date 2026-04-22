@@ -55,11 +55,11 @@ namespace Game.Systems.Minigames.Morse
             morseInputHandler.OnPressStateChanged += _morseSeqbuilder.SetPressing;
             morseInputHandler.OnSymbolAdded += _morseSeqbuilder.AddSymbol;
 
-            // NOTE: Secondly, we link Input to UI.
+            // NOTE: Secondly, we link Input to UI
             morseInputHandler.OnHolding += OnHolding;
             morseInputHandler.OnSymbolAdded += OnSymbolDetected;
 
-            // NOTE: Thirdly, we link Builder to Game Logic.
+            // NOTE: Thirdly, we link Builder to Game Logic
             _morseSeqbuilder.OnLetterFinalized += OnLetterFinalized;
             _morseSeqbuilder.OnInvalidSequence += OnInvalidSequence;
         }
@@ -135,6 +135,7 @@ namespace Game.Systems.Minigames.Morse
 
         public void CheckWord()
         {
+            Debug.Log("CheckWord(); <-- Called");
             char[] letters = _morseSeqbuilder.DecodedLetters.ToArray();
             bool correct = _morseWordValidator.Check(letters);
 

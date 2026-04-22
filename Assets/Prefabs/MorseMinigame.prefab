@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fa98300a281ef4a84f8b299122474a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dotThreshold: 1
+  _dotThreshold: 0.7
 --- !u!114 &8260839805558728586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6275,11 +6275,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e4984760aba824bb6c9c953f85c754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialModal: {fileID: 3164122275659059587}
+  targetWord: HER
+  morseInputHandler: {fileID: 7822965879749654237}
   gameResult:
     winModal: {fileID: 4078347574613597632}
     loseModal: {fileID: 7354555857673685414}
+  tutorialModal: {fileID: 3164122275659059587}
   morseGameContainer: {fileID: 7416240185725632505}
+  progressBar: {fileID: 8286643431762315113}
   previewSymbol: {fileID: 1292819879607112102}
   previewLetter: {fileID: 2175485472777348998}
   currentMorseText: {fileID: 7292424045931753387}
@@ -6287,8 +6290,6 @@ MonoBehaviour:
   - {fileID: 5507535085910760724}
   - {fileID: 1863662665498165252}
   - {fileID: 3180414105351793387}
-  progressBar: {fileID: 8286643431762315113}
-  morseInputHandler: {fileID: 7822965879749654237}
 --- !u!1 &7747017458767473085
 GameObject:
   m_ObjectHideFlags: 0

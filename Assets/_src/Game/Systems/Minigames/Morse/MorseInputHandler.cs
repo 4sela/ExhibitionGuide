@@ -5,7 +5,7 @@ using Game.Systems.Minigames.Morse;
 
 namespace Game.Systems.Minigames.Morse
 {
-    public class MorseInputHandler : MonoBehaviour
+    public sealed class MorseInputHandler : MonoBehaviour
     {
         [SerializeField] private float _dotThreshold = 0.35f;
 
@@ -60,7 +60,6 @@ namespace Game.Systems.Minigames.Morse
 
             float duration = currentTime - _pressStartTime;
 
-            // The input handler does the math now!
             float progress = Mathf.Clamp01(duration / _dotThreshold);
             char previewSymbol = duration < _dotThreshold ? '.' : '-';
 
