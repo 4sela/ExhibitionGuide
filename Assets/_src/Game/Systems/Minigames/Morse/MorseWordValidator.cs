@@ -9,12 +9,12 @@ public class MorseWordValidator
         this.targetWord = targetWord.ToUpper();
     }
 
-    public bool Check(IReadOnlyList<char> input)
+    public bool Check(char[] input)
     {
-        if (input.Count != targetWord.Length)
+        if (input.Length != targetWord.Length)
             return false;
 
-        for (int i = 0; i < input.Count; i++)
+        for (int i = 0; i < input.Length; i++)
         {
             if (input[i] != targetWord[i])
                 return false;

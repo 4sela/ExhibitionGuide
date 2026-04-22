@@ -4,40 +4,36 @@ using UnityEngine;
 
 public class MorseSequenceBuilder
 {
-    public static MorseSequenceBuilder Instance = new ();
-
-
-    private string currentSymbolSequence = "";
-    private List<char> decodedLetters = new();
-
-    private float lastInputTime = float.MaxValue;
-
-    private readonly float letterPauseThreshold = 1.5f;
-    private bool isPressing = false;
-
-
-    public IReadOnlyList<char> DecodedLetters => decodedLetters;
+    public static MorseSequenceBuilder Instance = new();
 
     public event Action<char> OnLetterFinalized;
     public event Action<string> OnInvalidSequence;
 
+    private List<char> _decodedLetters = new();
+    private string _currentSymbolSequence = "";
+    private float _lastInputTime = float.MaxValue;
+    private bool _isPressing = false;
+    private readonly float letterPauseThreshold = 1f;
+
+    public IReadOnlyList<char> DecodedLetters => _decodedLetters;
+
     public void AddSymbol(char symbol, float currentTime)
     {
-        currentSymbolSequence += symbol;
-        lastInputTime = currentTime;
+        _currentSymbolSequence += symbol;
+        _lastInputTime = currentTime;
     }
 
     public void SetPressing(bool pressing)
     {
-        isPressing = pressing;
+        _isPressing = pressing;
     }
 
     public void Tick(float currentTime)
     {
-        if (string.IsNullOrEmpty(currentSymbolSequence))
+        if (string.IsNullOrEmpty(_currentSymbolSequence))
             return;
 
-        if (!isPressing && currentTime - lastInputTime > letterPauseThreshold)
+        if (!_isPressing && currentTime - _lastInputTime > letterPauseThreshold)
         {
             FinalizeLetter();
         }
@@ -45,31 +41,31 @@ public class MorseSequenceBuilder
 
     public void FinalizeLetter()
     {
-        if (string.IsNullOrEmpty(currentSymbolSequence))
+        if (string.IsNullOrEmpty(_currentSymbolSequence))
             return;
 
-        if (MorseTranslator.TryTranslate(currentSymbolSequence, out char letter))
+        if (MorseTranslator.TryTranslate(_currentSymbolSequence, out char letter))
         {
-            decodedLetters.Add(letter);
+            _decodedLetters.Add(letter);
             OnLetterFinalized?.Invoke(letter);
         }
 
         else
         {
             //INVALID INPUT
-            OnInvalidSequence?.Invoke(currentSymbolSequence);
-            currentSymbolSequence = "";
+            OnInvalidSequence?.Invoke(_currentSymbolSequence);
+            _currentSymbolSequence = "";
         }
 
-        currentSymbolSequence = "";
-        lastInputTime = float.MaxValue;
+        _currentSymbolSequence = "";
+        _lastInputTime = float.MaxValue;
     }
 
     public char GetCurrentLetter()
     {
         char preview = ' ';
 
-        if (MorseTranslator.TryTranslate(currentSymbolSequence, out char letter))
+        if (MorseTranslator.TryTranslate(_currentSymbolSequence, out char letter))
         {
             preview = letter;
         }
@@ -78,20 +74,19 @@ public class MorseSequenceBuilder
 
     public string GetCurrentSymbols()
     {
-        return currentSymbolSequence;
+        return _currentSymbolSequence;
     }
 
-    public void Reset()
+    public void ClearData()
     {
-        currentSymbolSequence = "";
-        decodedLetters.Clear();
-        lastInputTime = float.MaxValue;
+        _currentSymbolSequence = "";
+        _decodedLetters.Clear();
+        _lastInputTime = float.MaxValue;
     }
 
     public void ResetCurrentSequenceOnly()
     {
-        currentSymbolSequence = "";
-        lastInputTime = float.MaxValue;
+        _currentSymbolSequence = "";
+        _lastInputTime = float.MaxValue;
     }
-
 }

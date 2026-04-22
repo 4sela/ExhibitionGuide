@@ -28,15 +28,12 @@ namespace Game.UI.Screens.Narrative
         [Header("Minigame Setup")]
         [SerializeField] private Transform minigameContainer;
         [SerializeField] private Button startMinigameButton;
-        [SerializeField] private Button minigameContinueButton;
 
         private List<GameObject> spawnedChoices = new List<GameObject>();
         private Coroutine typingCoroutine;
 
         void OnEnable()
         {
-            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
-
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered += RenderNode;
@@ -48,8 +45,6 @@ namespace Game.UI.Screens.Narrative
 
         void OnDisable()
         {
-            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
-
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered -= RenderNode;
@@ -91,9 +86,6 @@ namespace Game.UI.Screens.Narrative
         private void SetupMinigamePrompt(NarrativeNode node)
         {
             startMinigameButton.gameObject.SetActive(true);
-            minigameContinueButton.gameObject.SetActive(true);
-
-            minigameContinueButton.interactable = false;
 
             startMinigameButton.onClick.RemoveAllListeners();
             startMinigameButton.onClick.AddListener(() =>
@@ -101,14 +93,6 @@ namespace Game.UI.Screens.Narrative
                 Instantiate(node.minigamePrefab, minigameContainer);
 
                 startMinigameButton.gameObject.SetActive(false);
-            });
-
-            minigameContinueButton.onClick.RemoveAllListeners();
-            minigameContinueButton.onClick.AddListener(() =>
-            {
-                startMinigameButton.gameObject.SetActive(false);
-                NarrativeManager.Instance.ContinueDefault();
-                minigameContinueButton.gameObject.SetActive(false);
             });
         }
 
@@ -161,14 +145,6 @@ namespace Game.UI.Screens.Narrative
             ClearChoices();
             bodyText.text = string.Empty;
             gameObject.SetActive(false);
-        }
-
-        /// <summary>
-        /// Placeholder method! Call when we close minigame
-        /// </summary>
-        public void OnMinigameClosed()
-        {
-            minigameContinueButton.interactable = true;
         }
 
         private IEnumerator TypeTextRoutine(string textToType)
