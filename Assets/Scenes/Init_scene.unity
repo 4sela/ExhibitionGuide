@@ -19373,6 +19373,9 @@ MonoBehaviour:
   "odinsT\xE5rnet": {fileID: 2081306212}
   "augustOpr\xF8ret": {fileID: 553271730}
   linzSkibet: {fileID: 1672550208}
+  "audio_OdinsT\xE5rnet": {fileID: 8300000, guid: 33542b66d06ffe34cb33c37c16b12c07, type: 3}
+  "audio_AugustOpr\xF8ret": {fileID: 8300000, guid: b491d58d72369e142b124e68675d332c, type: 3}
+  audio_LinzSkibet: {fileID: 8300000, guid: fdb090cce4ec17a489d2e0f5dd10ae18, type: 3}
 --- !u!1 &2101464158
 GameObject:
   m_ObjectHideFlags: 0

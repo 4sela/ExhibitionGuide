@@ -19,28 +19,6 @@ public class VoiceService
         this.source = source;
     }
 
-    //Typewriter-lyd?
-    //public IEnumerator TypeText(string text, TMP_Text uiText, AudioClip blip, float delay = 0.03f)
-    //{
-    //    uiText.text = "";
-
-    //    foreach (char c in text)
-    //    {
-    //        uiText.text += c;
-
-    //        if (!char.IsWhiteSpace(c) && blip != null)
-    //        {
-    //            if (Time.time - lastPlayTime > minInterval)
-    //            {
-    //                source.PlayOneShot(blip, 0.5f);
-    //                lastPlayTime = Time.time;
-    //            }
-    //        }
-
-    //        yield return new WaitForSeconds(delay);
-    //    }
-    //}
-
     public void PlayVoice(AudioClip clip)
     {
         if (clip == null) return;
@@ -61,6 +39,22 @@ public class VoiceService
     {
         isMuted = !isMuted;
         source.volume = isMuted ? 0f : defaultVolume;
+    }
+
+    public void PauseVoice()
+    {
+        source.Pause();
+    }
+
+    public void UnPause()
+    {
+        source.UnPause();
+    }
+
+    public void ResetVoice()
+    {
+        source.Stop();
+        source.Play();
     }
 
 }
