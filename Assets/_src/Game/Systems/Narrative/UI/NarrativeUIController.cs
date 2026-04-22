@@ -19,24 +19,29 @@ namespace Game.UI.Screens.Narrative
         [SerializeField] private float timePerChar = 0.03f;
 
         [Header("Choices Setup")]
+        [SerializeField] private GameObject choiceButtonPrefab;
+
+        [Header("Containers")]
+        [SerializeField] private Transform minigameContainer;
         [SerializeField] private Transform choicesContainerTransform;
         [SerializeField] private CanvasGroup choiceContainerCanvasGroup;
-        [SerializeField] private GameObject choiceButtonPrefab;
-        [SerializeField] private Button defaultContinueButton;
-        [SerializeField] private float fadeDuration = 1f;
 
-        [Header("Minigame Setup")]
-        [SerializeField] private Transform minigameContainer;
+        [Header("Buttons")]
+        [SerializeField] private Button defaultContinueButton;
         [SerializeField] private Button startMinigameButton;
-        [SerializeField] private Button minigameContinueButton;
+        [SerializeField] private float buttonFadeDuration = 0.3f;
+
+        private Button[] _buttonArray => new[]
+        {
+            defaultContinueButton,
+            startMinigameButton
+        };
 
         private List<GameObject> spawnedChoices = new List<GameObject>();
         private Coroutine typingCoroutine;
 
         void OnEnable()
         {
-            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
-
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered += RenderNode;
@@ -48,8 +53,6 @@ namespace Game.UI.Screens.Narrative
 
         void OnDisable()
         {
-            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
-
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered -= RenderNode;
@@ -91,9 +94,6 @@ namespace Game.UI.Screens.Narrative
         private void SetupMinigamePrompt(NarrativeNode node)
         {
             startMinigameButton.gameObject.SetActive(true);
-            minigameContinueButton.gameObject.SetActive(true);
-
-            minigameContinueButton.interactable = false;
 
             startMinigameButton.onClick.RemoveAllListeners();
             startMinigameButton.onClick.AddListener(() =>
@@ -101,14 +101,6 @@ namespace Game.UI.Screens.Narrative
                 Instantiate(node.minigamePrefab, minigameContainer);
 
                 startMinigameButton.gameObject.SetActive(false);
-            });
-
-            minigameContinueButton.onClick.RemoveAllListeners();
-            minigameContinueButton.onClick.AddListener(() =>
-            {
-                startMinigameButton.gameObject.SetActive(false);
-                NarrativeManager.Instance.ContinueDefault();
-                minigameContinueButton.gameObject.SetActive(false);
             });
         }
 
@@ -163,16 +155,11 @@ namespace Game.UI.Screens.Narrative
             gameObject.SetActive(false);
         }
 
-        /// <summary>
-        /// Placeholder method! Call when we close minigame
-        /// </summary>
-        public void OnMinigameClosed()
-        {
-            minigameContinueButton.interactable = true;
-        }
-
         private IEnumerator TypeTextRoutine(string textToType)
         {
+            for (int i = 0; i < _buttonArray.Length; i++)
+                _buttonArray[i].interactable = false;
+
             bodyText.text = textToType;
             bodyText.maxVisibleCharacters = 0;
 
@@ -181,14 +168,17 @@ namespace Game.UI.Screens.Narrative
                 bodyText.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(timePerChar);
             }
-            StartCoroutine(FadeInCanvasGroup(choiceContainerCanvasGroup, fadeDuration));
+            StartCoroutine(FadeInCanvasGroup(choiceContainerCanvasGroup, buttonFadeDuration));
+
+            for (int i = 0; i < _buttonArray.Length; i++)
+                _buttonArray[i].interactable = true;
         }
 
         private IEnumerator FadeInCanvasGroup(CanvasGroup canvasGroup, float duration)
         {
-            float elapsedTime = 0f;
             canvasGroup.alpha = 0f;
 
+            float elapsedTime = 0f;
             while (elapsedTime < duration)
             {
                 canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / duration);

@@ -1,18 +1,30 @@
 using UnityEngine;
+using System;
+using Game.Systems.Minigames;
 using Game.Systems.Narrative.Events;
+using Game.Systems.Narrative.Runtime;
 
 namespace Systems.Minigames.Decode
 {
-    public sealed class DecodeGameController : MonoBehaviour
+    public sealed class DecodeGameController : MonoBehaviour, IMinigame
     {
+        [SerializeField] private GameResult gameResult;
+
         private void Awake()
         {
             AudioManager.Instance.Voice.StopVoice();
         }
 
-        public void OnMinigameCompleted()
+        // NOTE: Ambigious name
+        public void ButtonPress(bool arg)
         {
-            NarrativeEvents.MiniGameComplete?.Invoke();
+            gameResult.IsCompleted = arg;
+            gameResult.SummonResult();
+        }
+
+        public void ProceedToNarrativeScreen()
+        {
+            NarrativeManager.Instance.ContinueDefault();
         }
     }
 }
