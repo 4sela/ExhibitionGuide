@@ -193,5 +193,5 @@ MonoBehaviour:
       \u2014 en b\xF8lge af \xE5ben modstand, der for alvor ryster bes\xE6ttelsesmagten."
     choices: []
     defaultTargetNodeId: 16
-    voiceClip: {fileID: 8300000, guid: 33542b66d06ffe34cb33c37c16b12c07, type: 3}
+    voiceClip: {fileID: 8300000, guid: 9ff80523c15d8de41bd16c0555788fcf, type: 3}
     minigamePrefab: {fileID: 0}
