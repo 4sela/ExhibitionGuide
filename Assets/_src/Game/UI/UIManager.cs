@@ -33,8 +33,6 @@ namespace Game.UI
 
         private Dictionary<ScreenType, GameObject> screenMap;
 
-
-
         void Awake()
         {
             screenMap = new Dictionary<ScreenType, GameObject>();
@@ -116,15 +114,15 @@ namespace Game.UI
         public void ToWelcomeScreen()
         {
             AudioManager.Instance.Voice.StopVoice();
-            ShowScreen(ScreenType.Welcome); 
+            ShowScreen(ScreenType.Welcome);
         }
         public void ToContextSetupScreen()
         {
             AudioManager.Instance.Voice.StopVoice();
-            ShowScreen(ScreenType.ContextSetup);         
-        } 
+            ShowScreen(ScreenType.ContextSetup);
+        }
         public void ToContextScreen() => ShowScreen(ScreenType.Context);
-        public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup); 
+        public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup);
         public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);
 
     }
