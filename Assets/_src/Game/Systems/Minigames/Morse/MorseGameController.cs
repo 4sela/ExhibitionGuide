@@ -13,7 +13,7 @@ namespace Game.Systems.Minigames.Morse
     public sealed class MorseGameController : MonoBehaviour, IMinigame
     {
         [Header("Game Settings")]
-        [SerializeField] private string targetWord = "HER";
+        [SerializeField] private string targetWord = "RAY";
 
         [Header("System Dependencies")]
         [SerializeField] private MorseInputHandler morseInputHandler;

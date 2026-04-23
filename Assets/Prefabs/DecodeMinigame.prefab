@@ -412,7 +412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kode-bog
+  m_text: Kodebog
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
   m_sharedMaterial: {fileID: 7727282430912938700, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
@@ -3125,7 +3125,7 @@ MonoBehaviour:
   m_text: "Rasmus = Eneb\xE6rodde\nPeder = Hasmark\nKaj = Lumby\nJens = Odense Havn\n\n\u201Ckommer
     ikke hjem\u201D = Aflyst\n\n\u201Cnormale tilstande\" = Nedkastning i nat\n\n\u201CModtaget
     detaileret underretning\" = Udskudt til i morgen nat\n\n\u201CPasse p\xE5\" =
-    Fare / tyskerne t\xE6t p\xE5\r\n\r\n\n\nfwe\n\nfwe\nfew\n\newf\nfew\nfwe\n"
+    Fare / tyskerne t\xE6t p\xE5\r\n\n\newf\nfew\nfwe\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}
   m_sharedMaterial: {fileID: 265454499000485240, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}
@@ -3363,7 +3363,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Du skal nu bruge en udstillings-genstand fra museet til dette.\nFind dokumentet
     \u201CTil arbejderne i Odense\u201D, i omr\xE5det \"danmark besat\".\nL\xE6s
-    <b><color=#FFD60A>linje 6 og linje 16</color></b> i dokumentet og brug <b><color=#FFD60A>kode-bogen</color></b> 
+    <b><color=#FFD60A>linje 3 og linje 6</color></b> i dokumentet og brug <b><color=#FFD60A>kode-bogen</color></b> 
     til at matche de fundne ord med det i bogen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
