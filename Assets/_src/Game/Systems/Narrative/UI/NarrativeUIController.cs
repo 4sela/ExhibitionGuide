@@ -65,8 +65,9 @@ namespace Game.UI.Screens.Narrative
         private void RenderNode(NarrativeNode node)
         {
             ClearChoices();
+#if !UNITY_EDITOR
             ResetChoiceContainerAlpha();
-
+#endif
             if (typingCoroutine != null)
             {
                 StopCoroutine(typingCoroutine);
@@ -157,8 +158,11 @@ namespace Game.UI.Screens.Narrative
 
         private IEnumerator TypeTextRoutine(string textToType)
         {
+
+#if !UNITY_EDITOR
             for (int i = 0; i < _buttonArray.Length; i++)
                 _buttonArray[i].interactable = false;
+#endif
 
             bodyText.text = textToType;
             bodyText.maxVisibleCharacters = 0;
@@ -168,6 +172,7 @@ namespace Game.UI.Screens.Narrative
                 bodyText.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(timePerChar);
             }
+
             StartCoroutine(FadeInCanvasGroup(choiceContainerCanvasGroup, buttonFadeDuration));
 
             for (int i = 0; i < _buttonArray.Length; i++)

@@ -11,7 +11,10 @@ namespace Game.Systems.Minigames.Morse
             this.targetWord = targetWord.ToUpper();
         }
 
-        public bool Check(char[] input)
+        /// <summary>
+        ///
+        /// </summary>
+        public bool Validate(char[] input)
         {
             if (input.Length != targetWord.Length)
                 return false;

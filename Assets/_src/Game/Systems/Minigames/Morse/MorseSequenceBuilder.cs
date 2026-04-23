@@ -6,8 +6,8 @@ namespace Game.Systems.Minigames.Morse
 {
     public sealed class MorseSequenceBuilder
     {
-        public event Action<char> OnLetterFinalized;
-        public event Action<string> OnInvalidSequence;
+        public event Action<char> OnLetterFormed;
+        public event Action OnUnrecognizedMorseCharacter;
 
         private List<char> _decodedLetters = new();
         private string _currentSymbolSequence = "";
@@ -36,30 +36,29 @@ namespace Game.Systems.Minigames.Morse
                 return;
 
             if (!_isPressing && currentTime - _lastInputTime > letterPauseThreshold)
-                FinalizeLetter();
+                AttemptLetterTranslation();
         }
 
-        public void FinalizeLetter()
+        private void AttemptLetterTranslation()
         {
             if (string.IsNullOrEmpty(_currentSymbolSequence))
                 return;
 
-            if (MorseTranslator.TryTranslate(_currentSymbolSequence, out char letter))
+            bool isValidLetter = MorseTranslator.TryTranslate(_currentSymbolSequence, out char letter);
+
+            if (isValidLetter)
             {
                 _decodedLetters.Add(letter);
-                OnLetterFinalized?.Invoke(letter);
-            }
-            else
-            {
-                OnInvalidSequence?.Invoke(_currentSymbolSequence);
-                _currentSymbolSequence = "";
+                OnLetterFormed?.Invoke(letter);
             }
 
-            _currentSymbolSequence = "";
-            _lastInputTime = float.MaxValue;
+            else
+                OnUnrecognizedMorseCharacter?.Invoke();
+
+            ResetCurrentSequenceOnly();
         }
 
-        public char GetCurrentLetter()
+        public char GetPreviewLetter()
         {
             char preview = ' ';
 
@@ -71,9 +70,8 @@ namespace Game.Systems.Minigames.Morse
 
         public void ClearData()
         {
-            _currentSymbolSequence = "";
             _decodedLetters.Clear();
-            _lastInputTime = float.MaxValue;
+            ResetCurrentSequenceOnly();
         }
 
         public void ResetCurrentSequenceOnly()
