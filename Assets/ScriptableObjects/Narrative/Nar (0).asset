@@ -42,10 +42,10 @@ MonoBehaviour:
   - nodeId: 3
     text: "En times tid senere er folk begyndt at blive ansp\xE6ndte.\_\n\nS\xE5
       h\xF8res det.\n\nEt fly.\n\nEn britisk Stirling flyver lavt hen over jer.\n\n\u201CSkynd
-      dig at morse <b>H-E-R</b> til flyet!\u201D \r"
+      dig at morse <b>R-A-Y</b> til flyet!\u201D \r"
     choices: []
     defaultTargetNodeId: 4
-    voiceClip: {fileID: 8300000, guid: 5d7cc2bcf1bd3ee4e8f35411dc786447, type: 3}
+    voiceClip: {fileID: 8300000, guid: 72cd5a2fa61a5cb4a9eae471462859d7, type: 3}
     minigamePrefab: {fileID: 7416240185725632505, guid: 63581926aea032c46943b25ac5c3de79, type: 3}
   - nodeId: 4
     text: "Senere samme nat.\n\r\nDu bliver f\xF8rt til en g\xE5rd.\n\r\nEn mand
