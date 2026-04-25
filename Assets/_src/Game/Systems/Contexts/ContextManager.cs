@@ -6,14 +6,17 @@ namespace Game.Systems.Contexts
     {
         public static ContextManager Instance { get; private set; }
 
-        [Header("Context Panels")]
+        [Header("Odinstårnet")]
         [SerializeField] private GameObject odinsTårnet;
-        [SerializeField] private GameObject augustOprøret;
-        [SerializeField] private GameObject linzSkibet;
+        [SerializeField] private AudioClip audioOdinsTårnet;
 
-        [SerializeField] private AudioClip audio_OdinsTårnet;
-        [SerializeField] private AudioClip audio_AugustOprøret;
-        [SerializeField] private AudioClip audio_LinzSkibet;
+        [Header("Augustoprøret")]
+        [SerializeField] private GameObject augustOprøret;
+        [SerializeField] private AudioClip audioAugustOprøret;
+
+        [Header("Linz Skibet")]
+        [SerializeField] private GameObject linzSkibet;
+        [SerializeField] private AudioClip audioLinzSkibet;
 
         void Awake()
         {
@@ -30,10 +33,10 @@ namespace Game.Systems.Contexts
                     augustOprøret.SetActive(false);
                     linzSkibet.SetActive(false);
 
-                    if(audio_OdinsTårnet != null)
+                    if (audioOdinsTårnet != null)
                     {
-                        AudioManager.Instance.Voice.PlayVoice(audio_OdinsTårnet);
-                    }                    
+                        Invoke(nameof(PlayOdinsTårnet), 1f);
+                    }
                     break;
 
                 case 1:
@@ -41,10 +44,10 @@ namespace Game.Systems.Contexts
                     augustOprøret.SetActive(true);
                     linzSkibet.SetActive(false);
 
-                    if(audio_AugustOprøret != null)
+                    if (audioAugustOprøret != null)
                     {
-                        AudioManager.Instance.Voice.PlayVoice(audio_AugustOprøret);
-                    }                    
+                        Invoke(nameof(PlayAugustOprøert), 1f);
+                    }
                     break;
 
                 case 2:
@@ -52,10 +55,10 @@ namespace Game.Systems.Contexts
                     augustOprøret.SetActive(false);
                     linzSkibet.SetActive(true);
 
-                    if(audio_LinzSkibet != null)
+                    if (audioLinzSkibet != null)
                     {
-                        AudioManager.Instance.Voice.PlayVoice(audio_LinzSkibet);
-                    }                    
+                        Invoke(nameof(PlayLinzSkibet), 1f);
+                    }
                     break;
             }
         }
@@ -66,5 +69,9 @@ namespace Game.Systems.Contexts
             augustOprøret.SetActive(false);
             linzSkibet.SetActive(false);
         }
+
+        private void PlayOdinsTårnet() => AudioManager.Instance.Voice.PlayVoice(audioOdinsTårnet);
+        private void PlayAugustOprøert() => AudioManager.Instance.Voice.PlayVoice(audioAugustOprøret);
+        private void PlayLinzSkibet() => AudioManager.Instance.Voice.PlayVoice(audioLinzSkibet);
     }
 }
