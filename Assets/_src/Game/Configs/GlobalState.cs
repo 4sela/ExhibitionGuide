@@ -2,17 +2,27 @@ using UnityEngine;
 
 namespace Game.Configs
 {
-    public static class GlobalState
+    public sealed class GlobalState : MonoBehaviour
     {
-        public static bool IsAudioEnabled { get; private set; }
+        private static bool _isAudioEnabled;
 
-        public static Action<bool> SetDefaultAudioBehaviour;
-
-        public static void SetAudioEnabled(bool isEnabled)
+        void OnEnable()
         {
-            IsAudioEnabled = isEnabled;
-            PlayerPrefs.SetInt("AudioEnabled", isEnabled ? 1 : 0);
-            PlayerPrefs.Save();
+            GlobalStateEvents.SetDefaultAudioBehaviour += SetAudioEnabled;
+            GlobalStateEvents.GetDefaultAudioBehaviour += GetAudioEnabled;
         }
+
+        void OnDisable()
+        {
+            GlobalStateEvents.SetDefaultAudioBehaviour -= SetAudioEnabled;
+            GlobalStateEvents.GetDefaultAudioBehaviour -= GetAudioEnabled;
+        }
+
+        private static void SetAudioEnabled(bool isEnabled)
+        {
+            _isAudioEnabled = isEnabled;
+        }
+
+        private static bool GetAudioEnabled() => _isAudioEnabled;
     }
 }

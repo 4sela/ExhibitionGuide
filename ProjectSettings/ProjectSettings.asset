@@ -16,7 +16,7 @@ PlayerSettings:
   productName: ExhibitionGuide
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.21176471, g: 0.24313726, b: 0.3529412, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
