@@ -8,11 +8,11 @@ public class VoiceService
     private AudioSource source;
 
     // anti-spam (vigtigt på mobil)
-    private float lastPlayTime;
-    private float minInterval = 0.03f;
+    private float _lastPlayTime;
+    private float _minInterval = 0.03f;
 
-    private float defaultVolume = 1.0f;
-    private bool isMuted = false;
+    private float _defaultVolume = 1.0f;
+    private bool _isMuted = false;
 
     public VoiceService(AudioSource source)
     {
@@ -30,15 +30,15 @@ public class VoiceService
 
     public void StopVoice()
     {
-        if(source.clip == null) return;
+        if (source.clip == null) return;
 
         source.Stop();
     }
 
     public void ToggleMute()
     {
-        isMuted = !isMuted;
-        source.volume = isMuted ? 0f : defaultVolume;
+        _isMuted = !_isMuted;
+        source.volume = _isMuted ? 0f : _defaultVolume;
     }
 
     public void PauseVoice()
@@ -56,5 +56,4 @@ public class VoiceService
         source.Stop();
         source.Play();
     }
-
 }
