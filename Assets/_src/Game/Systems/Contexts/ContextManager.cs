@@ -70,8 +70,8 @@ namespace Game.Systems.Contexts
             linzSkibet.SetActive(false);
         }
 
-        private void PlayOdinsTårnet() => AudioManager.Instance.Voice.PlayVoice(audioOdinsTårnet);
-        private void PlayAugustOprøert() => AudioManager.Instance.Voice.PlayVoice(audioAugustOprøret);
-        private void PlayLinzSkibet() => AudioManager.Instance.Voice.PlayVoice(audioLinzSkibet);
+        private void PlayOdinsTårnet() => AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioOdinsTårnet);
+        private void PlayAugustOprøert() => AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioAugustOprøret);
+        private void PlayLinzSkibet() => AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioLinzSkibet);
     }
 }

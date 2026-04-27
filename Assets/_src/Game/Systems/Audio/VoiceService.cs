@@ -2,21 +2,32 @@
 using TMPro;
 using System.Collections;
 using System.Threading.Tasks;
+using Game.Configs;
 
-public class VoiceService
+public sealed class VoiceService
 {
     private AudioSource source;
-
-    // anti-spam (vigtigt på mobil)
     private float _lastPlayTime;
     private float _minInterval = 0.03f;
-
     private float _defaultVolume = 1.0f;
     private bool _isMuted = false;
+    private bool _isPlaying = false;
+    private bool _isPaused = false;
 
     public VoiceService(AudioSource source)
     {
         this.source = source;
+    }
+
+    public void PlayVoiceOnGameStart(AudioClip clip)
+    {
+        if (clip == null || !GlobalStateEvents.GetDefaultAudioBehaviour.Invoke())
+            return;
+
+        source.Stop();
+        source.clip = clip;
+        source.Play();
+        _isPlaying = true;
     }
 
     public void PlayVoice(AudioClip clip)
@@ -26,6 +37,8 @@ public class VoiceService
         source.Stop();
         source.clip = clip;
         source.Play();
+        _isPlaying = true;
+        _isPaused = false;
     }
 
     public void StopVoice()
@@ -33,6 +46,8 @@ public class VoiceService
         if (source.clip == null) return;
 
         source.Stop();
+        _isPlaying = false;
+        _isPaused = false;
     }
 
     public void ToggleMute()
@@ -43,17 +58,41 @@ public class VoiceService
 
     public void PauseVoice()
     {
-        source.Pause();
+        if (source.isPlaying)
+        {
+            source.Pause();
+            _isPlaying = false;
+            _isPaused = true;
+        }
     }
 
     public void UnPause()
     {
-        source.UnPause();
+        if (_isPaused)
+        {
+            source.UnPause();
+            _isPlaying = true;
+            _isPaused = false;
+        }
     }
 
     public void ResetVoice()
     {
-        source.Stop();
-        source.Play();
+        if (source.clip != null)
+        {
+            source.Stop();
+            source.Play();
+            _isPlaying = true;
+        }
+    }
+
+    public bool IsPaused()
+    {
+        return _isPaused;
+    }
+
+    public bool IsPlaying()
+    {
+        return _isPlaying;
     }
 }

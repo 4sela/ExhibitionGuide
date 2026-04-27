@@ -9,34 +9,47 @@ namespace Game.UI.Buttons.Audio
         [SerializeField] private RawImage pauseImage;
         [SerializeField] private RawImage playImage;
 
-        private bool _isPlaying = false;
+        private AudioManager _audioManager;
+        private VoiceService _voiceService;
 
         void Start()
         {
+            _audioManager = AudioManager.Instance;
+            _voiceService = _audioManager.Voice;
             pausePlayButton.onClick.AddListener(TogglePlayPause);
-            CheckConditions();
+            UpdateButtonVisuals();
         }
 
         private void TogglePlayPause()
         {
-            CheckConditions();
-            _isPlaying = !_isPlaying;
-        }
-
-        private void CheckConditions()
-        {
-            if (_isPlaying)
+            if (_voiceService.IsPlaying())
             {
-                AudioManager.Instance.Voice.PauseVoice();
-                pauseImage.enabled = false;
-                playImage.enabled = true;
+                Debug.Log("If");
+                _voiceService.PauseVoice();
+            }
+            else if (_voiceService.IsPaused())
+            {
+                Debug.Log("Else If");
+                _voiceService.UnPause();
             }
             else
             {
-                AudioManager.Instance.Voice.UnPause();
-                pauseImage.enabled = true;
-                playImage.enabled = false;
+                Debug.Log("Else");
+                if (_audioManager.voiceSource.clip != null)
+                {
+                    Debug.Log("Nested If");
+                    _voiceService.PlayVoice(_audioManager.voiceSource.clip);
+                }
             }
+
+            UpdateButtonVisuals();
+        }
+
+        private void UpdateButtonVisuals()
+        {
+            bool isPlaying = _voiceService.IsPlaying();
+            pauseImage.enabled = isPlaying;
+            playImage.enabled = !isPlaying;
         }
     }
 }
