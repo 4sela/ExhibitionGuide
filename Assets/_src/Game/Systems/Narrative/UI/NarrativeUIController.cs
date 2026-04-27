@@ -25,6 +25,7 @@ namespace Game.UI.Screens.Narrative
         [SerializeField] private Transform minigameContainer;
         [SerializeField] private Transform choicesContainerTransform;
         [SerializeField] private CanvasGroup choiceContainerCanvasGroup;
+        [SerializeField] private RawImage backgroundImage;
 
         [Header("Buttons")]
         [SerializeField] private Button defaultContinueButton;
@@ -67,7 +68,9 @@ namespace Game.UI.Screens.Narrative
             ClearChoices();
 #if !UNITY_EDITOR
             ResetChoiceContainerAlpha();
-#endif
+#endif      
+            backgroundImage.texture = NarrativeManager.Instance.GetImage(node);
+
             if (typingCoroutine != null)
             {
                 StopCoroutine(typingCoroutine);

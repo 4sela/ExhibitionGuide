@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Game.Systems.Narrative.Data;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.UI;
 
 namespace Game.Systems.Narrative.Runtime
 {
@@ -122,6 +123,16 @@ namespace Game.Systems.Narrative.Runtime
             {
                 AudioManager.Instance.Voice.PlayVoice(node.voiceClip);
             }
+        }
+
+        public Texture2D GetImage(NarrativeNode node)
+        {
+            if (node.BackgroundImage != null)             
+            { 
+                return node.BackgroundImage;
+            }
+
+            return null;
         }
     }
 }
