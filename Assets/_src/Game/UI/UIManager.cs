@@ -52,7 +52,7 @@ namespace Game.UI
 
 
             // Now we show StartScreen with animation
-            ShowScreen(ScreenType.Welcome);
+            ShowScreen(ScreenType.Start);
             ContextManager.Instance.CloseAllPanels();
         }
 

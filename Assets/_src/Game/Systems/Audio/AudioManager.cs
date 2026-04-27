@@ -8,8 +8,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource sfxSource;
     public AudioSource voiceSource;
 
-    private SFXService sfx;
-    private VoiceService voice;
+    private SFXService _sfx;
+    private VoiceService _voice;
+
+    public SFXService SFX => _sfx;
+    public VoiceService Voice => _voice;
 
     void Awake()
     {
@@ -22,10 +25,7 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        sfx = new SFXService(sfxSource);
-        voice = new VoiceService(voiceSource);
+        _sfx = new SFXService(sfxSource);
+        _voice = new VoiceService(voiceSource);
     }
-
-    public SFXService SFX => sfx;
-    public VoiceService Voice => voice;
 }
