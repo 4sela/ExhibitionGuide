@@ -19,22 +19,30 @@ namespace Game.UI.Screens.Narrative
         [SerializeField] private float timePerChar = 0.03f;
 
         [Header("Choices Setup")]
-        [SerializeField] private Transform choicesContainer;
         [SerializeField] private GameObject choiceButtonPrefab;
-        [SerializeField] private Button defaultContinueButton;
 
-        [Header("Minigame Setup")]
+        [Header("Containers")]
         [SerializeField] private Transform minigameContainer;
+        [SerializeField] private Transform choicesContainerTransform;
+        [SerializeField] private CanvasGroup choiceContainerCanvasGroup;
+        [SerializeField] private RawImage backgroundImage;
+
+        [Header("Buttons")]
+        [SerializeField] private Button defaultContinueButton;
         [SerializeField] private Button startMinigameButton;
-        [SerializeField] private Button minigameContinueButton;
+        [SerializeField] private float buttonFadeDuration = 0.3f;
+
+        private Button[] _buttonArray => new[]
+        {
+            defaultContinueButton,
+            startMinigameButton
+        };
 
         private List<GameObject> spawnedChoices = new List<GameObject>();
         private Coroutine typingCoroutine;
 
         void OnEnable()
         {
-            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
-
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered += RenderNode;
@@ -46,8 +54,6 @@ namespace Game.UI.Screens.Narrative
 
         void OnDisable()
         {
-            NarrativeEvents.MiniGameComplete += OnMinigameClosed;
-
             if (NarrativeManager.Instance != null)
             {
                 NarrativeManager.Instance.OnNodeEntered -= RenderNode;
@@ -55,9 +61,15 @@ namespace Game.UI.Screens.Narrative
             }
         }
 
+        private void ResetChoiceContainerAlpha() => choiceContainerCanvasGroup.alpha = 0;
+
         private void RenderNode(NarrativeNode node)
         {
             ClearChoices();
+#if !UNITY_EDITOR
+            ResetChoiceContainerAlpha();
+#endif      
+            backgroundImage.texture = NarrativeManager.Instance.GetImage(node);
 
             if (typingCoroutine != null)
             {
@@ -86,9 +98,6 @@ namespace Game.UI.Screens.Narrative
         private void SetupMinigamePrompt(NarrativeNode node)
         {
             startMinigameButton.gameObject.SetActive(true);
-            minigameContinueButton.gameObject.SetActive(true);
-
-            minigameContinueButton.interactable = false;
 
             startMinigameButton.onClick.RemoveAllListeners();
             startMinigameButton.onClick.AddListener(() =>
@@ -96,15 +105,6 @@ namespace Game.UI.Screens.Narrative
                 Instantiate(node.minigamePrefab, minigameContainer);
 
                 startMinigameButton.gameObject.SetActive(false);
-            });
-
-            minigameContinueButton.onClick.RemoveAllListeners();
-            minigameContinueButton.onClick.AddListener(() =>
-            {
-                Debug.Log("Den virker denne her knap!");
-                startMinigameButton.gameObject.SetActive(false);
-                NarrativeManager.Instance.ContinueDefault();
-                minigameContinueButton.gameObject.SetActive(false);
             });
         }
 
@@ -132,7 +132,7 @@ namespace Game.UI.Screens.Narrative
 
                 NarrativeChoice currentChoice = choice;
 
-                GameObject newChoiceObj = Instantiate(choiceButtonPrefab, choicesContainer);
+                GameObject newChoiceObj = Instantiate(choiceButtonPrefab, choicesContainerTransform);
                 newChoiceObj.SetActive(true);
                 spawnedChoices.Add(newChoiceObj);
 
@@ -156,28 +156,45 @@ namespace Game.UI.Screens.Narrative
         {
             ClearChoices();
             bodyText.text = string.Empty;
-            gameObject.SetActive(false); // Hide this entire screen
-        }
-
-        /// <summary>
-        /// Placeholder method! Call when we close minigame
-        /// </summary>
-        public void OnMinigameClosed()
-        {
-            minigameContinueButton.interactable = true;
+            gameObject.SetActive(false);
         }
 
         private IEnumerator TypeTextRoutine(string textToType)
         {
-            bodyText.text = textToType;
-            bodyText.maxVisibleCharacters = 0; // Hide it all initially
 
-            // Loop through and reveal characters one by one
+#if !UNITY_EDITOR
+            for (int i = 0; i < _buttonArray.Length; i++)
+                _buttonArray[i].interactable = false;
+#endif
+
+            bodyText.text = textToType;
+            bodyText.maxVisibleCharacters = 0;
+
             for (int i = 0; i <= textToType.Length; i++)
             {
                 bodyText.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(timePerChar);
             }
+
+            StartCoroutine(FadeInCanvasGroup(choiceContainerCanvasGroup, buttonFadeDuration));
+
+            for (int i = 0; i < _buttonArray.Length; i++)
+                _buttonArray[i].interactable = true;
+        }
+
+        private IEnumerator FadeInCanvasGroup(CanvasGroup canvasGroup, float duration)
+        {
+            canvasGroup.alpha = 0f;
+
+            float elapsedTime = 0f;
+            while (elapsedTime < duration)
+            {
+                canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            canvasGroup.alpha = 1f;
         }
     }
 }

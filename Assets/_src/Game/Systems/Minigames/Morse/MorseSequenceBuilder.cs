@@ -2,96 +2,82 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MorseSequenceBuilder
+namespace Game.Systems.Minigames.Morse
 {
-    public static MorseSequenceBuilder Instance = new ();
-
-
-    private string currentSymbolSequence = "";
-    private List<char> decodedLetters = new();
-
-    private float lastInputTime = float.MaxValue;
-
-    private readonly float letterPauseThreshold = 1.5f;
-    private bool isPressing = false;
-
-
-    public IReadOnlyList<char> DecodedLetters => decodedLetters;
-
-    public event Action<char> OnLetterFinalized;
-    public event Action<string> OnInvalidSequence;
-
-    public void AddSymbol(char symbol, float currentTime)
+    public sealed class MorseSequenceBuilder
     {
-        currentSymbolSequence += symbol;
-        lastInputTime = currentTime;
-    }
+        public event Action<char> OnLetterFormed;
+        public event Action OnUnrecognizedMorseCharacter;
 
-    public void SetPressing(bool pressing)
-    {
-        isPressing = pressing;
-    }
+        private List<char> _decodedLetters = new();
+        private string _currentSymbolSequence = "";
+        private float _lastInputTime = float.MaxValue;
+        private bool _isPressing = false;
 
-    public void Tick(float currentTime)
-    {
-        if (string.IsNullOrEmpty(currentSymbolSequence))
-            return;
+        private readonly float letterPauseThreshold = 1f;
 
-        if (!isPressing && currentTime - lastInputTime > letterPauseThreshold)
+        public IReadOnlyList<char> DecodedLetters => _decodedLetters;
+        public string CurrentSymbolSequence => _currentSymbolSequence;
+
+        public void AddSymbol(char symbol, float currentTime)
         {
-            FinalizeLetter();
-        }
-    }
-
-    public void FinalizeLetter()
-    {
-        if (string.IsNullOrEmpty(currentSymbolSequence))
-            return;
-
-        if (MorseTranslator.TryTranslate(currentSymbolSequence, out char letter))
-        {
-            decodedLetters.Add(letter);
-            OnLetterFinalized?.Invoke(letter);
+            _currentSymbolSequence += symbol;
+            _lastInputTime = currentTime;
         }
 
-        else
+        public void SetPressing(bool pressing)
         {
-            //INVALID INPUT
-            OnInvalidSequence?.Invoke(currentSymbolSequence);
-            currentSymbolSequence = "";
+            _isPressing = pressing;
         }
 
-        currentSymbolSequence = "";
-        lastInputTime = float.MaxValue;
-    }
-
-    public char GetCurrentLetter()
-    {
-        char preview = ' ';
-
-        if (MorseTranslator.TryTranslate(currentSymbolSequence, out char letter))
+        public void Tick(float currentTime)
         {
-            preview = letter;
+            if (string.IsNullOrEmpty(_currentSymbolSequence))
+                return;
+
+            if (!_isPressing && currentTime - _lastInputTime > letterPauseThreshold)
+                AttemptLetterTranslation();
         }
-        return preview;
-    }
 
-    public string GetCurrentSymbols()
-    {
-        return currentSymbolSequence;
-    }
+        private void AttemptLetterTranslation()
+        {
+            if (string.IsNullOrEmpty(_currentSymbolSequence))
+                return;
 
-    public void Reset()
-    {
-        currentSymbolSequence = "";
-        decodedLetters.Clear();
-        lastInputTime = float.MaxValue;
-    }
+            bool isValidLetter = MorseTranslator.TryTranslate(_currentSymbolSequence, out char letter);
 
-    public void ResetCurrentSequenceOnly()
-    {
-        currentSymbolSequence = "";
-        lastInputTime = float.MaxValue;
-    }
+            if (isValidLetter)
+            {
+                _decodedLetters.Add(letter);
+                OnLetterFormed?.Invoke(letter);
+            }
 
+            else
+                OnUnrecognizedMorseCharacter?.Invoke();
+
+            ResetCurrentSequenceOnly();
+        }
+
+        public char GetPreviewLetter()
+        {
+            char preview = ' ';
+
+            if (MorseTranslator.TryTranslate(_currentSymbolSequence, out char letter))
+                preview = letter;
+
+            return preview;
+        }
+
+        public void ClearData()
+        {
+            _decodedLetters.Clear();
+            ResetCurrentSequenceOnly();
+        }
+
+        public void ResetCurrentSequenceOnly()
+        {
+            _currentSymbolSequence = "";
+            _lastInputTime = float.MaxValue;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Game.UI.Tweening;
+using Game.Systems.Contexts;
 
 namespace Game.UI
 {
@@ -32,7 +33,6 @@ namespace Game.UI
 
         private Dictionary<ScreenType, GameObject> screenMap;
 
-
         void Awake()
         {
             screenMap = new Dictionary<ScreenType, GameObject>();
@@ -50,8 +50,10 @@ namespace Game.UI
             for (int i = 0; i < allScreens.Length; i++)
                 allScreens[i].screenObject.SetActive(false);
 
+
             // Now we show StartScreen with animation
-            ShowScreen(ScreenType.Welcome);
+            ShowScreen(ScreenType.Start);
+            ContextManager.Instance.CloseAllPanels();
         }
 
         /// <summary>
@@ -109,9 +111,19 @@ namespace Game.UI
         /// <remarks>
         /// Button hookup.
         /// </remarks>
-        public void ToWelcomeScreen() => ShowScreen(ScreenType.Welcome);
-        public void ToContextSetupScreen() => ShowScreen(ScreenType.ContextSetup);
+        public void ToWelcomeScreen()
+        {
+            AudioManager.Instance.Voice.StopVoice();
+            ShowScreen(ScreenType.Welcome);
+        }
+        public void ToContextSetupScreen()
+        {
+            AudioManager.Instance.Voice.StopVoice();
+            ShowScreen(ScreenType.ContextSetup);
+        }
+        public void ToContextScreen() => ShowScreen(ScreenType.Context);
         public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup);
         public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);
+
     }
 }
