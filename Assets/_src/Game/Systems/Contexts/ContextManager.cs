@@ -26,6 +26,8 @@ namespace Game.Systems.Contexts
 
         public void LoadContextPanel(int contextPanel)
         {
+            AudioManager.Instance.Voice.StopVoice();
+
             switch (contextPanel)
             {
                 case 0:
@@ -34,9 +36,8 @@ namespace Game.Systems.Contexts
                     linzSkibet.SetActive(false);
 
                     if (audioOdinsTårnet != null)
-                    {
                         Invoke(nameof(PlayOdinsTårnet), 1f);
-                    }
+
                     break;
 
                 case 1:
@@ -45,9 +46,8 @@ namespace Game.Systems.Contexts
                     linzSkibet.SetActive(false);
 
                     if (audioAugustOprøret != null)
-                    {
                         Invoke(nameof(PlayAugustOprøert), 1f);
-                    }
+
                     break;
 
                 case 2:
@@ -56,9 +56,8 @@ namespace Game.Systems.Contexts
                     linzSkibet.SetActive(true);
 
                     if (audioLinzSkibet != null)
-                    {
                         Invoke(nameof(PlayLinzSkibet), 1f);
-                    }
+
                     break;
             }
         }
@@ -70,8 +69,22 @@ namespace Game.Systems.Contexts
             linzSkibet.SetActive(false);
         }
 
-        private void PlayOdinsTårnet() => AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioOdinsTårnet);
-        private void PlayAugustOprøert() => AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioAugustOprøret);
-        private void PlayLinzSkibet() => AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioLinzSkibet);
+        private void PlayOdinsTårnet()
+        {
+            AudioManager.Instance.voiceSource.clip = audioOdinsTårnet;
+            AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioOdinsTårnet);
+        }
+
+        private void PlayAugustOprøert()
+        {
+            AudioManager.Instance.voiceSource.clip = audioAugustOprøret;
+            AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioAugustOprøret);
+        }
+
+        private void PlayLinzSkibet()
+        {
+            AudioManager.Instance.voiceSource.clip = audioLinzSkibet;
+            AudioManager.Instance.Voice.PlayVoiceOnGameStart(audioLinzSkibet);
+        }
     }
 }
