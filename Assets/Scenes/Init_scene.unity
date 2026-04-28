@@ -5620,30 +5620,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sabotagen mod den tyske minel\xE6gger Linz var en af de mest betydningsfulde
+  m_text: "Sabotagen af den tyske minel\xE6gger Linz var en af de mest betydningsfulde
     sabotageaktioner p\xE5 Fyn under bes\xE6ttelsen. \n\nSkibet l\xE5 ved Odense
-    Staalskibsv\xE6rft, hvor det var ved at blive ombygget til minel\xE6gger for
-    den tyske fl\xE5de. \r\n\r\nForm\xE5let var at bruge skibet til at udl\xE6gge
-    s\xF8miner i danske farvande og dermed styrke den tyske kontrol med sejladsen.
-    Netop derfor blev Linz et oplagt m\xE5l for modstandsbev\xE6gelsen.\r\n\r\nSabotagen
-    blev udf\xF8rt den 28. juli 1943 af elektrikeren og modstandsmanden Sigurd Weber,
-    som arbejdede p\xE5 v\xE6rftet og derfor havde adgang til skibet. Han havde f\xE5et
-    udleveret en magnetmine, som stammede fra nedkastninger modtaget af modstandsgruppen
-    Hvidstengruppen. \r\n\r\nMinen var konstrueret til at blive fastgjort direkte
-    p\xE5 skibets skrog under vandlinjen. Planen var at anbringe spr\xE6ngladningen
-    under et vagtskifte, hvor bevogtningen var svagest.\r\n\r\nWeber fors\xF8gte
-    f\xF8rste gang den 27. juli, men m\xE5tte opgive p\xE5 grund af sk\xE6rpet tysk
-    bevogtning. Han skjulte i stedet spr\xE6ngladningen p\xE5 v\xE6rftet og vendte
-    tilbage n\xE6ste dag. \r\n\r\nDen 28. juli lykkedes det ham at f\xE5 minen anbragt
-    p\xE5 skibets skrog, hvorefter den senere samme aften detonerede. Eksplosionen
-    skabte omfattende skader, og selv om Linz ikke sank fuldst\xE6ndigt p\xE5 grund
-    af den lave vanddybde, blev skibet s\xE5 beskadiget, at det ikke kom i tjeneste
-    som minel\xE6gger.\r\n\r\nSabotagen fik stor betydning lokalt og nationalt. Dagen
-    efter nedlagde arbejderne p\xE5 v\xE6rftet arbejdet i protest, og episoden bidrog
-    til den stigende uro og utilfredshed med bes\xE6ttelsesmagten. \r\n\r\nAktionen
-    blev en del af den r\xE6kke af strejker og sabotagehandlinger, der kulminerede
-    i det landsd\xE6kkende opr\xF8r i august 1943, som f\xF8rte til sammenbruddet
-    af samarbejdspolitikken mellem den danske regering og den tyske bes\xE6ttelsesmagt.\r\n"
+    St\xE5lskibsv\xE6rft, hvor det var ved at blive ombygget til minel\xE6gger for
+    den tyske fl\xE5de.\r\n\nForm\xE5let var at bruge skibet til at udl\xE6gge s\xF8miner
+    i danske farvande og dermed styrke den tyske kontrol med sejladsen. Netop derfor
+    blev Linz et oplagt m\xE5l for modstandsbev\xE6gelsen.\n\r\nSabotagen blev udf\xF8rt
+    den 28. juli 1943 af elektrikeren og modstandsmanden Sigurd Weber, som arbejdede
+    p\xE5 v\xE6rftet og derfor havde adgang til skibet. Han havde f\xE5et udleveret
+    en magnetmine, som stammede fra nedkastninger fra England. Minen var konstrueret
+    med en magnet til at blive fastgjort direkte p\xE5 skibets skrog under vandlinjen.\n\r\nPlanen
+    var at anbringe spr\xE6ngladningen under et vagtskifte, hvor bevogtningen var
+    svagest. Weber fors\xF8gte f\xF8rste gang den 27. juli, men m\xE5tte opgive p\xE5
+    grund af sk\xE6rpet tysk bevogtning. Han skjulte i stedet spr\xE6ngladningen
+    p\xE5 v\xE6rftet og vendte tilbage n\xE6ste dag.\n\r\nDen 28. juli lykkedes det
+    ham at f\xE5 minen anbragt p\xE5 skibets skrog, hvorefter den senere samme aften
+    detonerede. Eksplosionen skabte omfattende skader, og selvom Linz ikke sank fuldst\xE6ndigt,
+    blev skibet s\xE5 beskadiget, at det ikke kom i tjeneste som minel\xE6gger.\n\r\nSabotagen
+    fik stor betydning lokalt og nationalt. Dagen efter nedlagde arbejderne p\xE5
+    v\xE6rftet arbejdet i protest, og episoden bidrog til den stigende uro og utilfredshed
+    med bes\xE6ttelsesmagten.\n\r\nAktionen blev en del af den r\xE6kke af strejker
+    og sabotagehandlinger, der kulminerede i det landsd\xE6kkende opr\xF8r kendt
+    som Augustopr\xF8ret 1943.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
   m_sharedMaterial: {fileID: 7727282430912938700, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
@@ -6345,30 +6343,37 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sommeren 1943 markerede vendepunktet for den danske samarbejdspolitik.
-    Allierede sejre ved Stalingrad og i Nordafrika styrkede den danske modstandsvilje.
-    \r\n\r\nI Odense blev opr\xF8ret ant\xE6ndt den 28. juli 1943, da modstandsbev\xE6gelsen
-    saboterede den tyske mineudl\xE6gger \"Linz\" p\xE5 Odense St\xE5lskibsv\xE6rft.
-    Aktionen udl\xF8ste en b\xF8lge af strejker, der hurtigt spredte sig fra v\xE6rftsarbejderne
-    til hele byens befolkning. \r\n\r\nSituationen i Odense eskalerede voldsomt i
-    midten af august. De tyske soldater i byen var blevet tiltagende nerv\xF8se og
-    aggressive, hvilket f\xF8rte til hyppige gadeslagsm\xE5l med byens unge og danske
-    soldater.\r\nDen 18. august blev sp\xE6ndingerne uforl\xF8ste, da en generalstrejke
-    lagde byen \xF8de. Butikker, der mentes at samarbejde med tyskerne, blev raseret,
-    og vreden vendte sig ogs\xE5 mod de kvinder, der daterede tyske soldater. \r\n\r\nSelvom
-    det danske politi fors\xF8gte at d\xE6mpe gemytterne med udgangsforbud, var kontrollen
-    reelt tabt. Odenses gader var blevet en kampplads mellem civilbefolkningen og
-    bes\xE6ttelsesmagten.\r\nEt af de m\xF8rkeste kapitler under opr\xF8ret i Odense
-    fandt sted den 19. august. Tyske SS-politisoldater indsatte brutal magt og foretog
-    massearrestationer. Dokumentationen af disse mishandlinger, i form af fotografier
-    af forsl\xE5ede modstandsfolk, blev et afg\xF8rende propagandav\xE6rkt\xF8j.
-    Billederne fjernede enhver rest af illusion om den \"humanit\xE6re\" bes\xE6ttelse
-    og forst\xE6rkede hadet mod tyskerne i hele landet.\r\nUrolighederne i Odense
-    og andre store provinsbyer tvang en afg\xF8relse frem. \r\n\r\nDa den tyske rigsbefuldm\xE6gtigede,
-    Werner Best, kr\xE6vede d\xF8dsstraf for sabotage, n\xE6gtede den danske regering
-    at efterkomme kravet. \r\n\r\nDen 29. august 1943 tr\xE5dte regeringen af, samarbejdspolitikken
-    oph\xF8rte, og tyskerne indf\xF8rte milit\xE6r undtagelsestilstand. Herefter
-    var Danmark en nation i \xE5ben krig med bes\xE6ttelsesmagten.\r\n"
+  m_text: "Sommeren 1943 markerede et vendepunkt for den danske samarbejdspolitik.
+    Allierede sejre ved Stalingrad og i Nordafrika styrkede modstandsviljen i Danmark.\n\r\nI
+    Odense blev urolighederne forst\xE6rket den 28. juli 1943, da modstandsbev\xE6gelsen
+    saboterede den tyske mineudl\xE6gger Linz p\xE5 Odenses st\xE5lskibsv\xE6rft.
+    Aktionen bidrog til en b\xF8lge af strejker, idet den viste, at tyskerne var
+    s\xE5rbare og dermed styrkede arbejdernes mod til \xE5ben modstand, som spredte
+    sig fra v\xE6rftsarbejderne til store dele af byens befolkning.\n\r\nSituationen
+    eskalerede i august. Tyske soldater optr\xE5dte mere aggressivt, hvilket f\xF8rte
+    til sammenst\xF8d med civile, s\xE6rligt unge m\xE6nd.Den 18. august kulminerede
+    urolighederne i en generalstrejke. Butikker, der blev opfattet som samarbejdende
+    med tyskerne, blev raseret, og vreden ramte ogs\xE5 kvinder, der havde forhold
+    til tyske soldater, som i samtiden blev omtalt \u201Ctyske feltmadresser\u201D.\n\r\nDet
+    danske politi fors\xF8gte at genoprette ro og orden, men kontrollen var i praksis
+    sv\xE6kket, og gaderne var pr\xE6get af uro og konfrontationer. Et af de m\xF8rkeste
+    kapitler under opr\xF8ret i Odense fandt sted den 19. August. Tyske SS-politistyrker
+    indsatte brutal magt og foretog massearrestationer. \n\r\nDokumentationen af
+    disse mishandlinger, i form af fotografier af forsl\xE5ede modstandsfolk, blev
+    et afg\xF8rende propaganda-v\xE6rkt\xF8j for modstandsbev\xE6gelsen. Billederne
+    fjernede enhver rest af illusionen om den humanit\xE6re bes\xE6ttelse og forst\xE6rkede
+    hadet mod tyskerne i hele landet.\r\nFors\xF8get p\xE5 at genoprette ro og orden
+    ses tydeligt i samtidige dokumenter. I en meddelelse \u201CTil arbejderne i Odense\u201D
+    fra Arbejdernes F\xE6llesorganisation den 20. august 1943 blev de strejkende
+    opfordret til at genoptage arbejdet. Dokumentet viser, hvordan fagbev\xE6gelsens
+    ledelse fors\xF8gte at d\xE6mpe urolighederne og advarede mod rygtesmede og uansvarlige
+    elementer.\n\r\nUrolighederne i Odense og andre byer f\xF8rte til en politisk
+    krise. Den tyske rigsbefuldm\xE6gtigede Werner Best kr\xE6vede blandt andet d\xF8dsstraf
+    for sabotage, hvilket den danske regering n\xE6gtede at acceptere. Den 29. august
+    1943 tr\xE5dte regeringen tilbage, samarbejdspolitikken oph\xF8rte, og tyskerne
+    indf\xF8rte milit\xE6r undtagelsestilstand. Herefter blev bes\xE6ttelsen v\xE6sentligt
+    sk\xE6rpet, og modstanden udviklede sig til en mere \xE5ben konfrontation med
+    tyskerne.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
   m_sharedMaterial: {fileID: 7727282430912938700, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
@@ -14109,29 +14114,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Odinst\xE5rnet blev indviet i 1935 p\xE5 Bolbro Bakke som et symbol p\xE5
-    Odenses moderne ambitioner. \n\nT\xE5rnet var bygget af overskydende st\xE5l
-    fra den f\xF8rste Lilleb\xE6ltsbro og knejsede 175 meter over jorden. \n\nDet
-    var Danmarks h\xF8jeste bygningsv\xE6rk og det n\xE6sth\xF8jeste i Europa, kun
-    overg\xE5et af Eiffelt\xE5rnet. Med sin popul\xE6re restaurant i 110 meters h\xF8jde
-    blev det hurtigt byens ubestridte vartegn og et nationalt udflugtsm\xE5l.\r\n\nUnder
-    bes\xE6ttelsen \xE6ndrede t\xE5rnets betydning sig. Da den danske modstandsbev\xE6gelse
-    i 1944 intensiverede deres sabotage mod tyske interesser, svarede bes\xE6ttelsesmagten
-    igen med schalburgtage, som var modsabotage rettet mod civile danske symboler.
-    Form\xE5let var at kn\xE6kke befolkningens moral gennem terror. \n\nOdinst\xE5rnet
-    blev udvalgt som det ultimative m\xE5l for denne h\xE6vnakt. Det blev den berygtede
-    Peter-gruppe som fik til opgave at destroer Odinst\xE5rnet. Gruppen bestod af
-    b\xE5de tyske SS-folk og danske kollaborat\xF8rer, og deres metoder var kendetegnet
-    ved kynisme og total mangel p\xE5 hensyn til civile v\xE6rdier. \n\nNatten til
-    den 14. december 1944 ankom gruppen til Bolbro Bakke, hvor de under trussel tvang
-    vagten til at give dem adgang til t\xE5rnets fundament. Her placerede de enorme
-    m\xE6ngder spr\xE6ngstof ved de b\xE6rende st\xE5lben. \n\nDa ladningerne blev
-    bragt til spr\xE6ngning klokken 06.15, var eksplosionen s\xE5 voldsom, at ruderne
-    i store dele af Odense knustes, og trykb\xF8lgen kunne m\xE6rkes i hele byen.\r\n\xD8del\xE6ggelsen
-    var total. \n\nSelvom man efter befrielsen i 1945 dr\xF8ftede en genopbygning,
-    blev planerne opgivet grundet materialemangel. I dag st\xE5r kun en lille model
-    p\xE5 Bolbro Bakke som et mindesm\xE6rke over den nat, hvor Odenses stolthed
-    faldt som offer for bes\xE6ttelsesmagtens terror.\r\n"
+  m_text: "T\xE5rnet blev indviet i 1935 p\xE5 Bolbro Bakke som et symbol p\xE5 Odenses
+    moderne ambitioner. Det var opf\xF8rt af overskydende st\xE5l fra Lilleb\xE6ltsbroen
+    og ragede 175 meter op over jorden. \n\r\nSom Danmarks h\xF8jeste bygningsv\xE6rk
+    og det n\xE6sth\xF8jeste i Europa, kun overg\xE5et af Eiffelt\xE5rnet, blev det
+    hurtigt et markant vartegn. Med en popul\xE6r restaurant i 110 meters h\xF8jde
+    udviklede det sig til et nationalt udflugtsm\xE5l.\r\nUnder bes\xE6ttelsen \xE6ndrede
+    t\xE5rnets betydning sig. I 1944 intensiverede modstandsbev\xE6gelsen deres sabotage
+    mod tyske interesser, og bes\xE6ttelsesmagten svarede igen med terrorsabotage
+    rettet mod civile danske symboler for at p\xE5virke befolkningens moral. T\xE5rnet
+    blev udvalgt som et af de mest symbolske m\xE5l.\n\r\nOpgaven blev givet til
+    Petergruppen, som bestod af b\xE5de tyske SS-folk og danske kollaborat\xF8rer.
+    Natten til den 14. december 1944 ankom gruppen til Bolbro Bakke, hvor de tvang
+    vagten til at give adgang og placerede spr\xE6ngladninger ved t\xE5rnets b\xE6rende
+    konstruktion. Da ladningerne blev spr\xE6ngt kl. 6.15, rystede en voldsom eksplosion
+    byen, og \xF8del\xE6ggelsen var total.\r\nEfter befrielsen i 1945 blev en genopbygning
+    dr\xF8ftet, men planerne blev opgivet, blandt andet p\xE5 grund af materialemangel.
+    I dag st\xE5r en model p\xE5 Bolbro Bakke som minde om det tabte vartegn.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
   m_sharedMaterial: {fileID: 7727282430912938700, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
@@ -16745,7 +16744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10188681, g: 0.10188681, b: 0.10188681, a: 1}
+  m_Color: {r: 0.10188681, g: 0.10188681, b: 0.10188681, a: 0.8235294}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
