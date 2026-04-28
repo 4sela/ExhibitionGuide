@@ -21,7 +21,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 1
     voiceClip: {fileID: 8300000, guid: 5e9d80c58c2582e47a8c48d9864e7b86, type: 3}
-    BackgroundImage: {fileID: 2800000, guid: 5b5c6e1d9fcc8884784a77d0e539413e, type: 3}
+    BackgroundImage: {fileID: 2800000, guid: 49a3c46a8b0c35643803a130163b21da, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 1
     text: "Klokken er 18:15.\n\nDig og din ven Erik Frandsen, sidder og l\xE6ser
@@ -31,7 +31,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 2
     voiceClip: {fileID: 8300000, guid: e9151ac6bdb8dca428dcd7743fd4c50d, type: 3}
-    BackgroundImage: {fileID: 2800000, guid: 6de7144a943968140b5d93a562c827d1, type: 3}
+    BackgroundImage: {fileID: 2800000, guid: 2c46c61a4ae585f4282c4eb0bf19ab21, type: 3}
     minigamePrefab: {fileID: 7416240185725632505, guid: 6a1ce9beeea46de438ece10a53cdffb5, type: 3}
   - nodeId: 2
     text: "I ankommer til kysten ved Eneb\xE6rodde, om natten.\n\r\nAlt er m\xF8rkt.\n\r\nFolk
@@ -40,7 +40,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 3
     voiceClip: {fileID: 8300000, guid: a4934e52bedf4f5448b40ed1e4f1a619, type: 3}
-    BackgroundImage: {fileID: 2800000, guid: dcaa5ab24da5a2f4182072d2d034ab24, type: 3}
+    BackgroundImage: {fileID: 2800000, guid: 974792d39f8cedc479f6e865bd23a745, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 3
     text: "En times tid senere er folk begyndt at blive ansp\xE6ndte.\_\n\nS\xE5
@@ -49,7 +49,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 4
     voiceClip: {fileID: 8300000, guid: 72cd5a2fa61a5cb4a9eae471462859d7, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: d8c3ea10b2254434bb788d7e347fbd43, type: 3}
     minigamePrefab: {fileID: 7416240185725632505, guid: 63581926aea032c46943b25ac5c3de79, type: 3}
   - nodeId: 4
     text: "Senere samme nat.\n\r\nDu bliver f\xF8rt til en g\xE5rd.\n\r\nEn mand
