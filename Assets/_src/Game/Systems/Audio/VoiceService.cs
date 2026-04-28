@@ -11,8 +11,6 @@ public sealed class VoiceService
     private float _minInterval = 0.03f;
     private float _defaultVolume = 1.0f;
     private bool _isMuted = false;
-    private bool _isPlaying = false;
-    private bool _isPaused = false;
 
     public VoiceService(AudioSource source)
     {
@@ -27,28 +25,21 @@ public sealed class VoiceService
         source.Stop();
         source.clip = clip;
         source.Play();
-        _isPlaying = true;
     }
 
     public void PlayVoice(AudioClip clip)
     {
         if (clip == null) return;
 
-        source.Stop();
         source.clip = clip;
         source.Play();
-        _isPlaying = true;
-        _isPaused = false;
     }
 
     public void StopVoice()
     {
-        if (source.clip == null) return;
-
         source.Stop();
-        _isPlaying = false;
-        _isPaused = false;
     }
+
 
     public void ToggleMute()
     {
@@ -59,21 +50,12 @@ public sealed class VoiceService
     public void PauseVoice()
     {
         if (source.isPlaying)
-        {
             source.Pause();
-            _isPlaying = false;
-            _isPaused = true;
-        }
     }
 
     public void UnPause()
     {
-        if (_isPaused)
-        {
-            source.UnPause();
-            _isPlaying = true;
-            _isPaused = false;
-        }
+        source.UnPause();
     }
 
     public void ResetVoice()
@@ -82,17 +64,10 @@ public sealed class VoiceService
         {
             source.Stop();
             source.Play();
-            _isPlaying = true;
         }
     }
 
-    public bool IsPaused()
-    {
-        return _isPaused;
-    }
+    public bool IsPlaying() => source.isPlaying;
+    public bool IsPaused() => !source.isPlaying && source.time > 0f;
 
-    public bool IsPlaying()
-    {
-        return _isPlaying;
-    }
 }
