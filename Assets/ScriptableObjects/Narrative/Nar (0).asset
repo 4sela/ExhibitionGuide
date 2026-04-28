@@ -21,7 +21,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 1
     voiceClip: {fileID: 8300000, guid: 5e9d80c58c2582e47a8c48d9864e7b86, type: 3}
-    BackgroundImage: {fileID: 2800000, guid: 6f27d061930e09640a2cf6e165a04d26, type: 3}
+    BackgroundImage: {fileID: 2800000, guid: 5b5c6e1d9fcc8884784a77d0e539413e, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 1
     text: "Klokken er 18:15.\n\nDig og din ven Erik Frandsen, sidder og l\xE6ser

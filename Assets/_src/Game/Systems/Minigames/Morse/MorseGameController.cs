@@ -146,6 +146,7 @@ namespace Game.Systems.Minigames.Morse
             ClearCurrentInput();
             currentMorseText.text = "Invalid letter";
             _morseSeqBuilder.ResetCurrentSequenceOnly();
+            //Maybe make the CurrentSequence field, turn red for color indication also.
         }
 
         public void ValidateTargetWord()
