@@ -58,7 +58,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 5
     voiceClip: {fileID: 8300000, guid: 656d93ec034c89748b67bec084c528c8, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: cdc69d2831762fc43be601ce3370011c, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 5
     text: "Han l\xE6gger et kort frem.\n\r\n\u201CDenne magnetmine vi fik fra England,
@@ -68,7 +68,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 6
     voiceClip: {fileID: 8300000, guid: 3fbd8df7865c4274d97fb3d309c50124, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 623b60bdafff369499f2c807604ef782, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 6
     text: "\u201CJeg kan forst\xE5 at du arbejder som elektriker p\xE5 skibsv\xE6rftet?\u201D\n\nPeter
@@ -78,7 +78,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 7
     voiceClip: {fileID: 8300000, guid: 575d0cf5f3f58cf4dbbfe25427133089, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 05fc37f5a5637ef4ab23ecf1e5dc423e, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 7
     text: "N\xE6ste dag, p\xE5 Odense Havn.\n\r\nLuften er tung og kold.\n\r\nForan
@@ -89,7 +89,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 8
     voiceClip: {fileID: 8300000, guid: f0883238d3a6e3d45a679057ac168928, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 4dc65595b4926d44bb37765d8da1ba48, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 8
     text: "Du er kommet igennem vagt porten til v\xE6rftet.\n\r\nNerv\xF8st og langsomt
@@ -105,7 +105,7 @@ MonoBehaviour:
       targetNodeId: 9.B
     defaultTargetNodeId: 9
     voiceClip: {fileID: 8300000, guid: 929d4e6a8b24e5a418ed980131141867, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 52247cc0529ef6f4bb41a2c81a690ab6, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.A
     text: "Du s\xE6tter tasken fra dig under en b\xE6nk i omkl\xE6dningsrummet. \n\r\nSamme
@@ -115,7 +115,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 10
     voiceClip: {fileID: 8300000, guid: 885e9198c8d4a7944bf18a894a875392, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 5006b6b5aa60d574ab0d35ba21ca9692, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.B
     text: "Halvvejs op ad landgangen.\n\r\nEn vagt vender sig.\n\r\n\"Halt. Was haben
@@ -125,7 +125,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 9.B.A
     voiceClip: {fileID: 8300000, guid: 84d23d985d1118d48a909d68a36470b4, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: e78211deca5b7bf4b98a0d59050d5eb7, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.B.A
     text: "Heldigvis s\xE5 han ikke minen, der var under ledningerne.\n\r\nVagtskiftet
@@ -135,7 +135,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 9.B.B
     voiceClip: {fileID: 8300000, guid: 4d9da1c4e88b42e45b8df3bbb4c79c56, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 0ed0498e96a655b4b88f5fa54c53b209, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.B.B
     text: "Samme aften ringer du til Erik.\n   \n\"Det kunne ikke lade sig g\xF8re.\" 
@@ -144,7 +144,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 10
     voiceClip: {fileID: 8300000, guid: 669c20bd9a5fb2641bb8bcef35594757, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 7b18b0a669ba7464095ca40349337090, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 10
     text: "Tidlig n\xE6ste morgen. \n\r\nDu ikl\xE6der dig din kedeldragt.\n\r\nTil
@@ -154,7 +154,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 11
     voiceClip: {fileID: 8300000, guid: 721119a19729bdf419422be406bd51c3, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: b8501b51e1c13b24d8a5701da5533432, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 11
     text: "De \xE5bner skabe. L\xF8fter presenninger. Tjekker rum.\n\r\nDu ser nerv\xF8st
@@ -164,7 +164,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 12
     voiceClip: {fileID: 8300000, guid: 5fa63459a75e6954ba9ca0ea0b5c0419, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 4f828232cd2d5a540a27b1d6486d3ce4, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 12
     text: "Du f\xE5r firet spr\xE6ngstoffet med magneter ned p\xE5 siden af skibet.\n\r\nNu
@@ -175,7 +175,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 13
     voiceClip: {fileID: 8300000, guid: b235a14164b71014f8a39f4d211967c0, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 6781e08db042fbe4a90853d874cb9d6c, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 13
     text: "Om aftenen cykler du og Erik ned p\xE5 havnen for at overv\xE6re eksplosionen.\r\n\r\nS\xE5
@@ -185,7 +185,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 14
     voiceClip: {fileID: 8300000, guid: 60a913801ee3e974abc698eee4ac0bf3, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 5de9da5efc555d443bd834a654200d78, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 14
     text: "Erik \xE5nder tungt ud ved din side.   \n\n\u201CHun sejler ingen steder
@@ -194,7 +194,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 15
     voiceClip: {fileID: 8300000, guid: 6d2a5433eddda8946bfe330e846753d1, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 151504e179e42e54f86924c1213cc098, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 15
     text: "Skibet synker ikke \u2014 men skaden er alvorlig. \n\nOg det er nok. Endnu
@@ -203,7 +203,7 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 16
     voiceClip: {fileID: 8300000, guid: 203f966433be27048b110ee0a77ea67c, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: e6f02c3d85f37174788d92450e158cdd, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 16
     text: "Men jeres handling bliver en lille del af noget st\xF8rre. \n\nSabotagen
@@ -213,5 +213,5 @@ MonoBehaviour:
     choices: []
     defaultTargetNodeId: 16
     voiceClip: {fileID: 8300000, guid: 9ff80523c15d8de41bd16c0555788fcf, type: 3}
-    BackgroundImage: {fileID: 0}
+    BackgroundImage: {fileID: 2800000, guid: 58fa92acd31edc9498d5f08b4e110d6f, type: 3}
     minigamePrefab: {fileID: 0}
