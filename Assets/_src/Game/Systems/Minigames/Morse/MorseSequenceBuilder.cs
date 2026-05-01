@@ -64,6 +64,15 @@ namespace Game.Systems.Minigames.Morse
             ResetCurrentSequenceOnly();
         }
 
+        public bool ResetLastLetter()
+        {
+            if (_decodedLetters.Count == 0)
+                return false;
+
+            _decodedLetters.RemoveAt(_decodedLetters.Count - 1);
+            return true;
+        }
+
         public char GetPreviewLetter()
         {
             char preview = ' ';

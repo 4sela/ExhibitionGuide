@@ -92,6 +92,21 @@ namespace Game.Systems.Minigames.Morse
                 tile.text = "";
         }
 
+        public void ResetLastLetter()
+        {
+            _morseSeqBuilder.ResetCurrentSequenceOnly();
+            ClearCurrentInput();
+
+            if (!_morseSeqBuilder.ResetLastLetter())
+                return;
+
+            if (_currentTileIndex <= 0)
+                return;
+
+            _currentTileIndex--;
+            letterTiles[_currentTileIndex].text = "";
+        }
+
         /// <remarks>
         /// When holding the flashlight.
         /// </remarks>
