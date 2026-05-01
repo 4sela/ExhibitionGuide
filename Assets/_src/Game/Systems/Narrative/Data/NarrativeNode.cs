@@ -13,6 +13,7 @@ namespace Game.Systems.Narrative.Data
         [TextArea(3, 10)] public string text;
         public List<NarrativeChoice> choices = new();
         public string defaultTargetNodeId; // if no choices, fallback
+        public bool isEndNode;
 
         [Header("Audio")]
         public AudioClip voiceClip;   //Text-to-speech

@@ -18,11 +18,7 @@ namespace Game.Configs
             GlobalStateEvents.GetDefaultAudioBehaviour -= GetAudioEnabled;
         }
 
-        private static void SetAudioEnabled(bool isEnabled)
-        {
-            _isAudioEnabled = isEnabled;
-        }
-
+        private static void SetAudioEnabled(bool isEnabled) => _isAudioEnabled = isEnabled;
         private static bool GetAudioEnabled() => _isAudioEnabled;
     }
 }
