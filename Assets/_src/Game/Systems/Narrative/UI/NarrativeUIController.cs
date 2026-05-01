@@ -30,12 +30,17 @@ namespace Game.UI.Screens.Narrative
         [Header("Buttons")]
         [SerializeField] private Button defaultContinueButton;
         [SerializeField] private Button startMinigameButton;
+        [SerializeField] private Button endNarrativeButton;
         [SerializeField] private float buttonFadeDuration = 0.3f;
 
+        /// <summary>
+        /// Used to control interactability more easily
+        /// </summary>
         private Button[] _buttonArray => new[]
         {
             defaultContinueButton,
-            startMinigameButton
+            startMinigameButton,
+            endNarrativeButton
         };
 
         private List<GameObject> spawnedChoices = new List<GameObject>();
@@ -68,31 +73,34 @@ namespace Game.UI.Screens.Narrative
             ClearChoices();
 #if !UNITY_EDITOR
             ResetChoiceContainerAlpha();
-#endif      
+#endif
             backgroundImage.texture = NarrativeManager.Instance.GetImage(node);
 
             if (typingCoroutine != null)
-            {
                 StopCoroutine(typingCoroutine);
-            }
 
             bodyText.DOFade(0f, textFadeDuration).OnComplete(() =>
             {
-                Color c = bodyText.color;
-                c.a = 1f;
-                bodyText.color = c;
+                Color colour = bodyText.color;
+                colour.a = 1f;
+                bodyText.color = colour;
 
                 typingCoroutine = StartCoroutine(TypeTextRoutine(node.text));
             });
 
-            if (node.minigamePrefab != null)
-            {
+            startMinigameButton.gameObject.SetActive(false);
+            endNarrativeButton.gameObject.SetActive(false);
+
+            bool isEndNode = node.isEndNode;
+
+            if (isEndNode)
+                endNarrativeButton.gameObject.SetActive(true);
+
+            else if (node.minigamePrefab != null)
                 SetupMinigamePrompt(node);
-            }
+
             else
-            {
                 ShowChoices(node);
-            }
         }
 
         private void SetupMinigamePrompt(NarrativeNode node)
@@ -113,12 +121,10 @@ namespace Game.UI.Screens.Narrative
             for (int i = 0; i < spawnedChoices.Count; i++)
             {
                 GameObject choiceObj = spawnedChoices[i];
-
                 Destroy(choiceObj);
             }
 
             spawnedChoices.Clear();
-
             defaultContinueButton.gameObject.SetActive(false);
         }
 

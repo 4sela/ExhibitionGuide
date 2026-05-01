@@ -2,8 +2,6 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Game.Systems.Narrative.Data;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.UI;
 
 namespace Game.Systems.Narrative.Runtime
 {
@@ -109,7 +107,7 @@ namespace Game.Systems.Narrative.Runtime
         /// <summary>
         ///
         /// </summary>
-        private void EndNarrative()
+        public void EndNarrative()
         {
             currentNode = null;
             OnNarrativeEnded?.Invoke();
@@ -117,7 +115,7 @@ namespace Game.Systems.Narrative.Runtime
 
 
         public void PlayNode(NarrativeNode node)
-        {        
+        {
             //Text-to-speech voice clip
             if (node.voiceClip != null)
             {
@@ -127,8 +125,8 @@ namespace Game.Systems.Narrative.Runtime
 
         public Texture2D GetImage(NarrativeNode node)
         {
-            if (node.BackgroundImage != null)             
-            { 
+            if (node.BackgroundImage != null)
+            {
                 return node.BackgroundImage;
             }
 
