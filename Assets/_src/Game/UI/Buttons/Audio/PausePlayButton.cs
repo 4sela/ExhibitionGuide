@@ -20,6 +20,11 @@ namespace Game.UI.Buttons.Audio
             UpdateButtonVisuals();
         }
 
+        void Update()
+        {
+            UpdateButtonVisuals();
+        }
+
         private void TogglePlayPause()
         {
             if (_voiceService.IsPlaying())
