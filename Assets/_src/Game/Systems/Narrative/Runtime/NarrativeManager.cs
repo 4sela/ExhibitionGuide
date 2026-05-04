@@ -28,8 +28,11 @@ namespace Game.Systems.Narrative.Runtime
 
         void Awake()
         {
-            if (Instance == null) Instance = this;
-            else Destroy(gameObject);
+            if (Instance == null)
+                Instance = this;
+
+            else
+                Destroy(gameObject);
         }
 
         /// <summary>
@@ -37,7 +40,9 @@ namespace Game.Systems.Narrative.Runtime
         /// </summary>
         public void StartNarrative()
         {
-            if (graph == null) return;
+            if (graph == null)
+                return;
+
             GoToNode(startNodeId);
         }
 
@@ -64,12 +69,10 @@ namespace Game.Systems.Narrative.Runtime
         /// </summary>
         public void Choose(NarrativeChoice choice)
         {
-
+            // Safe check: Trim removes accidental spaces you typed in the Inspector
             if (!string.IsNullOrWhiteSpace(choice.targetNodeId))
-            {
-                // Safe check: Trim removes accidental spaces you typed in the Inspector
                 GoToNode(choice.targetNodeId.Trim());
-            }
+
             else
             {
                 Debug.Log("NarrativeManager: Choice clicked, but Target Node ID is empty. Ending story.");
@@ -82,12 +85,12 @@ namespace Game.Systems.Narrative.Runtime
         /// </summary>
         public void ContinueDefault()
         {
-            if (currentNode == null) return;
+            if (currentNode == null)
+                return;
 
             if (!string.IsNullOrWhiteSpace(currentNode.defaultTargetNodeId))
-            {
                 GoToNode(currentNode.defaultTargetNodeId.Trim());
-            }
+
             else
             {
                 Debug.Log("NarrativeManager: Default button clicked, but Default Target Node ID is empty. Ending story.");
@@ -100,8 +103,12 @@ namespace Game.Systems.Narrative.Runtime
         /// </summary>
         public bool CheckCondition(string key, string expectedValue = null)
         {
-            if (!variables.TryGetValue(key, out var val)) return false;
-            if (expectedValue == null) return true;
+            if (!variables.TryGetValue(key, out var val))
+                return false;
+
+            if (expectedValue == null)
+                return true;
+
             return val == expectedValue;
         }
 
@@ -121,16 +128,15 @@ namespace Game.Systems.Narrative.Runtime
             //Text-to-speech voice clip
             if (node.voiceClip != null)
             {
-                AudioManager.Instance.Voice.PlayVoice(node.voiceClip);
+                AudioManager.Instance.voiceSource.clip = node.voiceClip;
+                AudioManager.Instance.Voice.PlayVoiceOnGameStart(node.voiceClip);
             }
         }
 
         public Texture2D GetImage(NarrativeNode node)
         {
             if (node.BackgroundImage != null)
-            {
                 return node.BackgroundImage;
-            }
 
             return null;
         }
