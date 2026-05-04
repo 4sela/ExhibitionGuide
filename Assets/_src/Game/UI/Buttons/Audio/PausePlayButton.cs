@@ -32,11 +32,13 @@ namespace Game.UI.Buttons.Audio
                 Debug.Log("If");
                 _voiceService.PauseVoice();
             }
+
             else if (_voiceService.IsPaused())
             {
                 Debug.Log("Else If");
                 _voiceService.UnPause();
             }
+
             else
             {
                 Debug.Log("Else");
