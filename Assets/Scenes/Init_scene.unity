@@ -8355,10 +8355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568ec4b09247cf14f80aa3fd18dbcce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usePredefined: 0
-  predefinedEffect: 0
-  durationMs: 19
-  amplitude: 147
+  effectType: 0
 --- !u!1 &711951910
 GameObject:
   m_ObjectHideFlags: 0
@@ -9867,10 +9864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568ec4b09247cf14f80aa3fd18dbcce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usePredefined: 0
-  predefinedEffect: 5
-  durationMs: 19
-  amplitude: 212
+  effectType: 0
 --- !u!1 &929720534
 GameObject:
   m_ObjectHideFlags: 0
@@ -14199,10 +14193,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1003361960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 475, y: -1961.02}
+  m_SizeDelta: {x: 950, y: 3922.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335263670
 MonoBehaviour:
@@ -14705,10 +14699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568ec4b09247cf14f80aa3fd18dbcce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usePredefined: 0
-  predefinedEffect: 5
-  durationMs: 10
-  amplitude: 120
+  effectType: 0
 --- !u!1 &1399572072
 GameObject:
   m_ObjectHideFlags: 0
@@ -17540,7 +17531,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1582367463}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.35695708
+  m_Size: 0.35695705
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

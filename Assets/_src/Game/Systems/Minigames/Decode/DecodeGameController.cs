@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using Game.Systems.Haptics;
 using Game.Systems.Minigames;
 using Game.Systems.Narrative.Runtime;
 
@@ -46,6 +47,7 @@ namespace Systems.Minigames.Decode
         [SerializeField] private Color normalFieldColor = Color.white;
         [SerializeField] private Color wrongFieldColor = new Color(1f, 0.25f, 0.25f, 1f);
         [SerializeField] private float wrongFlashDuration = 0.2f;
+        [SerializeField] private bool playSelectionHaptics = true;
 
         private int _locationIndex;
         private int _messageIndex;
@@ -75,12 +77,14 @@ namespace Systems.Minigames.Decode
             if (!isCorrect)
             {
                 FlashWrongSelection();
+                HapticsService.PlayError();
                 return;
             }
 
             gameResult.IsCompleted = true;
             HideSelectorUi();
             gameResult.SummonResult();
+            HapticsService.PlaySuccess();
         }
 
         // Kept for old prefab button hookups.
@@ -102,12 +106,14 @@ namespace Systems.Minigames.Decode
         {
             _locationIndex = WrapIndex(_locationIndex + direction, locations.Length);
             UpdateSelectionTexts();
+            PlaySelectionHaptic();
         }
 
         private void ChangeMessage(int direction)
         {
             _messageIndex = WrapIndex(_messageIndex + direction, messages.Length);
             UpdateSelectionTexts();
+            PlaySelectionHaptic();
         }
 
         private int WrapIndex(int index, int length)
@@ -162,6 +168,12 @@ namespace Systems.Minigames.Decode
 
             if (messageFieldImage != null)
                 messageFieldImage.color = color;
+        }
+
+        private void PlaySelectionHaptic()
+        {
+            if (playSelectionHaptics)
+                HapticsService.PlayTick();
         }
 
         private void FindManualUiReferences()

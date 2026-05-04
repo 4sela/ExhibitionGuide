@@ -7,6 +7,8 @@ using DG.Tweening;
 using Game.Systems.Narrative.Data;
 using Game.Systems.Narrative.Events;
 using Game.Systems.Narrative.Runtime;
+using Game.Systems.Haptics;
+using Game.UI.Buttons;
 using Game.UI.Narrative.UI;
 
 namespace Game.UI.Screens.Narrative
@@ -45,6 +47,11 @@ namespace Game.UI.Screens.Narrative
 
         private List<GameObject> spawnedChoices = new List<GameObject>();
         private Coroutine typingCoroutine;
+
+        private void Awake()
+        {
+            EnsureButtonHaptics(endNarrativeButton);
+        }
 
         void OnEnable()
         {
@@ -110,6 +117,7 @@ namespace Game.UI.Screens.Narrative
             startMinigameButton.onClick.RemoveAllListeners();
             startMinigameButton.onClick.AddListener(() =>
             {
+                HapticsService.PlayTick();
                 Instantiate(node.minigamePrefab, minigameContainer);
 
                 startMinigameButton.gameObject.SetActive(false);
@@ -154,8 +162,18 @@ namespace Game.UI.Screens.Narrative
             {
                 defaultContinueButton.gameObject.SetActive(true);
                 defaultContinueButton.onClick.RemoveAllListeners();
-                defaultContinueButton.onClick.AddListener(() => NarrativeManager.Instance.ContinueDefault());
+                defaultContinueButton.onClick.AddListener(() =>
+                {
+                    HapticsService.PlayTick();
+                    NarrativeManager.Instance.ContinueDefault();
+                });
             }
+        }
+
+        private void EnsureButtonHaptics(Button button)
+        {
+            if (button != null && button.GetComponent<ButtonHaptics>() == null)
+                button.gameObject.AddComponent<ButtonHaptics>();
         }
 
         private void HideScreen()

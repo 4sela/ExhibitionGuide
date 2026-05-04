@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Game.Systems.Narrative.Data;
+using Game.Systems.Haptics;
 
 namespace Game.Systems.Narrative.Runtime
 {
@@ -109,6 +110,7 @@ namespace Game.Systems.Narrative.Runtime
         /// </summary>
         public void EndNarrative()
         {
+            HapticsService.PlayTick();
             currentNode = null;
             OnNarrativeEnded?.Invoke();
         }

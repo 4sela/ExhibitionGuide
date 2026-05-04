@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Game.UI.Tweening;
 using Game.Systems.Contexts;
+using Game.Systems.Haptics;
 
 namespace Game.UI
 {
@@ -113,17 +114,33 @@ namespace Game.UI
         /// </remarks>
         public void ToWelcomeScreen()
         {
+            HapticsService.PlayTick();
             AudioManager.Instance.Voice.StopVoice();
             ShowScreen(ScreenType.Welcome);
         }
         public void ToContextSetupScreen()
         {
+            HapticsService.PlayTick();
             AudioManager.Instance.Voice.StopVoice();
             ShowScreen(ScreenType.ContextSetup);
         }
-        public void ToContextScreen() => ShowScreen(ScreenType.Context);
-        public void ToNarrativeSetupScreen() => ShowScreen(ScreenType.NarrativeSetup);
-        public void ToNarrativeScreen() => ShowScreen(ScreenType.Narrative);
+        public void ToContextScreen()
+        {
+            HapticsService.PlayTick();
+            ShowScreen(ScreenType.Context);
+        }
+
+        public void ToNarrativeSetupScreen()
+        {
+            HapticsService.PlayTick();
+            ShowScreen(ScreenType.NarrativeSetup);
+        }
+
+        public void ToNarrativeScreen()
+        {
+            HapticsService.PlayTick();
+            ShowScreen(ScreenType.Narrative);
+        }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Game.Systems.Haptics;
 using Game.Systems.Minigames.Morse;
 
 namespace Game.Systems.Minigames.Morse
@@ -33,6 +34,7 @@ namespace Game.Systems.Minigames.Morse
             _pressStartTime = Time.time;
             _lastPreviewSymbol = '\0';
 
+            HapticsService.PlayTick();
             OnPressStateChanged?.Invoke(true);
         }
 

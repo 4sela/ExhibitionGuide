@@ -1,4 +1,5 @@
 using UnityEngine;
+using Game.Systems.Haptics;
 
 namespace Game.Systems.Contexts
 {
@@ -26,6 +27,7 @@ namespace Game.Systems.Contexts
 
         public void LoadContextPanel(int contextPanel)
         {
+            HapticsService.PlayTick();
             AudioManager.Instance.Voice.StopVoice();
 
             switch (contextPanel)

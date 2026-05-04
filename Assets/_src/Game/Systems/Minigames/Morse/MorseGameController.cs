@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Game.Systems.Minigames;
+using Game.Systems.Haptics;
 using Game.Systems.Narrative.Events;
 using Game.Systems.Narrative.Runtime;
 
@@ -128,6 +129,11 @@ namespace Game.Systems.Minigames.Morse
         /// </remarks>
         private void OnSymbolAdded(char symbol, float time)
         {
+            if (symbol == '.')
+                HapticsService.PlayTick();
+            else
+                HapticsService.PlayClick();
+
             progressBar.fillAmount = 0f;
             currentMorseText.text = FormatMorse(_morseSeqBuilder.CurrentSymbolSequence);
 
@@ -158,6 +164,7 @@ namespace Game.Systems.Minigames.Morse
         /// </remarks>
         private void OnUnrecognizedMorseCharacter()
         {
+            HapticsService.PlayError();
             ClearCurrentInput();
             currentMorseText.text = "Invalid letter";
             _morseSeqBuilder.ResetCurrentSequenceOnly();
@@ -170,6 +177,12 @@ namespace Game.Systems.Minigames.Morse
             bool isCorrect = _morseWordValidator.Validate(letters);
 
             gameResult.IsCompleted = isCorrect;
+
+            if (isCorrect)
+                HapticsService.PlaySuccess();
+            else
+                HapticsService.PlayError();
+
             gameResult.SummonResult();
         }
 
