@@ -142,5 +142,16 @@ namespace Game.UI
             ShowScreen(ScreenType.Narrative);
         }
 
+        public void ToContextChoiceScreen()
+        {
+            HapticsService.PlayTick();
+            ShowScreen(ScreenType.ContextChoice);
+        }
+
+        public void ToGalleryScreen()
+        {
+            HapticsService.PlayTick();
+            ShowScreen(ScreenType.Gallery);
+        }
     }
 }

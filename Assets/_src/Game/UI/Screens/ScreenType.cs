@@ -8,5 +8,7 @@ namespace Game.UI
         NarrativeSetup,
         Narrative,
         Context,
+        ContextChoice,
+        Gallery
     }
 }
