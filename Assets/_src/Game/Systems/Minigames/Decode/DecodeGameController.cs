@@ -173,7 +173,7 @@ namespace Systems.Minigames.Decode
         private void PlaySelectionHaptic()
         {
             if (playSelectionHaptics)
-                HapticsService.PlayTick();
+                HapticsService.PlayClick();
         }
 
         private void FindManualUiReferences()

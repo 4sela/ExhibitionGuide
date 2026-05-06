@@ -40,7 +40,7 @@ namespace Game.Systems.Minigames.Morse
             _pressStartTime = Time.time;
             _lastPreviewSymbol = '\0';
 
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             OnPressStateChanged?.Invoke(true);
         }
 
@@ -81,7 +81,10 @@ namespace Game.Systems.Minigames.Morse
             OnHolding?.Invoke(progress, previewSymbol);
 
             if (previewSymbol != _lastPreviewSymbol)
+            {
                 _lastPreviewSymbol = previewSymbol;
+                HapticsService.PlayTick();
+            }
         }
     }
 }
