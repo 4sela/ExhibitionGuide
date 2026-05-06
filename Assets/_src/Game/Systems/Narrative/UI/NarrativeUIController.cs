@@ -10,6 +10,8 @@ using Game.Systems.Narrative.Runtime;
 using Game.Systems.Haptics;
 using Game.UI.Buttons;
 using Game.UI.Narrative.UI;
+using Game.Configs;
+using System.Linq;
 
 namespace Game.UI.Screens.Narrative
 {
@@ -34,6 +36,7 @@ namespace Game.UI.Screens.Narrative
         [SerializeField] private Button startMinigameButton;
         [SerializeField] private Button endNarrativeButton;
         [SerializeField] private float buttonFadeDuration = 0.3f;
+
 
         /// <summary>
         /// Used to control interactability more easily
@@ -82,6 +85,13 @@ namespace Game.UI.Screens.Narrative
             ResetChoiceContainerAlpha();
 #endif
             backgroundImage.texture = NarrativeManager.Instance.GetImage(node);
+
+            if (GlobalState.GetAudioEnabled() == true)
+            {
+
+                timePerChar = node.voiceClip.length / node.text.Length; //If voice is activated at beginning we set typewriter to try and match voice.
+            }
+            
 
             if (typingCoroutine != null)
                 StopCoroutine(typingCoroutine);
