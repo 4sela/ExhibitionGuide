@@ -39,25 +39,40 @@ namespace Systems.Minigames.Decode
         [Header("UI References")]
         [SerializeField] private TextMeshProUGUI locationText;
         [SerializeField] private TextMeshProUGUI messageText;
-        [SerializeField] private Image locationFieldImage;
-        [SerializeField] private Image messageFieldImage;
         [SerializeField] private GameObject selectorContainer;
+        [SerializeField] private RawImage confirmButtonImage;
 
-        [Header("Feedback")]
+        [Header("Feedback & Animation")]
         [SerializeField] private Color normalFieldColor = Color.white;
         [SerializeField] private Color wrongFieldColor = new Color(1f, 0.25f, 0.25f, 1f);
-        [SerializeField] private float wrongFlashDuration = 0.2f;
-        [SerializeField] private bool playSelectionHaptics = true;
+
+        [SerializeField] private float jumpHeight = 15f;
+        [SerializeField] private float scaleMultiplier = 1.05f;
+        [SerializeField] private float jumpDuration = 0.4f;
+        [SerializeField] private float shakeDuration = 0.5f;
+        [SerializeField] private float shakeAngle = 8f;
 
         private int _locationIndex;
         private int _messageIndex;
         private Coroutine _wrongFlashRoutine;
+
+        private Vector2 _originalButtonPos;
+        private Vector3 _originalButtonScale;
+        private Quaternion _originalButtonRot;
 
         private void Awake()
         {
             AudioManager.Instance.Voice.StopVoice();
             FindManualUiReferences();
             UpdateSelectionTexts();
+
+            if (confirmButtonImage != null)
+            {
+                RectTransform rect = confirmButtonImage.rectTransform;
+                _originalButtonPos = rect.anchoredPosition;
+                _originalButtonScale = rect.localScale;
+                _originalButtonRot = rect.localRotation;
+            }
         }
 
         public void PreviousLocation() => ChangeLocation(-1);
@@ -87,7 +102,6 @@ namespace Systems.Minigames.Decode
             HapticsService.PlaySuccess();
         }
 
-        // Kept for old prefab button hookups.
         public void ButtonPress(bool arg)
         {
             gameResult.IsCompleted = arg;
@@ -147,40 +161,83 @@ namespace Systems.Minigames.Decode
 
         private void FlashWrongSelection()
         {
+            if (confirmButtonImage == null) return;
+
             if (_wrongFlashRoutine != null)
+            {
                 StopCoroutine(_wrongFlashRoutine);
+                ResetButtonState();
+            }
 
             _wrongFlashRoutine = StartCoroutine(WrongFlashRoutine());
         }
 
         private IEnumerator WrongFlashRoutine()
         {
-            SetFieldColors(wrongFieldColor);
-            yield return new WaitForSeconds(wrongFlashDuration);
-            SetFieldColors(normalFieldColor);
+            RectTransform rect = confirmButtonImage.rectTransform;
+            float halfJump = jumpDuration / 2f;
+            Vector2 targetPosition = _originalButtonPos + new Vector2(0, jumpHeight);
+            Vector3 targetScale = _originalButtonScale * scaleMultiplier;
+
+            float time = 0;
+            while (time < halfJump)
+            {
+                time += Time.deltaTime;
+                float t = Mathf.SmoothStep(0, 1, time / halfJump);
+
+                rect.anchoredPosition = Vector2.Lerp(_originalButtonPos, targetPosition, t);
+                rect.localScale = Vector3.Lerp(_originalButtonScale, targetScale, t);
+                confirmButtonImage.color = Color.Lerp(normalFieldColor, wrongFieldColor, t);
+                yield return null;
+            }
+
+            float shakeTime = 0;
+            int numberOfShakes = 4;
+            while (shakeTime < shakeDuration)
+            {
+                shakeTime += Time.deltaTime;
+                float zRotation = Mathf.Sin(shakeTime * Mathf.PI * 2 * numberOfShakes / shakeDuration) * shakeAngle;
+                rect.localRotation = _originalButtonRot * Quaternion.Euler(0, 0, zRotation);
+                yield return null;
+            }
+            rect.localRotation = _originalButtonRot;
+
+            time = 0;
+            while (time < halfJump)
+            {
+                time += Time.deltaTime;
+                float t = Mathf.SmoothStep(0, 1, time / halfJump);
+
+                rect.anchoredPosition = Vector2.Lerp(targetPosition, _originalButtonPos, t);
+                rect.localScale = Vector3.Lerp(targetScale, _originalButtonScale, t);
+                confirmButtonImage.color = Color.Lerp(wrongFieldColor, normalFieldColor, t);
+                yield return null;
+            }
+
+            ResetButtonState();
             _wrongFlashRoutine = null;
         }
 
-        private void SetFieldColors(Color color)
+        private void ResetButtonState()
         {
-            if (locationFieldImage != null)
-                locationFieldImage.color = color;
+            if (confirmButtonImage == null) return;
 
-            if (messageFieldImage != null)
-                messageFieldImage.color = color;
+            confirmButtonImage.rectTransform.anchoredPosition = _originalButtonPos;
+            confirmButtonImage.rectTransform.localScale = _originalButtonScale;
+            confirmButtonImage.rectTransform.localRotation = _originalButtonRot;
+            confirmButtonImage.color = normalFieldColor;
         }
 
         private void PlaySelectionHaptic()
         {
-            if (playSelectionHaptics)
-                HapticsService.PlayClick();
+            HapticsService.PlayClick();
         }
 
         private void FindManualUiReferences()
         {
             if (selectorContainer == null)
             {
-                Transform selectors = FindChildRecursive(transform, "DecodeSelectors");
+                Transform selectors = FindChildRecursive(transform, "CodeAssembler");
                 if (selectors != null)
                     selectorContainer = selectors.gameObject;
             }
@@ -190,13 +247,6 @@ namespace Systems.Minigames.Decode
 
             if (messageText == null)
                 messageText = FindText("TMP_MessageText", "MessageText", "MessageFieldText");
-
-            if (locationFieldImage == null)
-                locationFieldImage = FindImage("LocationField");
-
-            if (messageFieldImage == null)
-                messageFieldImage = FindImage("MessageField");
-
         }
 
         private TextMeshProUGUI FindText(params string[] names)
@@ -207,7 +257,6 @@ namespace Systems.Minigames.Decode
                 if (child != null && child.TryGetComponent(out TextMeshProUGUI text))
                     return text;
             }
-
             return null;
         }
 
@@ -219,7 +268,6 @@ namespace Systems.Minigames.Decode
                 if (child != null && child.TryGetComponent(out Image image))
                     return image;
             }
-
             return null;
         }
 
@@ -234,7 +282,6 @@ namespace Systems.Minigames.Decode
                 if (match != null)
                     return match;
             }
-
             return null;
         }
 
@@ -245,12 +292,6 @@ namespace Systems.Minigames.Decode
                 selectorContainer.SetActive(false);
                 return;
             }
-
-            if (locationFieldImage != null)
-                locationFieldImage.transform.parent.gameObject.SetActive(false);
-
-            if (messageFieldImage != null)
-                messageFieldImage.transform.parent.gameObject.SetActive(false);
         }
 
         private bool HasValidOptions()

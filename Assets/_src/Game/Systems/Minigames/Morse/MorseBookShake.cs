@@ -6,6 +6,7 @@ namespace Game.Systems.Minigames.Morse
     public sealed class MorseBookShake : MonoBehaviour
     {
         [Header("Animation Settings")]
+        [SerializeField] private float loopDelay = 3f;
         [SerializeField] private float jumpHeight = 15f;
         [SerializeField] private float scaleMultiplier = 1.05f;
         [SerializeField] private float jumpDuration = 0.4f;
@@ -14,19 +15,17 @@ namespace Game.Systems.Minigames.Morse
         [Tooltip("How intense the shake is (in degrees).")]
         [SerializeField] private float shakeAngle = 8f;
 
-        [SerializeField] private float loopDelay = 3f;
+        private RectTransform _rectTransform;
+        private Vector2 _originalPosition;
+        private Vector3 _originalScale;
+        private Quaternion _originalRotation;
 
-        private RectTransform rectTransform;
-        private Vector2 originalPosition;
-        private Vector3 originalScale;
-        private Quaternion originalRotation;
-
-        private Coroutine loopCoroutine;
-        private bool hasSavedState = false;
+        private Coroutine _loopCoroutine;
+        private bool _hasSavedState = false;
 
         private void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
+            _rectTransform = GetComponent<RectTransform>();
         }
 
         /// <remarks>
@@ -34,23 +33,23 @@ namespace Game.Systems.Minigames.Morse
         /// </remarks>
         public void StartAttentionLoop()
         {
-            if (rectTransform == null)
+            if (_rectTransform == null)
                 return;
 
-            if (!hasSavedState)
+            if (!_hasSavedState)
             {
-                originalPosition = rectTransform.anchoredPosition;
-                originalScale = rectTransform.localScale;
-                originalRotation = rectTransform.localRotation;
-                hasSavedState = true;
+                _originalPosition = _rectTransform.anchoredPosition;
+                _originalScale = _rectTransform.localScale;
+                _originalRotation = _rectTransform.localRotation;
+                _hasSavedState = true;
             }
 
-            if (loopCoroutine != null)
+            if (_loopCoroutine != null)
             {
-                StopCoroutine(loopCoroutine);
+                StopCoroutine(_loopCoroutine);
             }
 
-            loopCoroutine = StartCoroutine(LoopRoutine());
+            _loopCoroutine = StartCoroutine(LoopRoutine());
         }
 
         /// <remarks>
@@ -58,15 +57,15 @@ namespace Game.Systems.Minigames.Morse
         /// </remarks>
         public void StopAttentionLoop()
         {
-            if (loopCoroutine != null)
+            if (_loopCoroutine != null)
             {
-                StopCoroutine(loopCoroutine);
-                loopCoroutine = null;
+                StopCoroutine(_loopCoroutine);
+                _loopCoroutine = null;
             }
 
             StopAllCoroutines();
 
-            if (hasSavedState)
+            if (_hasSavedState)
             {
                 ResetToOriginalState();
             }
@@ -87,8 +86,8 @@ namespace Game.Systems.Minigames.Morse
         private IEnumerator AttentionSequence()
         {
             float halfJump = jumpDuration / 2f;
-            Vector2 targetPosition = originalPosition + new Vector2(0, jumpHeight);
-            Vector3 targetScale = originalScale * scaleMultiplier;
+            Vector2 targetPosition = _originalPosition + new Vector2(0, jumpHeight);
+            Vector3 targetScale = _originalScale * scaleMultiplier;
 
             float time = 0;
             while (time < halfJump)
@@ -96,8 +95,8 @@ namespace Game.Systems.Minigames.Morse
                 time += Time.deltaTime;
                 float calculatedTime = Mathf.SmoothStep(0, 1, time / halfJump);
 
-                rectTransform.anchoredPosition = Vector2.Lerp(originalPosition, targetPosition, calculatedTime);
-                rectTransform.localScale = Vector3.Lerp(originalScale, targetScale, calculatedTime);
+                _rectTransform.anchoredPosition = Vector2.Lerp(_originalPosition, targetPosition, calculatedTime);
+                _rectTransform.localScale = Vector3.Lerp(_originalScale, targetScale, calculatedTime);
                 yield return null;
             }
 
@@ -107,10 +106,10 @@ namespace Game.Systems.Minigames.Morse
             {
                 shakeTime += Time.deltaTime;
                 float zRotation = Mathf.Sin(shakeTime * Mathf.PI * 2 * numberOfShakes / shakeDuration) * shakeAngle;
-                rectTransform.localRotation = originalRotation * Quaternion.Euler(0, 0, zRotation);
+                _rectTransform.localRotation = _originalRotation * Quaternion.Euler(0, 0, zRotation);
                 yield return null;
             }
-            rectTransform.localRotation = originalRotation;
+            _rectTransform.localRotation = _originalRotation;
 
             time = 0;
             while (time < halfJump)
@@ -118,8 +117,8 @@ namespace Game.Systems.Minigames.Morse
                 time += Time.deltaTime;
                 float calculatedTime = Mathf.SmoothStep(0, 1, time / halfJump);
 
-                rectTransform.anchoredPosition = Vector2.Lerp(targetPosition, originalPosition, calculatedTime);
-                rectTransform.localScale = Vector3.Lerp(targetScale, originalScale, calculatedTime);
+                _rectTransform.anchoredPosition = Vector2.Lerp(targetPosition, _originalPosition, calculatedTime);
+                _rectTransform.localScale = Vector3.Lerp(targetScale, _originalScale, calculatedTime);
                 yield return null;
             }
 
@@ -128,9 +127,9 @@ namespace Game.Systems.Minigames.Morse
 
         private void ResetToOriginalState()
         {
-            rectTransform.anchoredPosition = originalPosition;
-            rectTransform.localScale = originalScale;
-            rectTransform.localRotation = originalRotation;
+            _rectTransform.anchoredPosition = _originalPosition;
+            _rectTransform.localScale = _originalScale;
+            _rectTransform.localRotation = _originalRotation;
         }
     }
 }
