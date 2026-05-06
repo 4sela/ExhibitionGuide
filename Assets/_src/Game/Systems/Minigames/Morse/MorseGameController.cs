@@ -160,7 +160,7 @@ namespace Game.Systems.Minigames.Morse
         {
             HapticsService.PlayError();
             ClearCurrentInput();
-            currentMorseText.text = "";
+            currentMorseText.text = "Ukendt";
             _morseSeqBuilder.ResetCurrentSequenceOnly();
             //Maybe make the CurrentSequence field, turn red for color indication also.
         }

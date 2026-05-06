@@ -14,7 +14,7 @@ namespace Game.Systems.Minigames.Morse
         private float _lastInputTime = float.MaxValue;
         private bool _isPressing = false;
 
-        private int _maxSymbolLength = 5;
+        private int _maxSymbolLength = 4;
 
         private readonly float letterPauseThreshold = 1f;
 
@@ -23,7 +23,7 @@ namespace Game.Systems.Minigames.Morse
 
         public void AddSymbol(char symbol, float currentTime)
         {
-            if(_currentSymbolSequence.Length >= _maxSymbolLength)
+            if (_currentSymbolSequence.Length >= _maxSymbolLength)
             {
                 return;
             }

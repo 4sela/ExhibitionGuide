@@ -1280,7 +1280,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8249102311288662545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.43514627}
+  m_AnchorMin: {x: 0, y: 0.35897845}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -1359,7 +1359,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1770.37}
+  m_SizeDelta: {x: 0, y: 1560.01}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1627394539007252782
 MonoBehaviour:
@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6829973610475417445}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5648537
+  m_Size: 0.64102155
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3764,8 +3764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 425, y: -885.185}
-  m_SizeDelta: {x: 850, y: 1770.37}
+  m_AnchoredPosition: {x: 425, y: -780.005}
+  m_SizeDelta: {x: 850, y: 1560.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1652909533987417811
 CanvasRenderer:
@@ -3795,13 +3795,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Rasmus = Eneb\xE6rodde\nPeder = Hasmark\nKaj = Lumby\nJens = Odense Havn\n\n\u201Ckommer
-    ikke hjem\u201D = Aflyst\n\n\u201Cnormale tilstande\" = Nedkastning i nat\n\n\u201CModtaget
-    detaileret underretning\" = Udskudt til i morgen nat\n\n\u201CPasse p\xE5\" =
-    Fare / tyskerne t\xE6t p\xE5\r\n\n\newf\nfew\nfwe\n"
+  m_text: "Rasmus:\n= Eneb\xE6rodde\n\nPeder:\n= Hasmark\n\nKaj:\n= Lumby\n\nJens:\n=
+    Odense Havn\n\n\u201Ckommer ikke hjem\u201D:\n= Aflyst\n\n\u201Cnormale tilstande\":\n=
+    Nedkastning i nat\n\n\u201CModtaget detaileret underretning\":\n= Udskudt til
+    i morgen nat\n\n\u201CPasse p\xE5\":\n= Fare / tyskerne t\xE6t p\xE5\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}
-  m_sharedMaterial: {fileID: 265454499000485240, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
+  m_sharedMaterial: {fileID: -7598302366747491363, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

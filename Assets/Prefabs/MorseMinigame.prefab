@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fa98300a281ef4a84f8b299122474a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dotThreshold: 1.2
+  _dotThreshold: 1
   onIcon: {fileID: 7173769683741895014}
   offIcon: {fileID: 6327145822278231874}
 --- !u!114 &8260839805558728586
