@@ -183,11 +183,11 @@ namespace Systems.Minigames.Decode
             while (time < halfJump)
             {
                 time += Time.deltaTime;
-                float t = Mathf.SmoothStep(0, 1, time / halfJump);
+                float calculatedTime = Mathf.SmoothStep(0, 1, time / halfJump);
 
-                rect.anchoredPosition = Vector2.Lerp(_originalButtonPos, targetPosition, t);
-                rect.localScale = Vector3.Lerp(_originalButtonScale, targetScale, t);
-                confirmButtonImage.color = Color.Lerp(normalFieldColor, wrongFieldColor, t);
+                rect.anchoredPosition = Vector2.Lerp(_originalButtonPos, targetPosition, calculatedTime);
+                rect.localScale = Vector3.Lerp(_originalButtonScale, targetScale, calculatedTime);
+                confirmButtonImage.color = Color.Lerp(normalFieldColor, wrongFieldColor, calculatedTime);
                 yield return null;
             }
 
@@ -206,11 +206,11 @@ namespace Systems.Minigames.Decode
             while (time < halfJump)
             {
                 time += Time.deltaTime;
-                float t = Mathf.SmoothStep(0, 1, time / halfJump);
+                float calculatedTime = Mathf.SmoothStep(0, 1, time / halfJump);
 
-                rect.anchoredPosition = Vector2.Lerp(targetPosition, _originalButtonPos, t);
-                rect.localScale = Vector3.Lerp(targetScale, _originalButtonScale, t);
-                confirmButtonImage.color = Color.Lerp(wrongFieldColor, normalFieldColor, t);
+                rect.anchoredPosition = Vector2.Lerp(targetPosition, _originalButtonPos, calculatedTime);
+                rect.localScale = Vector3.Lerp(targetScale, _originalButtonScale, calculatedTime);
+                confirmButtonImage.color = Color.Lerp(wrongFieldColor, normalFieldColor, calculatedTime);
                 yield return null;
             }
 
@@ -220,7 +220,8 @@ namespace Systems.Minigames.Decode
 
         private void ResetButtonState()
         {
-            if (confirmButtonImage == null) return;
+            if (confirmButtonImage == null)
+                return;
 
             confirmButtonImage.rectTransform.anchoredPosition = _originalButtonPos;
             confirmButtonImage.rectTransform.localScale = _originalButtonScale;
@@ -242,11 +243,8 @@ namespace Systems.Minigames.Decode
                     selectorContainer = selectors.gameObject;
             }
 
-            if (locationText == null)
-                locationText = FindText("TMP_LocationText", "LocationText", "LocationFieldText");
-
-            if (messageText == null)
-                messageText = FindText("TMP_MessageText", "MessageText", "MessageFieldText");
+            locationText ??= FindText("TMP_LocationText", "LocationText", "LocationFieldText");
+            messageText ??= FindText("TMP_MessageText", "MessageText", "MessageFieldText");
         }
 
         private TextMeshProUGUI FindText(params string[] names)
