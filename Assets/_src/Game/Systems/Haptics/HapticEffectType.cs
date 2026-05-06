@@ -2,11 +2,11 @@ namespace Game.Systems.Haptics
 {
     public enum HapticEffectType
     {
-        Tick,
-        Click,
-        HeavyClick,
+        Tick, // Sliders, scrubbing, tiny UI feedback
+        Click, // Buttons
+        HeavyClick, // Important interactions
         DoubleClick,
         Success,
-        Error
+        Error // Wrong/denied
     }
 }

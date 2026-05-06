@@ -4650,7 +4650,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '--- = O
+  m_text: '-. = N
+
+    --- = O
 
     .--. = P
 
@@ -4658,10 +4660,10 @@ MonoBehaviour:
 
     .-. = R
 
-    ... = S
+    ...
+    = S
 
-    - =
-    T
+    - = T
 
     ..- = U
 
@@ -4671,10 +4673,10 @@ MonoBehaviour:
 
     -..- = X
 
-    -.-- = Y
+    -.--
+    = Y
 
-    --..
-    = Z'
+    --.. = Z'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
   m_sharedMaterial: {fileID: -7598302366747491363, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
@@ -5218,9 +5220,7 @@ MonoBehaviour:
     L = .-..
 
     M
-    = --
-
-    N = -.'
+    = --'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
   m_sharedMaterial: {fileID: -7598302366747491363, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
