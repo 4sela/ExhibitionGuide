@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
 using Game.Systems.Haptics;
@@ -8,7 +9,12 @@ namespace Game.Systems.Minigames.Morse
 {
     public sealed class MorseInputHandler : MonoBehaviour
     {
+        [Header("Code")]
         [SerializeField] private float _dotThreshold = 0.35f;
+
+        [Header("Flashlight Icon")]
+        [SerializeField] private RawImage onIcon;
+        [SerializeField] private RawImage offIcon;
 
         public event Action<bool> OnPressStateChanged;
         public event Action<char, float> OnSymbolAdded;
@@ -58,7 +64,14 @@ namespace Game.Systems.Minigames.Morse
         private void ProcessHolding(float currentTime)
         {
             if (!_isPressing)
+            {
+                offIcon.enabled = true;
+                onIcon.enabled = false;
                 return;
+            }
+
+            offIcon.enabled = false;
+            onIcon.enabled = true;
 
             float duration = currentTime - _pressStartTime;
 

@@ -15,6 +15,7 @@ namespace Game.Systems.Minigames.Morse
     {
         [Header("Game Settings")]
         [SerializeField] private string targetWord = "RAY";
+        [SerializeField] private float letterTileAlpha = 0.4f;
 
         [Header("System Dependencies")]
         [SerializeField] private MorseInputHandler morseInputHandler;
@@ -26,8 +27,6 @@ namespace Game.Systems.Minigames.Morse
 
         [Header("UI Live Input Feedback")]
         [SerializeField] private Image progressBar;
-        [SerializeField] private TextMeshProUGUI previewSymbol;
-        [SerializeField] private TextMeshProUGUI previewLetter;
 
         [Header("UI Decoded Progress")]
         [SerializeField] private TextMeshProUGUI currentMorseText;
@@ -114,14 +113,7 @@ namespace Game.Systems.Minigames.Morse
         private void OnHolding(float progress, char predictedSymbol)
         {
             progressBar.fillAmount = progress;
-            previewSymbol.text = (predictedSymbol == '.') ? "•" : "—";
-
-            string previewSequence = _morseSeqBuilder.CurrentSymbolSequence + predictedSymbol;
-
-            if (MorseTranslator.TryTranslate(previewSequence, out char letter))
-                previewLetter.text = letter.ToString();
-            else
-                previewLetter.text = "";
+            letterTiles[_currentTileIndex].alpha = letterTileAlpha;
         }
 
         /// <remarks>
@@ -138,7 +130,7 @@ namespace Game.Systems.Minigames.Morse
             currentMorseText.text = FormatMorse(_morseSeqBuilder.CurrentSymbolSequence);
 
             char letter = _morseSeqBuilder.GetPreviewLetter();
-            previewLetter.text = letter == ' ' ? "" : letter.ToString();
+            letterTiles[_currentTileIndex].text = letter == ' ' ? "" : letter.ToString();
         }
 
         /// <remarks>
@@ -146,6 +138,8 @@ namespace Game.Systems.Minigames.Morse
         /// </remarks>
         private void OnLetterFormed(char letter)
         {
+            letterTiles[_currentTileIndex].alpha = 1f;
+
             if (_currentTileIndex < letterTiles.Length)
             {
                 letterTiles[_currentTileIndex].text = letter.ToString();
@@ -166,7 +160,7 @@ namespace Game.Systems.Minigames.Morse
         {
             HapticsService.PlayError();
             ClearCurrentInput();
-            currentMorseText.text = "Invalid letter";
+            currentMorseText.text = "";
             _morseSeqBuilder.ResetCurrentSequenceOnly();
             //Maybe make the CurrentSequence field, turn red for color indication also.
         }
@@ -198,8 +192,6 @@ namespace Game.Systems.Minigames.Morse
         private void ClearCurrentInput()
         {
             currentMorseText.text = "";
-            previewSymbol.text = "";
-            previewLetter.text = "";
             progressBar.fillAmount = 0f;
         }
 
