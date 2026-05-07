@@ -19,6 +19,6 @@ namespace Game.Configs
         }
 
         private static void SetAudioEnabled(bool isEnabled) => _isAudioEnabled = isEnabled;
-        public static bool GetAudioEnabled() => _isAudioEnabled;
+        private static bool GetAudioEnabled() => _isAudioEnabled;
     }
 }

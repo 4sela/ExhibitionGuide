@@ -86,12 +86,11 @@ namespace Game.UI.Screens.Narrative
 #endif
             backgroundImage.texture = NarrativeManager.Instance.GetImage(node);
 
-            if (GlobalState.GetAudioEnabled() == true)
+            if (GlobalStateEvents.GetDefaultAudioBehaviour.Invoke() == true)
             {
-
                 timePerChar = node.voiceClip.length / node.text.Length; //If voice is activated at beginning we set typewriter to try and match voice.
             }
-            
+
 
             if (typingCoroutine != null)
                 StopCoroutine(typingCoroutine);
