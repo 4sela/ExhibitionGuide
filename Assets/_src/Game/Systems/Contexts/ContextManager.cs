@@ -30,7 +30,7 @@ namespace Game.Systems.Contexts
 
         public void LoadContextPanel(int contextPanel)
         {
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             AudioManager.Instance.Voice.StopVoice();
 
             switch (contextPanel)
@@ -41,7 +41,7 @@ namespace Game.Systems.Contexts
                     linzSkibet.SetActive(false);
 
                     if (audioOdinsTårnet != null)
-                        Invoke(nameof(PlayOdinsTårnet), 1f);
+                        Invoke(nameof(PlayOdinsTårnet), 0.6f);
 
                     break;
 
@@ -51,7 +51,7 @@ namespace Game.Systems.Contexts
                     linzSkibet.SetActive(false);
 
                     if (audioAugustOprøret != null)
-                        Invoke(nameof(PlayAugustOprøert), 1f);
+                        Invoke(nameof(PlayAugustOprøert), 0.6f);
 
                     break;
 
@@ -61,7 +61,7 @@ namespace Game.Systems.Contexts
                     linzSkibet.SetActive(true);
 
                     if (audioLinzSkibet != null)
-                        Invoke(nameof(PlayLinzSkibet), 1f);
+                        Invoke(nameof(PlayLinzSkibet), 0.6f);
 
                     break;
             }
