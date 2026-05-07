@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - nodeId: 0
-    text: "Odense, sommeren 1943.\n\nBes\xE6ttelsen har \xE6ndret sig.\n\r\r                       
-      \nDet er ikke l\xE6ngere stille.\n\nStrejker. Sabotage. Rygter.\n\r\r\nOg England
+    text: "Odense, sommeren 1943.\n\nBes\xE6ttelsen har \xE6ndret sig.\n\r\r\nDet
+      er ikke l\xE6ngere stille.\n\nStrejker. Sabotage. Rygter.\n\r\r\nOg England
       kaster forsyninger ned fra himlen. \n\nDu er ikke l\xE6ngere bare en tilskuer.\n\r\r\nDu
       er en del af modstandsbev\xE6gelsen.\r\n\r"
     choices: []
