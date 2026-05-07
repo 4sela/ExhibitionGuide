@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - nodeId: 0
-    text: "Odense, sommeren 1943.\n\r\nBes\xE6ttelsen har \xE6ndret sig.\n\r\nDet
-      er ikke l\xE6ngere stille.\n\r\nStrejker. Sabotage. Rygter.\n\r\nOg England
-      kaster forsyninger ned fra himlen. \n\r\nDu er ikke l\xE6ngere bare en tilskuer.\n\r\nDu
-      er en del af modstandsbev\xE6gelsen.\r\n\r"
+    text: "Odense, sommeren 1943.\n\r                                                                             
+      \nBes\xE6ttelsen har \xE6ndret sig.\n\r\r                           \nDet er
+      ikke l\xE6ngere stille.\n\r\r                                             
+      \nStrejker. Sabotage. Rygter.\n\r\r                                                     
+      \nOg England kaster forsyninger ned fra himlen. \n\r\r                                                               
+      \nDu er ikke l\xE6ngere bare en tilskuer.\n\r\r                \nDu er en del
+      af modstandsbev\xE6gelsen.\r\n\r"
     choices: []
     defaultTargetNodeId: 1
     isEndNode: 0
