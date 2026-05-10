@@ -25,6 +25,8 @@ namespace Game.UI
             public GameObject screenObject;
         }
 
+        public static UIManager Instance;
+
         [Header("Screens")]
         [SerializeField] private ScreenEntry[] allScreens;
 
@@ -36,6 +38,11 @@ namespace Game.UI
 
         void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+
             screenMap = new Dictionary<ScreenType, GameObject>();
 
             for (int i = 0; i < allScreens.Length; i++)
@@ -116,7 +123,7 @@ namespace Game.UI
         {
             HapticsService.PlayTick();
             AudioManager.Instance.Voice.StopVoice();
-            ShowScreen(ScreenType.Welcome);
+            ShowScreen(ScreenType.MainMenu);
         }
         public void ToContextSetupScreen()
         {
@@ -142,16 +149,26 @@ namespace Game.UI
             ShowScreen(ScreenType.Narrative);
         }
 
-        public void ToContextChoiceScreen()
-        {
-            HapticsService.PlayTick();
-            ShowScreen(ScreenType.ContextChoice);
-        }
-
         public void ToGalleryScreen()
         {
             HapticsService.PlayTick();
             ShowScreen(ScreenType.Gallery);
+        }
+
+        public void OpenScreen(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    ShowScreen(ScreenType.ContextSetup);
+                    break;
+                case 1:
+                    ShowScreen(ScreenType.NarrativeSetup);
+                    break;
+                case 2:
+                    ShowScreen(ScreenType.Gallery);
+                    break;
+            }
         }
     }
 }

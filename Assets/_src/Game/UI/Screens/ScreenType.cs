@@ -3,12 +3,11 @@ namespace Game.UI
     public enum ScreenType : byte
     {
         Start,
-        Welcome,
+        MainMenu,
         ContextSetup,
         NarrativeSetup,
         Narrative,
         Context,
-        ContextChoice,
         Gallery
     }
 }
