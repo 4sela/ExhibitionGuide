@@ -38,6 +38,8 @@ namespace Game.Systems.Haptics
 
         public static void PlayTick() => Play(HapticEffectType.Tick);
         public static void PlayClick() => Play(HapticEffectType.Click);
+        public static void PlayHeavyClick() => Play(HapticEffectType.HeavyClick);
+        public static void PlayDoubleClick() => Play(HapticEffectType.DoubleClick);
         public static void PlaySuccess() => Play(HapticEffectType.Success);
         public static void PlayError() => Play(HapticEffectType.Error);
 

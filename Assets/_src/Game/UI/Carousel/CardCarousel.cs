@@ -1,39 +1,42 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
+using System.Diagnostics;
+using Game.Systems.Haptics;
 
 namespace Game.UI.Carousel
 {
     public sealed class CardCarousel : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
         [Header("UI References")]
-        public ScrollRect scrollRect;
-        public RectTransform viewport;
-        public RectTransform content;
-        public RectTransform[] cards;
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private RectTransform viewport;
+        [SerializeField] private RectTransform content;
+        [SerializeField] private RectTransform[] cards;
+        [SerializeField] private TextMeshProUGUI buttonText;
 
         [Header("Carousel Settings")]
-        public float focusedScale = 1.1f;
-        public float unfocusedScale = 0.8f;
-        public float focusedAlpha = 1f;
-        public float unfocusedAlpha = 0.5f;
-        public float snapSpeed = 10f;
-        public float focusRange = 500f;
+        [SerializeField] private float focusedScale = 1.1f;
+        [SerializeField] private float unfocusedScale = 0.8f;
+        [SerializeField] private float focusedAlpha = 1f;
+        [SerializeField] private float unfocusedAlpha = 0.5f;
+        [SerializeField] private float focusRange = 500f;
+        [SerializeField] private float smoothTime = 0.1f;
 
-        [Header("State (Visible for other scripts & Debugging)")]
-        [SerializeField] private int currentIndex = 0;
-
-        private bool isDragging = false;
-        private CanvasGroup[] canvasGroups;
-        private int closestCardIndex = 0;
-        private float targetPositionX;
+        private CanvasGroup[] _canvasGroups;
+        private float _targetPositionX;
+        private float _snapVelocity;
+        private int _currentIndex = 0;
+        private int _closestCardIndex = 0;
+        private bool _isDragging = false;
 
         void Start()
         {
-            canvasGroups = new CanvasGroup[cards.Length];
+            _canvasGroups = new CanvasGroup[cards.Length];
             for (int i = 0; i < cards.Length; i++)
             {
-                canvasGroups[i] = cards[i].GetComponent<CanvasGroup>();
+                _canvasGroups[i] = cards[i].GetComponent<CanvasGroup>();
             }
 
             Canvas.ForceUpdateCanvases();
@@ -41,19 +44,20 @@ namespace Game.UI.Carousel
             float trueViewportCenterX = viewport.TransformPoint(viewport.rect.center).x;
 
             float differenceToCenter = (trueViewportCenterX - cards[0].position.x) / content.lossyScale.x;
-            targetPositionX = content.anchoredPosition.x + differenceToCenter;
+            _targetPositionX = content.anchoredPosition.x + differenceToCenter;
 
-            content.anchoredPosition = new Vector2(targetPositionX, content.anchoredPosition.y);
+            content.anchoredPosition = new Vector2(_targetPositionX, content.anchoredPosition.y);
         }
 
         void Update()
         {
+            buttonText.text = UpdateButtonText();
             UpdateCardVisuals();
 
-            if (!isDragging)
+            if (!_isDragging)
             {
                 Vector2 currentPos = content.anchoredPosition;
-                currentPos.x = Mathf.Lerp(currentPos.x, targetPositionX, Time.deltaTime * snapSpeed);
+                currentPos.x = Mathf.SmoothDamp(currentPos.x, _targetPositionX, ref _snapVelocity, smoothTime);
                 content.anchoredPosition = currentPos;
             }
         }
@@ -71,7 +75,7 @@ namespace Game.UI.Carousel
                 if (distanceToCenter < minDistance)
                 {
                     minDistance = distanceToCenter;
-                    closestCardIndex = i;
+                    _closestCardIndex = i;
                 }
 
                 float focusFactor = 1f - Mathf.Clamp01(distanceToCenter / focusRange);
@@ -79,39 +83,45 @@ namespace Game.UI.Carousel
                 float targetScale = Mathf.Lerp(unfocusedScale, focusedScale, focusFactor);
                 cards[i].localScale = new Vector3(targetScale, targetScale, 1f);
 
-                if (canvasGroups[i] != null)
+                if (_canvasGroups[i] != null)
                 {
-                    canvasGroups[i].alpha = Mathf.Lerp(unfocusedAlpha, focusedAlpha, focusFactor);
+                    _canvasGroups[i].alpha = Mathf.Lerp(unfocusedAlpha, focusedAlpha, focusFactor);
                 }
             }
 
-            currentIndex = closestCardIndex;
+            if (_currentIndex != _closestCardIndex)
+            {
+                _currentIndex = _closestCardIndex;
+                HapticsService.PlayTick();
+            }
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            isDragging = true;
+            _isDragging = true;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            isDragging = false;
+            _isDragging = false;
             scrollRect.velocity = Vector2.zero;
 
             float trueViewportCenterX = viewport.TransformPoint(viewport.rect.center).x;
 
-            float differenceToCenter = (trueViewportCenterX - cards[closestCardIndex].position.x) / content.lossyScale.x;
-            targetPositionX = content.anchoredPosition.x + differenceToCenter;
+            float differenceToCenter = (trueViewportCenterX - cards[_closestCardIndex].position.x) / content.lossyScale.x;
+            _targetPositionX = content.anchoredPosition.x + differenceToCenter;
         }
 
         public int GetCurrentIndex()
         {
-            return currentIndex;
+            return _currentIndex;
         }
 
         public void OpenSelectedPanelFromCarousel()
         {
-            switch (currentIndex)
+            HapticsService.PlaySuccess();
+
+            switch (_currentIndex)
             {
                 case 0:
                     UIManager.Instance.ShowScreen(ScreenType.ContextSetup);
@@ -123,6 +133,16 @@ namespace Game.UI.Carousel
                     UIManager.Instance.ShowScreen(ScreenType.Gallery);
                     break;
             }
+        }
+
+        private string UpdateButtonText()
+        {
+            return _currentIndex switch
+            {
+                0 => "Udforsk nu",
+                1 => "Start spillet",
+                2 => "Åben galleriet"
+            };
         }
     }
 }
