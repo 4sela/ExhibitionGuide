@@ -11043,9 +11043,9 @@ RectTransform:
   - {fileID: 1819633127}
   m_Father: {fileID: 1704148419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2140, y: -325}
   m_SizeDelta: {x: 650, y: 1020}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &977550410
@@ -19076,9 +19076,9 @@ RectTransform:
   - {fileID: 924855919}
   m_Father: {fileID: 1704148419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1430, y: -325}
   m_SizeDelta: {x: 650, y: 1020}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672212575
@@ -19675,9 +19675,9 @@ RectTransform:
   - {fileID: 68680009}
   m_Father: {fileID: 1704148419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 720, y: -325}
   m_SizeDelta: {x: 650, y: 1020}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707271934
@@ -22760,7 +22760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 725}
   m_SizeDelta: {x: 900, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2034565699
@@ -22783,9 +22783,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Du indtager rollen som en del af modstandsbev\xE6gelsen og skal l\xF8se
-    opgaver undervejs.\n\r\nDet er sommeren 1943 i Odense.\n\r\nTryk \u201Cbegynd
-    nu\u201D for at begynde.\r\n"
+  m_text: "Du indtager rollen som en del af modstandsbev\xE6gelsen i Odense.\n\nDu
+    skal l\xF8se opgaver undervejs.\n\r\n\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
   m_sharedMaterial: {fileID: 7727282430912938700, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
@@ -22819,8 +22818,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
