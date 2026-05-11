@@ -107,11 +107,18 @@ namespace Game.UI
                 panel.SetActive(false);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
         /// <remarks> Button hookup.</remarks>
-        public void OnNameButtonPressed() => nameInputModal.GetComponent<UITweener>().Show();
+        public void OpenQuitConfirmationModal()
+        {
+            HapticsService.PlayClick();
+            quitConfirmationModal.GetComponent<UITweener>().Show();
+        }
+
+        public void CloseQuitConfirmationModal()
+        {
+            HapticsService.PlayClick();
+            quitConfirmationModal.GetComponent<UITweener>().Hide();
+        }
 
         /// <summary>
         /// Transition to the Welcome Screen.
