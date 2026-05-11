@@ -119,39 +119,45 @@ namespace Game.UI
         /// <remarks>
         /// Button hookup.
         /// </remarks>
+        public void ToStartScreen()
+        {
+            HapticsService.PlayClick();
+            ShowScreen(ScreenType.Start);
+        }
+
         public void ToWelcomeScreen()
         {
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             AudioManager.Instance.Voice.StopVoice();
             ShowScreen(ScreenType.MainMenu);
         }
         public void ToContextSetupScreen()
         {
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             AudioManager.Instance.Voice.StopVoice();
             ShowScreen(ScreenType.ContextSetup);
         }
         public void ToContextScreen()
         {
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             ShowScreen(ScreenType.Context);
         }
 
         public void ToNarrativeSetupScreen()
         {
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             ShowScreen(ScreenType.NarrativeSetup);
         }
 
         public void ToNarrativeScreen()
         {
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             ShowScreen(ScreenType.Narrative);
         }
 
         public void ToGalleryScreen()
         {
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             ShowScreen(ScreenType.Gallery);
         }
 
