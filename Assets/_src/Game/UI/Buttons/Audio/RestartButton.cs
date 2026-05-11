@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Systems.Haptics;
 
 namespace Game.UI.Buttons.Audio
 {
@@ -14,6 +15,7 @@ namespace Game.UI.Buttons.Audio
 
         private void RestartAudio()
         {
+            HapticsService.PlayClick();
             AudioManager.Instance.Voice.ResetVoice();
         }
     }

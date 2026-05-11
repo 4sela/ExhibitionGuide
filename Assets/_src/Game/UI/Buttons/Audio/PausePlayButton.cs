@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Systems.Haptics;
+
 
 namespace Game.UI.Buttons.Audio
 {
@@ -27,6 +29,8 @@ namespace Game.UI.Buttons.Audio
 
         private void TogglePlayPause()
         {
+            HapticsService.PlayClick();
+
             if (_voiceService.IsPlaying())
             {
                 Debug.Log("If");

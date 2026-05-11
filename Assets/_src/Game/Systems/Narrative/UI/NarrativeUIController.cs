@@ -37,7 +37,6 @@ namespace Game.UI.Screens.Narrative
         [SerializeField] private Button endNarrativeButton;
         [SerializeField] private float buttonFadeDuration = 0.3f;
 
-
         /// <summary>
         /// Used to control interactability more easily
         /// </summary>
@@ -48,11 +47,13 @@ namespace Game.UI.Screens.Narrative
             endNarrativeButton
         };
 
+        private float _timePerCharOrgVal;
         private List<GameObject> spawnedChoices = new List<GameObject>();
         private Coroutine typingCoroutine;
 
         private void Awake()
         {
+            _timePerCharOrgVal = timePerChar;
             EnsureButtonHaptics(endNarrativeButton);
         }
 
@@ -86,11 +87,12 @@ namespace Game.UI.Screens.Narrative
 #endif
             backgroundImage.texture = NarrativeManager.Instance.GetImage(node);
 
+            timePerChar = _timePerCharOrgVal;
+
             if (GlobalStateEvents.GetDefaultAudioBehaviour.Invoke() == true)
             {
                 timePerChar = (node.voiceClip.length / node.text.Length) - node.timePerCharFactor; //If voice is activated at beginning we set typewriter to try and match voice.
             }
-
 
             if (typingCoroutine != null)
                 StopCoroutine(typingCoroutine);
