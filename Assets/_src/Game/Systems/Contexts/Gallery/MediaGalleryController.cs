@@ -1,7 +1,7 @@
-using Game.Systems.Haptics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using Game.Systems.Haptics;
 
 namespace Game.UI.Gallery
 {
@@ -40,7 +40,7 @@ namespace Game.UI.Gallery
                 return;
             }
 
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
             StopVideo();
 
             if (previewPanel != null)
@@ -82,7 +82,7 @@ namespace Game.UI.Gallery
                 return;
             }
 
-            HapticsService.PlayTick();
+            HapticsService.PlayClick();
 
             if (previewPanel != null)
                 previewPanel.SetActive(true);
@@ -102,6 +102,7 @@ namespace Game.UI.Gallery
 
         public void ClosePreview()
         {
+            HapticsService.PlayClick();
             StopVideo();
 
             if (previewPanel != null)
