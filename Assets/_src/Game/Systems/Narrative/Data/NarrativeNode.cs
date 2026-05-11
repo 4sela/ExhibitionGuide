@@ -17,6 +17,7 @@ namespace Game.Systems.Narrative.Data
 
         [Header("Audio")]
         public AudioClip voiceClip;   //Text-to-speech
+        public float timePerCharFactor = 0;
         //public AudioClip blipSound; //If we want typer-writer audio
 
         [Header("Image")]

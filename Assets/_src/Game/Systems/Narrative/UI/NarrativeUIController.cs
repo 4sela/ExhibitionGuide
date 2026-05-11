@@ -88,7 +88,7 @@ namespace Game.UI.Screens.Narrative
 
             if (GlobalStateEvents.GetDefaultAudioBehaviour.Invoke() == true)
             {
-                timePerChar = node.voiceClip.length / node.text.Length; //If voice is activated at beginning we set typewriter to try and match voice.
+                timePerChar = (node.voiceClip.length / node.text.Length) - node.timePerCharFactor; //If voice is activated at beginning we set typewriter to try and match voice.
             }
 
 
