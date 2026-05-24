@@ -37,6 +37,7 @@ namespace Game.UI.Carousel
             for (int i = 0; i < cards.Length; i++)
             {
                 _canvasGroups[i] = cards[i].GetComponent<CanvasGroup>();
+                AttachDoubleTapForwarder(cards[i], i);
             }
 
             Canvas.ForceUpdateCanvases();
@@ -119,6 +120,12 @@ namespace Game.UI.Carousel
 
         public void OpenSelectedPanelFromCarousel()
         {
+            OpenPanelAtIndex(_currentIndex);
+        }
+
+        public void OpenPanelAtIndex(int index)
+        {
+            _currentIndex = Mathf.Clamp(index, 0, cards.Length - 1);
             HapticsService.PlaySuccess();
 
             switch (_currentIndex)
@@ -143,6 +150,42 @@ namespace Game.UI.Carousel
                 1 => "Start spillet",
                 2 => "Åben galleriet"
             };
+        }
+        private void AttachDoubleTapForwarder(RectTransform card, int index)
+        {
+            if (card == null)
+                return;
+
+            CardDoubleTapForwarder forwarder = card.GetComponent<CardDoubleTapForwarder>();
+            if (forwarder == null)
+                forwarder = card.gameObject.AddComponent<CardDoubleTapForwarder>();
+
+            forwarder.Initialise(this, index);
+        }
+    }
+
+    internal sealed class CardDoubleTapForwarder : MonoBehaviour, IPointerClickHandler
+    {
+        private const float MaxTapInterval = 0.35f;
+
+        private CardCarousel _carousel;
+        private int _cardIndex;
+        private float _lastTapTime = -1f;
+
+        public void Initialise(CardCarousel carousel, int cardIndex)
+        {
+            _carousel = carousel;
+            _cardIndex = cardIndex;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            float now = Time.unscaledTime;
+            bool isDoubleTap = eventData.clickCount >= 2 || now - _lastTapTime <= MaxTapInterval;
+            _lastTapTime = now;
+
+            if (isDoubleTap)
+                _carousel?.OpenPanelAtIndex(_cardIndex);
         }
     }
 }

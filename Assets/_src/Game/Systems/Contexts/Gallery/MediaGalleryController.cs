@@ -27,6 +27,8 @@ namespace Game.UI.Gallery
         private void Awake()
         {
             AttachSwipeForwarder(previewPanel);
+            AttachSwipeForwarder(imagePreview);
+            AttachSwipeForwarder(videoPreview);
             ClosePreview();
         }
 
@@ -256,29 +258,63 @@ namespace Game.UI.Gallery
 
             forwarder.Initialise(this);
         }
+
+        private void AttachSwipeForwarder(RawImage target)
+        {
+            if (target == null)
+                return;
+
+            target.raycastTarget = true;
+            AttachSwipeForwarder(target.gameObject);
+        }
     }
 
-    internal sealed class GalleryPreviewSwipeForwarder : MonoBehaviour, IBeginDragHandler, IEndDragHandler
+    internal sealed class GalleryPreviewSwipeForwarder : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler
     {
         private MediaGalleryController _controller;
-        private Vector2 _dragStartPosition;
+        private Vector2 _pointerStartPosition;
+        private bool _hasPointerStart;
 
         public void Initialise(MediaGalleryController controller)
         {
             _controller = controller;
         }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            _pointerStartPosition = eventData.position;
+            _hasPointerStart = true;
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (!_hasPointerStart)
+                return;
+
+            HandleSwipeEnd(eventData.position);
+        }
+
         public void OnBeginDrag(PointerEventData eventData)
         {
-            _dragStartPosition = eventData.position;
+            _pointerStartPosition = eventData.position;
+            _hasPointerStart = true;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            HandleSwipeEnd(eventData.position);
+        }
+
+        private void HandleSwipeEnd(Vector2 pointerEndPosition)
+        {
             if (_controller == null)
                 return;
 
-            float horizontalDelta = eventData.position.x - _dragStartPosition.x;
+            if (!_hasPointerStart)
+                return;
+
+            _hasPointerStart = false;
+            float horizontalDelta = pointerEndPosition.x - _pointerStartPosition.x;
             _controller.HandlePreviewSwipe(horizontalDelta);
         }
     }
