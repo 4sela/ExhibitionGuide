@@ -1883,7 +1883,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Det lykkeds!
+  m_text: Det lykkedes at kontakte flyet via morsekode, hvorefter det kastede forsyningerne
+    ned.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2c65c598faa490438833a95d4153f34, type: 2}
   m_sharedMaterial: {fileID: 6291824710860738967, guid: d2c65c598faa490438833a95d4153f34, type: 2}
@@ -1910,8 +1911,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4752,7 +4753,35 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "N <pos=42>=<pos=92> -.\nO <pos=42>=<pos=92> ---\nP <pos=42>=<pos=92> .--.\nQ <pos=42>=<pos=92> --.-\nR <pos=42>=<pos=92> .-.\nS <pos=42>=<pos=92> ...\nT <pos=42>=<pos=92> -\nU <pos=42>=<pos=92> ..-\nV <pos=42>=<pos=92> ...-\nW <pos=42>=<pos=92> .--\nX <pos=42>=<pos=92> -..-\nY <pos=42>=<pos=92> -.--\nZ <pos=42>=<pos=92> --.."
+  m_text: 'N <pos=42>=<pos=92> -.
+
+    O <pos=42>=<pos=92> ---
+
+    P <pos=42>=<pos=92>
+    .--.
+
+    Q <pos=42>=<pos=92> --.-
+
+    R <pos=42>=<pos=92> .-.
+
+    S <pos=42>=<pos=92>
+    ...
+
+    T <pos=42>=<pos=92> -
+
+    U <pos=42>=<pos=92> ..-
+
+    V <pos=42>=<pos=92>
+    ...-
+
+    W <pos=42>=<pos=92> .--
+
+    X <pos=42>=<pos=92> -..-
+
+    Y <pos=42>=<pos=92>
+    -.--
+
+    Z <pos=42>=<pos=92> --..'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
   m_sharedMaterial: {fileID: -7598302366747491363, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}

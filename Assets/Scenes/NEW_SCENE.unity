@@ -14137,7 +14137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tag del i en gribende og interaktiv dialog.
+  m_text: Tag del i en gribende og interaktiv historie.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}
   m_sharedMaterial: {fileID: 265454499000485240, guid: ba4e9706d0a4c4e4287f3204f8b52524, type: 2}
@@ -19506,7 +19506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Narrativ
+  m_text: Narrativ spil
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9934b6bfe1bcfdd4597fea993d3d88cd, type: 2}
   m_sharedMaterial: {fileID: -7682260101250044274, guid: 9934b6bfe1bcfdd4597fea993d3d88cd, type: 2}
