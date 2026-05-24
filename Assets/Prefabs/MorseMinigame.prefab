@@ -4752,33 +4752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '-. = N
-
-    --- = O
-
-    .--. = P
-
-    --.- = Q
-
-    .-. = R
-
-    ...
-    = S
-
-    - = T
-
-    ..- = U
-
-    ...- = V
-
-    .-- = W
-
-    -..- = X
-
-    -.--
-    = Y
-
-    --.. = Z'
+  m_text: "N <pos=42>=<pos=92> -.\nO <pos=42>=<pos=92> ---\nP <pos=42>=<pos=92> .--.\nQ <pos=42>=<pos=92> --.-\nR <pos=42>=<pos=92> .-.\nS <pos=42>=<pos=92> ...\nT <pos=42>=<pos=92> -\nU <pos=42>=<pos=92> ..-\nV <pos=42>=<pos=92> ...-\nW <pos=42>=<pos=92> .--\nX <pos=42>=<pos=92> -..-\nY <pos=42>=<pos=92> -.--\nZ <pos=42>=<pos=92> --.."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
   m_sharedMaterial: {fileID: -7598302366747491363, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
@@ -4812,7 +4786,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

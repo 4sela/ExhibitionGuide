@@ -2426,6 +2426,7 @@ GameObject:
   - component: {fileID: 6070969746254578731}
   - component: {fileID: 8092713685273386276}
   - component: {fileID: 7523385095963372376}
+  - component: {fileID: 6188403376671200137}
   - component: {fileID: 5898368142545568049}
   - component: {fileID: 223652745049388077}
   m_Layer: 0
@@ -2490,6 +2491,24 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &6188403376671200137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338069774838045239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107ea3a125e8d864087ee9b41af26bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loopDelay: 3
+  jumpHeight: 15
+  scaleMultiplier: 1.05
+  jumpDuration: 0.4
+  shakeDuration: 0.5
+  shakeAngle: 8
 --- !u!114 &5898368142545568049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2545,6 +2564,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6188403376671200137}
+        m_TargetAssemblyTypeName: Game.Systems.Minigames.Morse.MorseBookShake, Assembly-CSharp
+        m_MethodName: StopAttentionLoop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &223652745049388077
 MonoBehaviour:
@@ -3382,6 +3413,7 @@ MonoBehaviour:
   messageText: {fileID: 9115669213802133845}
   selectorContainer: {fileID: 8787171604662303940}
   confirmButtonImage: {fileID: 275845572807834522}
+  bookAttention: {fileID: 6188403376671200137}
   normalFieldColor: {r: 0.49411765, g: 0.3529412, b: 0.2392157, a: 1}
   wrongFieldColor: {r: 1, g: 0.25, b: 0.25, a: 1}
   jumpHeight: 15
@@ -3735,10 +3767,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Rasmus:\n= Eneb\xE6rodde\n\nPeder:\n= Hasmark\n\nKaj:\n= Lumby\n\nJens:\n=
-    Odense Havn\n\n\u201Ckommer ikke hjem\u201D:\n= Aflyst\n\n\u201Cnormale tilstande\":\n=
-    Nedkastning i nat\n\n\u201CModtaget detaileret underretning\":\n= Udskudt til
-    i morgen nat\n\n\u201CPasse p\xE5\":\n= Fare / tyskerne t\xE6t p\xE5\r"
+  m_text: "<b>Besked:</b>\n\n\u201Ckommer ikke hjem\u201D\n= Aflyst\n\n\u201Cnormale
+    tilstande\" \n= Nedkastning i nat\n\n\u201CModtaget detaileret underretning\"
+    \n= Udskudt til i morgen nat\n\n\u201CPasse p\xE5\" \n= Fare / tyskerne t\xE6t
+    p\xE5\n\n<b>Lokation:</b>\n\nRasmus = Eneb\xE6rodde\n\nPeder = Hasmark\n\nKaj
+    = Lumby\n\nJens = Odense Havn\n\n\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
   m_sharedMaterial: {fileID: -7598302366747491363, guid: dbdf5f8eff87eef468d0b391cf5d5bf1, type: 2}
@@ -4081,8 +4114,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Du skal nu bruge en udstillingsgenstand fra museet til dette.\n\nFind
     dokumentet <i>\u201CTil arbejderne i Odense\u201D</i> i omr\xE5det Danmark Besat.\n\nL\xE6s
-    <color=#ECD3AA><u>linje 3 og 6</u></color> i dokumentet og brug <color=#ECD3AA><u>kodebogen</u></color>
-    til at matche de fundne ord."
+    <color=#ECD3AA>linje 3 og 6</color> i dokumentet, og find ord p\xE5 de to linjer
+    der matcher med dem i <color=#ECD3AA>kodebogen</color>.  "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
   m_sharedMaterial: {fileID: 7727282430912938700, guid: 83361745857f09d44ac9fe0419f55ead, type: 2}
@@ -4182,8 +4215,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6575620395311816573}
   - {fileID: 8962712402546324429}
+  - {fileID: 6575620395311816573}
   m_Father: {fileID: 6960311092211702376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -4392,7 +4425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Du vandt
+  m_text: Det lykkedes at afkode beskeden og lokationen!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2c65c598faa490438833a95d4153f34, type: 2}
   m_sharedMaterial: {fileID: 6291824710860738967, guid: d2c65c598faa490438833a95d4153f34, type: 2}

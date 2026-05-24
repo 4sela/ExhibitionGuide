@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using Game.Systems.Haptics;
 using Game.Systems.Minigames;
+using Game.Systems.Minigames.Morse;
 using Game.Systems.Narrative.Runtime;
 
 namespace Systems.Minigames.Decode
@@ -41,6 +42,7 @@ namespace Systems.Minigames.Decode
         [SerializeField] private TextMeshProUGUI messageText;
         [SerializeField] private GameObject selectorContainer;
         [SerializeField] private RawImage confirmButtonImage;
+        [SerializeField] private MorseBookShake bookAttention;
 
         [Header("Feedback & Animation")]
         [SerializeField] private Color normalFieldColor = Color.white;
@@ -73,6 +75,11 @@ namespace Systems.Minigames.Decode
                 _originalButtonScale = rect.localScale;
                 _originalButtonRot = rect.localRotation;
             }
+        }
+
+        private void Start()
+        {
+            bookAttention?.StartAttentionLoop();
         }
 
         public void PreviousLocation() => ChangeLocation(-1);
@@ -245,6 +252,13 @@ namespace Systems.Minigames.Decode
 
             locationText ??= FindText("TMP_LocationText", "LocationText", "LocationFieldText");
             messageText ??= FindText("TMP_MessageText", "MessageText", "MessageFieldText");
+
+            if (bookAttention == null)
+            {
+                Transform book = FindChildRecursive(transform, "Book");
+                if (book != null)
+                    bookAttention = book.GetComponent<MorseBookShake>();
+            }
         }
 
         private TextMeshProUGUI FindText(params string[] names)

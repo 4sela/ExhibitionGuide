@@ -22,17 +22,19 @@ MonoBehaviour:
     defaultTargetNodeId: 1
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 5e9d80c58c2582e47a8c48d9864e7b86, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 80b654f7517ff0e49814a926d4afe350, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 1
     text: "Klokken er 18:15.\n\nDig og din ven Erik Frandsen, sidder og l\xE6ser
       igennem et dokument.\n\n\u201CNu skal vi finde ud af hvor der bliver kastet
       forsyninger.\u201D\n\nErik vender sig mod dig.\n\n\u201CDet skulle gerne v\xE6re
-      p\xE5 linje 3 og linje 6.\u201D\n\n\u201CSe i bogen for at afkode ordene.\u201D"
+      p\xE5 linje 3 og linje 6. Se i bogen for at afkode ordene.\u201D"
     choices: []
     defaultTargetNodeId: 2
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: e9151ac6bdb8dca428dcd7743fd4c50d, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 2c46c61a4ae585f4282c4eb0bf19ab21, type: 3}
     minigamePrefab: {fileID: 7416240185725632505, guid: 6a1ce9beeea46de438ece10a53cdffb5, type: 3}
   - nodeId: 2
@@ -43,6 +45,7 @@ MonoBehaviour:
     defaultTargetNodeId: 3
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: a4934e52bedf4f5448b40ed1e4f1a619, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 974792d39f8cedc479f6e865bd23a745, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 3
@@ -53,6 +56,7 @@ MonoBehaviour:
     defaultTargetNodeId: 4
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 72cd5a2fa61a5cb4a9eae471462859d7, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: d8c3ea10b2254434bb788d7e347fbd43, type: 3}
     minigamePrefab: {fileID: 7416240185725632505, guid: 63581926aea032c46943b25ac5c3de79, type: 3}
   - nodeId: 4
@@ -63,17 +67,19 @@ MonoBehaviour:
     defaultTargetNodeId: 5
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 656d93ec034c89748b67bec084c528c8, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: cdc69d2831762fc43be601ce3370011c, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 5
     text: "Han l\xE6gger et kort frem.\n\r\n\u201CDenne magnetmine vi fik fra England,
-      den skal bruges.\u201D\n\r\nHan peger.\n\r\n\u201COdense havn. Ved skibsv\xE6rftet.\u201D\n\r\n\u201CTyskerne
-      er ved at bygge skibet Linz om til en minel\xE6gger.\u201D\n\r\nPeter vender
-      sig mod dig."
+      den skal bruges.\u201D\n\r\nHan peger.\n\r\n\u201COdense havn. Ved skibsv\xE6rftet.
+      Tyskerne er ved at bygge skibet Linz om til en minel\xE6gger.\u201D\n\r\nPeter
+      vender sig mod dig."
     choices: []
     defaultTargetNodeId: 6
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 3fbd8df7865c4274d97fb3d309c50124, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 623b60bdafff369499f2c807604ef782, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 6
@@ -85,18 +91,19 @@ MonoBehaviour:
     defaultTargetNodeId: 7
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 575d0cf5f3f58cf4dbbfe25427133089, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 05fc37f5a5637ef4ab23ecf1e5dc423e, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 7
     text: "N\xE6ste dag, p\xE5 Odense Havn.\n\r\nLuften er tung og kold.\n\r\nForan
       dig ligger skibet, Linz.\n\r\nErik st\xE5r t\xE6t ved siden af dig.\n\r\n\u201CDen
-      sejler fra havnen om et par dage.\" \n\r\n\u201CDet er vigtigt at den ikke
-      forlader havnen.\u201D\n\r\nErik r\xE6kker dig tasken.\n\r\n\u201CDet op til
-      dig nu\u201D \r\n\r\n"
+      sejler fra havnen om et par dage. Det er vigtigt at den ikke forlader havnen.\u201D\n\r\nErik
+      r\xE6kker dig tasken.\n\r\n\u201CDet op til dig nu\u201D \r\n\r\n"
     choices: []
     defaultTargetNodeId: 8
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: f0883238d3a6e3d45a679057ac168928, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 4dc65595b4926d44bb37765d8da1ba48, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 8
@@ -114,17 +121,19 @@ MonoBehaviour:
     defaultTargetNodeId: 9
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 929d4e6a8b24e5a418ed980131141867, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 52247cc0529ef6f4bb41a2c81a690ab6, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.A
     text: "Du s\xE6tter tasken fra dig under en b\xE6nk i omkl\xE6dningsrummet. \n\r\nSamme
       aften ringer du til Erik. \n\n\"Det kunne ikke lade sig g\xF8re i dag.\"\r\n\nEn
-      pause i r\xF8ret.\n\r\n\"Jamen s\xE5 skal det sgu ogs\xE5 v\xE6re i morgen.\"\n
-      \n\"Linz er planlagt til at sejle i overmorgen.\"\r\n"
+      pause i r\xF8ret.\n\r\n\"Jamen s\xE5 skal det sgu ogs\xE5 v\xE6re i morgen.
+      Linz er planlagt til at sejle i overmorgen.\"\r\n"
     choices: []
     defaultTargetNodeId: 10
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 885e9198c8d4a7944bf18a894a875392, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 5006b6b5aa60d574ab0d35ba21ca9692, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.B
@@ -136,6 +145,7 @@ MonoBehaviour:
     defaultTargetNodeId: 9.B.A
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 84d23d985d1118d48a909d68a36470b4, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: e78211deca5b7bf4b98a0d59050d5eb7, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.B.A
@@ -147,16 +157,18 @@ MonoBehaviour:
     defaultTargetNodeId: 9.B.B
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 4d9da1c4e88b42e45b8df3bbb4c79c56, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 0ed0498e96a655b4b88f5fa54c53b209, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 9.B.B
     text: "Samme aften ringer du til Erik.\n   \n\"Det kunne ikke lade sig g\xF8re.\" 
       \n\nEn lang pause i r\xF8ret.  \n\n\"Jamen s\xE5 skal det sgu ogs\xE5 v\xE6re
-      i morgen.\"\n\n\"Linz er planlagt til at sejle i overmorgen.\""
+      i morgen. Linz er planlagt til at sejle i overmorgen.\""
     choices: []
     defaultTargetNodeId: 10
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 669c20bd9a5fb2641bb8bcef35594757, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 7b18b0a669ba7464095ca40349337090, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 10
@@ -168,6 +180,7 @@ MonoBehaviour:
     defaultTargetNodeId: 11
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 721119a19729bdf419422be406bd51c3, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: b8501b51e1c13b24d8a5701da5533432, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 11
@@ -179,6 +192,7 @@ MonoBehaviour:
     defaultTargetNodeId: 12
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 5fa63459a75e6954ba9ca0ea0b5c0419, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 4f828232cd2d5a540a27b1d6486d3ce4, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 12
@@ -191,6 +205,7 @@ MonoBehaviour:
     defaultTargetNodeId: 13
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: b235a14164b71014f8a39f4d211967c0, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 6781e08db042fbe4a90853d874cb9d6c, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 13
@@ -202,6 +217,7 @@ MonoBehaviour:
     defaultTargetNodeId: 14
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 60a913801ee3e974abc698eee4ac0bf3, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 5de9da5efc555d443bd834a654200d78, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 14
@@ -212,6 +228,7 @@ MonoBehaviour:
     defaultTargetNodeId: 15
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 6d2a5433eddda8946bfe330e846753d1, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 151504e179e42e54f86924c1213cc098, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 15
@@ -222,6 +239,7 @@ MonoBehaviour:
     defaultTargetNodeId: 16
     isEndNode: 0
     voiceClip: {fileID: 8300000, guid: 203f966433be27048b110ee0a77ea67c, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: e6f02c3d85f37174788d92450e158cdd, type: 3}
     minigamePrefab: {fileID: 0}
   - nodeId: 16
@@ -233,5 +251,6 @@ MonoBehaviour:
     defaultTargetNodeId: 16
     isEndNode: 1
     voiceClip: {fileID: 8300000, guid: 9ff80523c15d8de41bd16c0555788fcf, type: 3}
+    timePerCharFactor: 0
     BackgroundImage: {fileID: 2800000, guid: 58fa92acd31edc9498d5f08b4e110d6f, type: 3}
     minigamePrefab: {fileID: 0}
