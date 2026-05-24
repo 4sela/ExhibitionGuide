@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using Game.Systems.Haptics;
@@ -16,10 +17,16 @@ namespace Game.UI.Gallery
         [Header("Video")]
         [SerializeField] private RenderTexture videoRenderTexture;
 
+        [Header("Swipe")]
+        [SerializeField] private Texture[] imageSequence;
+        [SerializeField] private float swipeThreshold = 80f;
+
         private RenderTexture _runtimeVideoTexture;
+        private int _currentImageIndex = -1;
 
         private void Awake()
         {
+            AttachSwipeForwarder(previewPanel);
             ClosePreview();
         }
 
@@ -41,6 +48,44 @@ namespace Game.UI.Gallery
             }
 
             HapticsService.PlayClick();
+            _currentImageIndex = FindImageIndex(image);
+            ShowImage(image);
+        }
+
+        public void OpenImage(RawImage sourceImage)
+        {
+            if (sourceImage == null)
+            {
+                Debug.LogWarning("MediaGalleryController: Tried to open an image, but no RawImage was assigned.");
+                return;
+            }
+
+            OpenImage(sourceImage.texture);
+        }
+
+        public void ShowNextImage()
+        {
+            ShowImageFromCurrentOffset(1);
+        }
+
+        public void ShowPreviousImage()
+        {
+            ShowImageFromCurrentOffset(-1);
+        }
+
+        internal void HandlePreviewSwipe(float horizontalDelta)
+        {
+            if (Mathf.Abs(horizontalDelta) < swipeThreshold)
+                return;
+
+            if (horizontalDelta < 0f)
+                ShowNextImage();
+            else
+                ShowPreviousImage();
+        }
+
+        private void ShowImage(Texture image)
+        {
             StopVideo();
 
             if (previewPanel != null)
@@ -57,15 +102,21 @@ namespace Game.UI.Gallery
                 videoPreview.gameObject.SetActive(false);
         }
 
-        public void OpenImage(RawImage sourceImage)
+        private void ShowImageFromCurrentOffset(int offset)
         {
-            if (sourceImage == null)
-            {
-                Debug.LogWarning("MediaGalleryController: Tried to open an image, but no RawImage was assigned.");
+            if (imageSequence == null || imageSequence.Length <= 1)
                 return;
-            }
 
-            OpenImage(sourceImage.texture);
+            if (_currentImageIndex < 0)
+                return;
+
+            _currentImageIndex = WrapIndex(_currentImageIndex + offset, imageSequence.Length);
+            Texture image = imageSequence[_currentImageIndex];
+            if (image == null)
+                return;
+
+            HapticsService.PlayClick();
+            ShowImage(image);
         }
 
         public void OpenVideo(VideoClip clip)
@@ -83,6 +134,7 @@ namespace Game.UI.Gallery
             }
 
             HapticsService.PlayClick();
+            _currentImageIndex = -1;
 
             if (previewPanel != null)
                 previewPanel.SetActive(true);
@@ -107,6 +159,8 @@ namespace Game.UI.Gallery
 
             if (previewPanel != null)
                 previewPanel.SetActive(false);
+
+            _currentImageIndex = -1;
 
             if (imagePreview != null)
                 imagePreview.texture = null;
@@ -170,6 +224,62 @@ namespace Game.UI.Gallery
                 videoPlayer.Stop();
 
             videoPlayer.clip = null;
+        }
+
+        private int FindImageIndex(Texture image)
+        {
+            if (imageSequence == null)
+                return -1;
+
+            for (int i = 0; i < imageSequence.Length; i++)
+            {
+                if (imageSequence[i] == image)
+                    return i;
+            }
+
+            return -1;
+        }
+
+        private int WrapIndex(int index, int length)
+        {
+            return (index % length + length) % length;
+        }
+
+        private void AttachSwipeForwarder(GameObject target)
+        {
+            if (target == null)
+                return;
+
+            GalleryPreviewSwipeForwarder forwarder = target.GetComponent<GalleryPreviewSwipeForwarder>();
+            if (forwarder == null)
+                forwarder = target.AddComponent<GalleryPreviewSwipeForwarder>();
+
+            forwarder.Initialise(this);
+        }
+    }
+
+    internal sealed class GalleryPreviewSwipeForwarder : MonoBehaviour, IBeginDragHandler, IEndDragHandler
+    {
+        private MediaGalleryController _controller;
+        private Vector2 _dragStartPosition;
+
+        public void Initialise(MediaGalleryController controller)
+        {
+            _controller = controller;
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            _dragStartPosition = eventData.position;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (_controller == null)
+                return;
+
+            float horizontalDelta = eventData.position.x - _dragStartPosition.x;
+            _controller.HandlePreviewSwipe(horizontalDelta);
         }
     }
 }

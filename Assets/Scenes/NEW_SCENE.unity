@@ -8396,6 +8396,22 @@ MonoBehaviour:
   videoPreview: {fileID: 1724372466}
   videoPlayer: {fileID: 1724372465}
   videoRenderTexture: {fileID: 0}
+  imageSequence:
+  - {fileID: 2800000, guid: 871f014c59baba341b0846a946466a23, type: 3}
+  - {fileID: 2800000, guid: c4ef08e71df40204fb5b7ffa475dd395, type: 3}
+  - {fileID: 2800000, guid: 6398fe6e2a6f260459724f11c34ebb52, type: 3}
+  - {fileID: 2800000, guid: f3446fccac869ce4e8e80eadbc3d10f5, type: 3}
+  - {fileID: 2800000, guid: 7f0f662e5cce74442886afe99e9264d9, type: 3}
+  - {fileID: 2800000, guid: 724ded7bf7db1e54d8bd067e72ec595f, type: 3}
+  - {fileID: 2800000, guid: 057fdb6840063444c86a0a51e90a0bf9, type: 3}
+  - {fileID: 2800000, guid: 795c55595110f134f8dacad3c8cc4e34, type: 3}
+  - {fileID: 2800000, guid: 964fc816ae441134d8193ebc79627686, type: 3}
+  - {fileID: 2800000, guid: 6c2e44791578ed146933b0291fd1f523, type: 3}
+  - {fileID: 2800000, guid: 697465d96739221449c07aa17fd4cc4a, type: 3}
+  - {fileID: 2800000, guid: 2872d6b209620c947a44f2d6d7669742, type: 3}
+  - {fileID: 2800000, guid: 4ef751d998a900d43b0a5c6e74cc19a8, type: 3}
+  - {fileID: 2800000, guid: bab8117c7fd3deb4b80e5414a420096d, type: 3}
+  swipeThreshold: 80
 --- !u!1 &684819706
 GameObject:
   m_ObjectHideFlags: 0
